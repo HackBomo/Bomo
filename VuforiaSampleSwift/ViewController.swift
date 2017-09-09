@@ -26,12 +26,16 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		//prep our scene
-		nodes["bomo-trackers-1"] = SCNNode(geometry: SCNSphere(radius: 0.01))
-		nodes["bomo-trackers-2"] = SCNNode(geometry: SCNSphere(radius: 0.01))
-		nodes["bomo-trackers-3"] = SCNNode(geometry: SCNSphere(radius: 0.01))
-		nodes["bomo-trackers-4"] = SCNNode(geometry: SCNSphere(radius: 0.01))
 		
-		
+		let base = "bomo-trackers-"
+		for i in 1...4{
+			let currentName = base + "\(i)"
+			print("adding node: \(currentName)")
+			nodes[currentName] = SCNNode(geometry: SCNSphere(radius: 0.01))
+			nodes[currentName]!.name = currentName
+			nodes[currentName]!.geometry?.firstMaterial?.diffuse.contents = UIColor.purple
+		}
+	
 		prepare()
 	}
 	
@@ -161,16 +165,35 @@ extension ViewController: VuforiaManagerDelegate {
 
 	//One more function to delete nodes that do not appear/are not recognized
 	func vuforiaManager(_ manager: VuforiaManager!, finishedSendingObjects finished: Bool) {
-		print("Finished Sending Objects")
+		
+		//remove, add, or keep nodes
 		for node in nodes{
-			if seen.contains(node.key){
+			if seen.contains(node.key) && node.value.parent == nil{
 				scene.rootNode.addChildNode(node.value)
+			}else if seen.contains(node.key){
+				continue
 			}else{
 				node.value.removeFromParentNode()
 			}
 		}
 		
-		
+		//remove cylinders
+		for node in scene.rootNode.childNodes{
+			if node.name == "cylinder"{
+				node.removeFromParentNode()
+			}
+		}
+
+		//draw cylinders
+		for i in 0..<allNames.count - 1{
+			let first = allNames[i]
+			let second = allNames[i+1]
+			
+			if seen.contains(first) && seen.contains(second){
+				drawCylinder(nodeA: nodes[first]!, nodeB: nodes[second]!)
+			}
+			
+		}
 		
 		guard let swiftRenderer = manager.eaglView.getRenderer() else {
 			print("Error, could not get renderer from eaglView")
@@ -205,6 +228,7 @@ extension ViewController{	//MARK: Drawing Functions
 		
 		let cylinderGeometry = SCNCylinder(radius: radius, height: height)
 		let cylinder = SCNNode(geometry: cylinderGeometry)
+		cylinder.geometry?.firstMaterial?.diffuse.contents = UIColor.black
 		
 		cylinder.position.y = Float(-height/2)
 		zAxisNode.addChildNode(cylinder)
@@ -239,6 +263,8 @@ extension ViewController{	//MARK: Drawing Functions
 			startNode.constraints = [ SCNLookAtConstraint(target: endNode) ]
 			returnNode.addChildNode(startNode)
 		}
+		
+		returnNode.name = "cylinder"
 		self.scene.rootNode.addChildNode(returnNode)
 		//print("drew line at position \(cylinder.position)")
 		return returnNode
