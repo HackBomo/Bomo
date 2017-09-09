@@ -15,11 +15,27 @@ class ViewController: UIViewController {
 	
 	var vuforiaManager: VuforiaManager? = nil
 	
-	var objects = [String: SCNNode?]()
+	var swiftRenderer: SCNRenderer?
+	var time: CFAbsoluteTime?
+	var scene = SCNScene()
 	
+	var nodes = [String: SCNNode]()
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		//prep our scene
+		//CLEAR AND RE-ADD ALL NODES
+		nodes["bomo-trackers-1"] = SCNNode(geometry: SCNSphere(radius: 0.1))
+		nodes["bomo-trackers-2"] = SCNNode(geometry: SCNSphere(radius: 0.1))
+		nodes["bomo-trackers-3"] = SCNNode(geometry: SCNSphere(radius: 0.1))
+		nodes["bomo-trackers-4"] = SCNNode(geometry: SCNSphere(radius: 0.1))
+		
+		for node in scene.rootNode.childNodes{
+			node.removeFromParentNode()
+		}
+		for node in nodes.values{
+			scene.rootNode.addChildNode(node)
+		}
 		prepare()
 	}
 	
@@ -43,12 +59,13 @@ private extension ViewController {
 	func prepare() {
 		vuforiaManager = VuforiaManager(licenseKey: vuforiaLicenseKey, dataSetFile: vuforiaDataSetFile)
 		if let manager = vuforiaManager {
-			manager.delegate = self
-			manager.eaglView.sceneSource = self
-			manager.eaglView.delegate = self
-			manager.eaglView.setupRenderer()
+			manager.delegate = self				//tell manager how to talk to us
+			manager.eaglView.sceneSource = self	//tell eaglview how to talk to us
+			manager.eaglView.delegate = self	//tell eagleview how to talk to us again
+			manager.eaglView.setupRenderer()	//eaglview builds a renderer with our scene
 			self.view = manager.eaglView
 		}
+		
 		
 		let notificationCenter = NotificationCenter.default
 		notificationCenter.addObserver(self, selector: #selector(didRecieveWillResignActiveNotification),
@@ -89,140 +106,169 @@ extension ViewController: VuforiaManagerDelegate {
 		do {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
+			
 		}catch let error {
 			print("\(error)")
 		}
 	}
-	
 	func vuforiaManager(_ manager: VuforiaManager!, didFailToPreparingWithError error: Error!) {
 		print("did faid to preparing \(error)\n")
 	}
-	
 	func vuforiaManager(_ manager: VuforiaManager!, didUpdateWith state: VuforiaState!) {
-		print("looking at \(state.numberOfTrackableResults) trackables")
+		//	print("looking at \(state.numberOfTrackableResults) trackables")
 		
-		for index in 0 ..< state.numberOfTrackableResults {
-			guard let result = state.trackableResult(at: index) else{
-				continue
-			}
-			let name = result.trackable.name!
-			guard objects[name] == nil else{	//skip recognized objects
-				continue
-			}
-			print("number of trackables: \(state.numberOfTrackableResults)")
-			
-			
-			//create new scnnodes
-			let circle = SCNNode(geometry: SCNSphere(radius: 1))
-			let renderer: SCNRenderer = manager.eaglView.getRenderer()
-			renderer.scene?.rootNode.addChildNode(circle)
-			print("adding node on \(name)")
-			objects[name] = circle
-			
-			//let trackerableName = result?.trackable.name
-			/*if trackerableName == "stones" {
-			boxMaterial.diffuse.contents = UIColor.red
-			
-			if lastSceneName != "stones" {
-			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "stones"])
-			lastSceneName = "stones"
-			}
-			}else {
-			boxMaterial.diffuse.contents = UIColor.blue
-			
-			if lastSceneName != "chips" {
-			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "chips"])
-			lastSceneName = "chips"
-			}
-			}*/
-			
-		}
+//		for index in 0 ..< state.numberOfTrackableResults {
+//			guard let result = state.trackableResult(at: index) else{
+//				continue
+//			}
+//			let name = result.trackable.name!
+//			guard objects[name] == nil else{	//skip recognized objects
+//				continue
+//			}
+//			print("number of trackables: \(state.numberOfTrackableResults)")
+//			
+//			
+//			//create new scnnodes
+//			let circle = SCNNode(geometry: SCNSphere(radius: 1))
+//			let renderer: SCNRenderer = manager.eaglView.getRenderer()
+//			renderer.scene?.rootNode.addChildNode(circle)
+//			print("adding node on \(name)")
+//			objects[name] = circle
+//			
+//			//let trackerableName = result?.trackable.name
+//			if trackerableName == "stones" {
+//			boxMaterial.diffuse.contents = UIColor.red
+//			
+//			if lastSceneName != "stones" {
+//			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "stones"])
+//			lastSceneName = "stones"
+//			}
+//			}else {
+//			boxMaterial.diffuse.contents = UIColor.blue
+//			
+//			if lastSceneName != "chips" {
+//			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "chips"])
+//			lastSceneName = "chips"
+//			}
+//			}
+//			
+//		}
 	}
-	
-	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix: UnsafeMutablePointer<SCNMatrix4>!) {
-		print("got object \(number) at position \(swiftMatrix)")
+	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix:SCNMatrix4) {
+		//print("got object \(number) at position \(swiftMatrix)")
+		
+		guard let swiftRenderer = manager.eaglView.getRenderer() else {
+			print("Error, could not get renderer from eaglView")
+			return
+		}
+		
+		
+		//draw nodes
+		drawNode(number: Int(number), matrix: swiftMatrix)
+		//draw lines
+		//draw anything else
+		
+		if time == nil{
+			time = CFAbsoluteTimeGetCurrent()
+		}
+		let currentTime = CFAbsoluteTimeGetCurrent() - time!
+		swiftRenderer.render(atTime: currentTime)
+	}
+	//One more function to delete nodes that do not appear/are not recognized
+	func vuforiaManager(_ manager: VuforiaManager!, didGet context: EAGLContext!) {
+		//ALL TAKEN CARE OF IN EAGLEVIEW SETUP RENDERER
+		
+		//		swiftRenderer = manager.eaglView.getRenderer()
+//		
+//		//CLEAR AND RE-ADD ALL NODES
+//		for node in scene.rootNode.childNodes{
+//			node.removeFromParentNode()
+//		}
+//		for node in nodes{
+//			node.geometry = SCNSphere(radius: 0.1)
+//			scene.rootNode.addChildNode(node)
+//		}
+//		
+//		//CREATE SCENE
+//		self.scene = SCNScene()
+//		swiftRenderer!.scene = self.scene
+//		swiftRenderer!.isPlaying = true
+//		
+//		//CREATE CAMERA
+//		let cameraNode = SCNNode()
+//		cameraNode.camera = SCNCamera()
+//		scene.rootNode.addChildNode(cameraNode)
+//		swiftRenderer!.pointOfView = cameraNode
 	}
 }
+extension ViewController{	//MARK: Drawing Functions
+	func drawNode(number: Int, matrix: SCNMatrix4){
+		let node = nodes[number]
+		node.position = SCNVector3Make(matrix.m41, matrix.m42, matrix.m43)
+	}
+	func drawCylinder(nodeA: SCNNode, nodeB: SCNNode) -> SCNNode{
+		let positionStart = nodeA.position
+		let positionEnd = nodeB.position
+		
+		let radius = CGFloat(0.005)
+		let height = CGFloat(GLKVector3Distance(SCNVector3ToGLKVector3(positionStart), SCNVector3ToGLKVector3(positionEnd)))
+		
+		let startNode = SCNNode()
+		let endNode = SCNNode()
+		startNode.position = positionStart
+		endNode.position = positionEnd
+		
+		let zAxisNode = SCNNode()
+		zAxisNode.eulerAngles.x = Float(CGFloat(M_PI_2))
+		
+		let cylinderGeometry = SCNCylinder(radius: radius, height: height)
+		let cylinder = SCNNode(geometry: cylinderGeometry)
+		
+		cylinder.position.y = Float(-height/2)
+		zAxisNode.addChildNode(cylinder)
+		
+		var returnNode = SCNNode()
+		for node in returnNode.childNodes{
+			node.removeFromParentNode()
+		}
+		
+		if (positionStart.x > 0.0 && positionStart.y < 0.0 && positionStart.z < 0.0 && positionEnd.x > 0.0 && positionEnd.y < 0.0 && positionEnd.z > 0.0){
+			endNode.addChildNode(zAxisNode)
+			endNode.constraints = [ SCNLookAtConstraint(target: startNode) ]
+			returnNode.addChildNode(endNode)
+			
+		}else if (positionStart.x < 0.0 && positionStart.y < 0.0 && positionStart.z < 0.0 && positionEnd.x < 0.0 && positionEnd.y < 0.0 && positionEnd.z > 0.0){
+			endNode.addChildNode(zAxisNode)
+			endNode.constraints = [ SCNLookAtConstraint(target: startNode) ]
+			returnNode.addChildNode(endNode)
+			
+		}else if (positionStart.x < 0.0 && positionStart.y > 0.0 && positionStart.z < 0.0 && positionEnd.x < 0.0 && positionEnd.y > 0.0 && positionEnd.z > 0.0){
+			endNode.addChildNode(zAxisNode)
+			endNode.constraints = [ SCNLookAtConstraint(target: startNode) ]
+			returnNode.addChildNode(endNode)
+			
+		}else if (positionStart.x > 0.0 && positionStart.y > 0.0 && positionStart.z < 0.0 && positionEnd.x > 0.0 && positionEnd.y > 0.0 && positionEnd.z > 0.0){
+			endNode.addChildNode(zAxisNode)
+			endNode.constraints = [ SCNLookAtConstraint(target: startNode) ]
+			returnNode.addChildNode(endNode)
+			
+		}else{
+			startNode.addChildNode(zAxisNode)
+			startNode.constraints = [ SCNLookAtConstraint(target: endNode) ]
+			returnNode.addChildNode(startNode)
+		}
+		self.scene.rootNode.addChildNode(returnNode)
+		//print("drew line at position \(cylinder.position)")
+		return returnNode
+	}
 
+}
 extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
 	
-	func scene(for view: VuforiaEAGLView!, userInfo: [String : Any]?) -> SCNScene! {
-		
-		print("creating a new scene")
-		let scene = SCNScene()
-		
-		
-		let lightNode = SCNNode()
-		lightNode.light = SCNLight()
-		lightNode.light?.type = .omni
-		lightNode.light?.color = UIColor.lightGray
-		lightNode.position = SCNVector3(x:0, y:10, z:10)
-		scene.rootNode.addChildNode(lightNode)
-		
-		let ambientLightNode = SCNNode()
-		ambientLightNode.light = SCNLight()
-		ambientLightNode.light?.type = .ambient
-		ambientLightNode.light?.color = UIColor.darkGray
-		scene.rootNode.addChildNode(ambientLightNode)
-		
-		let planeNode = SCNNode()
-		planeNode.name = "plane"
-		planeNode.geometry = SCNPlane(width: 247.0*view.objectScale, height: 173.0*view.objectScale)
-		planeNode.position = SCNVector3Make(0, 0, -1)
-		let planeMaterial = SCNMaterial()
-		planeMaterial.diffuse.contents = UIColor.green
-		planeMaterial.transparency = 0.6
-		planeNode.geometry?.firstMaterial = planeMaterial
-		scene.rootNode.addChildNode(planeNode)
-		
-		let boxNode = SCNNode()
-		boxNode.name = "box"
-		boxNode.geometry = SCNBox(width:1, height:1, length:1, chamferRadius:0.0)
-		scene.rootNode.addChildNode(boxNode)
-		
-		let circle = SCNNode()
-		circle.geometry = SCNSphere(radius: 2)
-		scene.rootNode.addChildNode(circle)
-		
-		return scene
-		
+	func scene(for view: VuforiaEAGLView!) -> SCNScene! {
+		//return our scene. EAGLView will take care of the camera
+		return self.scene
 	}
-	/*fileprivate func createChipsScene(with view: VuforiaEAGLView) -> SCNScene {
-	let scene = SCNScene()
-	
-	boxMaterial.diffuse.contents = UIColor.lightGray
-	
-	let lightNode = SCNNode()
-	lightNode.light = SCNLight()
-	lightNode.light?.type = .omni
-	lightNode.light?.color = UIColor.lightGray
-	lightNode.position = SCNVector3(x:0, y:10, z:10)
-	scene.rootNode.addChildNode(lightNode)
-	
-	let ambientLightNode = SCNNode()
-	ambientLightNode.light = SCNLight()
-	ambientLightNode.light?.type = .ambient
-	ambientLightNode.light?.color = UIColor.darkGray
-	scene.rootNode.addChildNode(ambientLightNode)
-	
-	let planeNode = SCNNode()
-	planeNode.name = "plane"
-	planeNode.geometry = SCNPlane(width: 247.0*view.objectScale, height: 173.0*view.objectScale)
-	planeNode.position = SCNVector3Make(0, 0, -1)
-	let planeMaterial = SCNMaterial()
-	planeMaterial.diffuse.contents = UIColor.red
-	planeMaterial.transparency = 0.6
-	planeNode.geometry?.firstMaterial = planeMaterial
-	scene.rootNode.addChildNode(planeNode)
-	
-	let boxNode = SCNNode()
-	boxNode.name = "box"
-	boxNode.geometry = SCNBox(width:1, height:1, length:1, chamferRadius:0.0)
-	boxNode.geometry?.firstMaterial = boxMaterial
-	scene.rootNode.addChildNode(boxNode)
-	
-	return scene
-	}*/
 	func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchDownNode node: SCNNode!) {
 		print("touch down \(node.name ?? "")\n")
 	}

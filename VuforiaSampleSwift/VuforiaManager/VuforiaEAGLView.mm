@@ -145,6 +145,7 @@ namespace VuforiaEAGLViewUtils
         if (_context != [EAGLContext currentContext]) {
             [EAGLContext setCurrentContext:_context];
         }
+					//send context back to delegate
         
         _offTargetTrackingEnabled = NO;
         _objectScale = 0.03175f;
@@ -168,30 +169,22 @@ namespace VuforiaEAGLViewUtils
 }
 
 - (void)setupRenderer {
+	[_manager EAGLViewDidGetContext:_context];
     _startTime = CFAbsoluteTimeGetCurrent();
     _renderer = [SCNRenderer rendererWithContext:_context options:nil];
     //_renderer.autoenablesDefaultLighting = YES;
     _renderer.playing = YES;
-    
-    if (_sceneSource != nil) {
-        [self setNeedsChangeSceneWithUserInfo:nil];
-    }
-    
-}
-- (void)setNeedsChangeSceneWithUserInfo: (NSDictionary*)userInfo {
-    SCNScene* scene = [self.sceneSource sceneForEAGLView:self userInfo:userInfo];
-    if (scene == nil) {
-        return;
-    }
-    
-    SCNCamera* camera = [SCNCamera camera];
-    _cameraNode = [SCNNode node];
-    _cameraNode.camera = camera;
-    _cameraNode.camera.projectionTransform = _projectionTransform;
-    [scene.rootNode addChildNode:_cameraNode];
-    
-    _renderer.scene = scene;
-    _renderer.pointOfView = _cameraNode;
+	
+	_renderer.scene = [self.sceneSource sceneForEAGLView:self];
+	
+	SCNCamera* camera = [SCNCamera camera];
+	_cameraNode = [SCNNode node];
+	_cameraNode.camera = camera;
+	_cameraNode.camera.projectionTransform = _projectionTransform;
+	
+	[_renderer.scene.rootNode addChildNode:_cameraNode];
+	_renderer.pointOfView = _cameraNode;
+	
 }
 - (void)finishOpenGLESCommands{
     // Called in response to applicationWillResignActive.  The render loop has
@@ -258,9 +251,17 @@ namespace VuforiaEAGLViewUtils
                (GLsizei)_manager.viewport.size.width, (GLsizei)_manager.viewport.size.height);
 	
 	
+		//create matrix position array fo size getNumTarckableResults
+	int size = state.getNumTrackables();
+	NSMutableArray *positionArray = [[NSMutableArray alloc] initWithCapacity:size];
+	NSMutableArray *nameArray = [[NSMutableArray alloc] initWithCapacity:size];
+
 	
     for (int i = 0; i < state.getNumTrackableResults(); ++i) {
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
+		const Vuforia::Trackable& trackable = result->getTrackable();
+		
+		printf(trackable.getName());
 		
 		Vuforia::Matrix44F modelViewMatrix = Vuforia::Tool::convertPose2GLMatrix(result->getPose()); // get model view matrix
         VuforiaEAGLViewUtils::translatePoseMatrix(0.0f, 0.0f, _objectScale, &modelViewMatrix.data[0]);
@@ -268,21 +269,16 @@ namespace VuforiaEAGLViewUtils
 		
 			//Code From Original Non-Swift
 		SCNMatrix4 swiftMatrix = [self SCNMatrix4FromVuforiaMatrix44:modelViewMatrix];
-			//move the swift node
-			//update line position
-			//tell swift renderer to render at current time
-			//how about calling manager.render(objects: coordinates for each object, atTime: time
-			//delegate.updateobject(index, matrix)
-			//End
+		[_manager EAGLViewUpdateObject:i toPosition:swiftMatrix];
 		
-			//[self setCameraMatrix:modelViewMatrix]; // SCNCameraにセット
 		
-        CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent() - _startTime;
-        [_renderer renderAtTime: currentTime]; // render using SCNRenderer
-        
+			//[positionArray addObject:[NSValue swiftMatrix]];
+		[nameArray addObject:char* trackable.getName()];
+		
         VuforiaEAGLViewUtils::checkGlError("EAGLView renderFrameVuforia");
     }
 	
+		//[_manager EAGLViewUpdatedObjects:
 	
 	
     glDisable(GL_DEPTH_TEST);

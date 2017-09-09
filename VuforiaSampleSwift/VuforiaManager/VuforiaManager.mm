@@ -852,8 +852,11 @@ namespace {
     }
 }
 
-- (void) EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4*)swiftMatrix{
+- (void) EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4)swiftMatrix{
 	[_delegate vuforiaManager:self didGetObject:index withPosition:swiftMatrix];
+}
+- (void)EAGLViewDidGetContext:(EAGLContext*)context{
+	[_delegate vuforiaManager:self didGetContext:context];
 }
 
 ////////////////////////////////////////////////////////////////////////////////

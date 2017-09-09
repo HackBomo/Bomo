@@ -49,7 +49,8 @@ typedef NS_ENUM(NSInteger, VuforiaError) {
 - (void)vuforiaManagerDidFinishPreparing:(VuforiaManager*) manager;
 - (void)vuforiaManager:(VuforiaManager*)manager didFailToPreparingWithError:(NSError*)error;
 - (void)vuforiaManager:(VuforiaManager *)manager didUpdateWithState:(VuforiaState*)state;
-- (void)vuforiaManager:(VuforiaManager *)manager didGetObject:(int)number withPosition:(SCNMatrix4*)swiftMatrix;
+- (void)vuforiaManager:(VuforiaManager *)manager didGetObject:(int)number withPosition:(SCNMatrix4)swiftMatrix;
+- (void)vuforiaManager:(VuforiaManager *)manager didGetContext:(EAGLContext*)context;
 
 @end
 
@@ -83,7 +84,8 @@ typedef NS_ENUM(NSInteger, VuforiaError) {
 - (BOOL)start:(NSError **)error;
 - (BOOL)stop:(NSError **)error;
 
-- (void)EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4*)swiftMatrix;
+- (void)EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4)swiftMatrix;
+- (void)EAGLViewDidGetContext:(EAGLContext*)context;
 
 
 @end

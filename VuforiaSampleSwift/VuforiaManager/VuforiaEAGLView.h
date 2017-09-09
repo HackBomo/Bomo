@@ -19,7 +19,7 @@
 
 @protocol VuforiaEAGLViewSceneSource <NSObject>
 
-- (SCNScene *)sceneForEAGLView:(VuforiaEAGLView *)view userInfo:(NSDictionary<NSString*, id>*)userInfo;
+- (SCNScene *)sceneForEAGLView:(VuforiaEAGLView *)view;
 
 @end
 
