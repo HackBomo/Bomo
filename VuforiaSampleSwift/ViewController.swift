@@ -20,23 +20,18 @@ class ViewController: UIViewController {
 	var scene = SCNScene()
 	
 	var nodes = [String: SCNNode]()
-	var seen = [String]();
+	var seen = [String]()
+	var allNames = ["bomo-trackers-1","bomo-trackers-2","bomo-trackers-3","bomo-trackers-4"]
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		//prep our scene
-		//CLEAR AND RE-ADD ALL NODES
-		nodes["bomo-trackers-1"] = SCNNode(geometry: SCNSphere(radius: 0.1))
-		nodes["bomo-trackers-2"] = SCNNode(geometry: SCNSphere(radius: 0.1))
-		nodes["bomo-trackers-3"] = SCNNode(geometry: SCNSphere(radius: 0.1))
-		nodes["bomo-trackers-4"] = SCNNode(geometry: SCNSphere(radius: 0.1))
+		nodes["bomo-trackers-1"] = SCNNode(geometry: SCNSphere(radius: 0.01))
+		nodes["bomo-trackers-2"] = SCNNode(geometry: SCNSphere(radius: 0.01))
+		nodes["bomo-trackers-3"] = SCNNode(geometry: SCNSphere(radius: 0.01))
+		nodes["bomo-trackers-4"] = SCNNode(geometry: SCNSphere(radius: 0.01))
 		
-		for node in scene.rootNode.childNodes{
-			node.removeFromParentNode()
-		}
-		for node in nodes.values{
-			scene.rootNode.addChildNode(node)
-		}
+		
 		prepare()
 	}
 	
@@ -156,23 +151,17 @@ extension ViewController: VuforiaManagerDelegate {
 //		}
 	}
 	
-	func vuforiaManager(_ manager: VuforiaManager!, didGetObject name: UnsafeMutablePointer<Int8>!, withPosition swiftMatrix: SCNMatrix4) {
-		<#code#>
+	func vuforiaManager(_ manager: VuforiaManager!, didGetObject name: String!, withPosition swiftMatrix: SCNMatrix4) {
+		seen.append(name)
+		nodes[name]?.position = SCNVector3Make(swiftMatrix.m41, swiftMatrix.m42, swiftMatrix.m43)
+		if nodes[name] == nil{
+			print("node \(name) is null")
+		}
 	}
-	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix:SCNMatrix4) {
-		//print("got object \(number) at position \(swiftMatrix)")
-		seen[
-		
-		
-		//draw nodes
-		drawNode(number: Int(number), matrix: swiftMatrix)
-		//draw lines
-		//draw anything else
-		
-		
-	}
+
 	//One more function to delete nodes that do not appear/are not recognized
 	func vuforiaManager(_ manager: VuforiaManager!, finishedSendingObjects finished: Bool) {
+		print("Finished Sending Objects")
 		for node in nodes{
 			if seen.contains(node.key){
 				scene.rootNode.addChildNode(node.value)
@@ -180,6 +169,8 @@ extension ViewController: VuforiaManagerDelegate {
 				node.value.removeFromParentNode()
 			}
 		}
+		
+		
 		
 		guard let swiftRenderer = manager.eaglView.getRenderer() else {
 			print("Error, could not get renderer from eaglView")
@@ -190,21 +181,13 @@ extension ViewController: VuforiaManagerDelegate {
 		}
 		let currentTime = CFAbsoluteTimeGetCurrent() - time!
 		swiftRenderer.render(atTime: currentTime)
-		
 		seen = [String]()
 	}
-	
-	
-	
 	func vuforiaManager(_ manager: VuforiaManager!, didGet context: EAGLContext!) {
 		//NOT IN USE
 	}
 }
 extension ViewController{	//MARK: Drawing Functions
-	func drawNode(number: Int, matrix: SCNMatrix4){
-		let node = nodes[number]
-		node.position = SCNVector3Make(matrix.m41, matrix.m42, matrix.m43)
-	}
 	func drawCylinder(nodeA: SCNNode, nodeB: SCNNode) -> SCNNode{
 		let positionStart = nodeA.position
 		let positionEnd = nodeB.position

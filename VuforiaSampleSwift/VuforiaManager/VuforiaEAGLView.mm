@@ -257,7 +257,7 @@ namespace VuforiaEAGLViewUtils
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
 		const Vuforia::Trackable& trackable = result->getTrackable();
 		
-		printf(trackable.getName());
+			//printf(trackable.getName());
 		
 		Vuforia::Matrix44F modelViewMatrix = Vuforia::Tool::convertPose2GLMatrix(result->getPose()); // get model view matrix
         VuforiaEAGLViewUtils::translatePoseMatrix(0.0f, 0.0f, _objectScale, &modelViewMatrix.data[0]);
@@ -265,7 +265,7 @@ namespace VuforiaEAGLViewUtils
 		
 			//Code From Original Non-Swift
 		SCNMatrix4 swiftMatrix = [self SCNMatrix4FromVuforiaMatrix44:modelViewMatrix];
-		NSString *name = [NSString stringWithFormat:@"%c", trackable.getName()];
+		NSString *name = [NSString stringWithCString:trackable.getName() encoding:NSUTF8StringEncoding];
 		[_manager EAGLViewUpdateObject:name toPosition:swiftMatrix];
 		
         VuforiaEAGLViewUtils::checkGlError("EAGLView renderFrameVuforia");

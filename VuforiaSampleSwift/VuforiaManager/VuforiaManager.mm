@@ -858,6 +858,9 @@ namespace {
 - (void)EAGLViewDidGetContext:(EAGLContext*)context{
 	[_delegate vuforiaManager:self didGetContext:context];
 }
+-(void) EAGLViewFinishedSendingObjects:(bool)done{
+	[_delegate vuforiaManager:self finishedSendingObjects:done];
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Callback function called by the tracker when each tracking cycle has finished
