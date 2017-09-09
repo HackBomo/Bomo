@@ -178,7 +178,6 @@ namespace VuforiaEAGLViewUtils
     }
     
 }
-
 - (void)setNeedsChangeSceneWithUserInfo: (NSDictionary*)userInfo {
     SCNScene* scene = [self.sceneSource sceneForEAGLView:self userInfo:userInfo];
     if (scene == nil) {
@@ -194,10 +193,7 @@ namespace VuforiaEAGLViewUtils
     _renderer.scene = scene;
     _renderer.pointOfView = _cameraNode;
 }
-
-
-- (void)finishOpenGLESCommands
-{
+- (void)finishOpenGLESCommands{
     // Called in response to applicationWillResignActive.  The render loop has
     // been stopped, so we now make sure all OpenGL ES commands complete before
     // we (potentially) go into the background
@@ -206,21 +202,15 @@ namespace VuforiaEAGLViewUtils
         glFinish();
     }
 }
-
-
-- (void)freeOpenGLESResources
-{
+- (void)freeOpenGLESResources{
     // Called in response to applicationDidEnterBackground.  Free easily
     // recreated OpenGL ES resources
     [self deleteFramebuffer];
     glFinish();
 }
-
 - (void) setOffTargetTrackingMode:(BOOL) enabled {
     _offTargetTrackingEnabled = enabled;
 }
-
-// Convert Vuforia's matrix to SceneKit's matrix
 - (SCNMatrix4)SCNMatrix4FromVuforiaMatrix44:(Vuforia::Matrix44F)matrix {
     GLKMatrix4 glkMatrix;
     
@@ -231,8 +221,6 @@ namespace VuforiaEAGLViewUtils
     return SCNMatrix4FromGLKMatrix4(glkMatrix);
     
 }
-
-// Set camera node matrix
 - (void)setCameraMatrix:(Vuforia::Matrix44F)matrix {
     SCNMatrix4 extrinsic = [self SCNMatrix4FromVuforiaMatrix44:matrix];
     SCNMatrix4 inverted = SCNMatrix4Invert(extrinsic);
@@ -240,58 +228,41 @@ namespace VuforiaEAGLViewUtils
     
     //NSLog(@"position = %lf, %lf, %lf", _cameraNode.position.x, _cameraNode.position.y, _cameraNode.position.z); // デバッグ用
 }
-
 - (void)setProjectionMatrix:(Vuforia::Matrix44F)matrix {
     _projectionTransform = [self SCNMatrix4FromVuforiaMatrix44:matrix];
     _cameraNode.camera.projectionTransform = _projectionTransform;
 }
 
 //------------------------------------------------------------------------------
-#pragma mark - UIGLViewProtocol methods
 
-// Draw the current frame using OpenGL
-//
-// This method is called by Vuforia when it wishes to render the current frame to
-// the screen.
-//
+
 // *** Vuforia will call this method periodically on a background thread ***
 - (void)renderFrameVuforia
 {
     [self setFramebuffer];
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    // Clear colour and depth buffers
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    
-    // Render video background and retrieve tracking state
     Vuforia::State state = Vuforia::Renderer::getInstance().begin();
     Vuforia::Renderer::getInstance().drawVideoBackground();
     
     glEnable(GL_DEPTH_TEST);
-    // We must detect if background reflection is active and adjust the culling direction.
-    // If the reflection is active, this means the pose matrix has been reflected as well,
-    // therefore standard counter clockwise face culling will result in "inside out" models.
     if (_offTargetTrackingEnabled) {
         glDisable(GL_CULL_FACE);
     } else {
         glEnable(GL_CULL_FACE);
     }
-
     glCullFace(GL_BACK);
     if(Vuforia::Renderer::getInstance().getVideoBackgroundConfig().mReflection == Vuforia::VIDEO_BACKGROUND_REFLECTION_ON)
         glFrontFace(GL_CW);  //Front camera
     else
         glFrontFace(GL_CCW);   //Back camera
-    
-    // Set the viewport
     glViewport((GLint)_manager.viewport.origin.x, (GLint)_manager.viewport.origin.y,
                (GLsizei)_manager.viewport.size.width, (GLsizei)_manager.viewport.size.height);
     
     for (int i = 0; i < state.getNumTrackableResults(); ++i) {
-        // Get the trackable
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
-        //const Vuforia::Trackable& trackable = result->getTrackable();
-        Vuforia::Matrix44F modelViewMatrix = Vuforia::Tool::convertPose2GLMatrix(result->getPose()); // get model view matrix
-        
+		
+		Vuforia::Matrix44F modelViewMatrix = Vuforia::Tool::convertPose2GLMatrix(result->getPose()); // get model view matrix
         VuforiaEAGLViewUtils::translatePoseMatrix(0.0f, 0.0f, _objectScale, &modelViewMatrix.data[0]);
         VuforiaEAGLViewUtils::scalePoseMatrix(_objectScale,  _objectScale,  _objectScale, &modelViewMatrix.data[0]);
         
