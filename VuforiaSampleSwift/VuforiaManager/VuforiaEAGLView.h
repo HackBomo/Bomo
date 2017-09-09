@@ -14,6 +14,8 @@
 
 @class VuforiaManager;
 @class VuforiaEAGLView;
+@class ARManager;
+
 
 @protocol VuforiaEAGLViewSceneSource <NSObject>
 
@@ -32,11 +34,21 @@
 
 // EAGLView is a subclass of UIView and conforms to the informal protocol
 // UIGLViewProtocol
-@interface VuforiaEAGLView : UIView <UIGLViewProtocol>
+@interface VuforiaEAGLView : UIView <UIGLViewProtocol>{
+	
+		// OpenGL ES context
+		//EAGLContext *context;
+	ARManager *arManager;
+		//CFAbsoluteTime *startTime;
+}
 
 @property (weak, nonatomic)id<VuforiaEAGLViewSceneSource> sceneSource;
 @property (weak, nonatomic)id<VuforiaEAGLViewDelegate> delegate;
 @property (nonatomic, assign)CGFloat objectScale;
+
+
+
+
 
 - (id)initWithFrame:(CGRect)frame manager:(VuforiaManager *) manager;
 

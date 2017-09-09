@@ -14,7 +14,6 @@ class ViewController: UIViewController {
 	let vuforiaDataSetFile = "hackbomo-2.xml"
 	
 	var vuforiaManager: VuforiaManager? = nil
-	var arManager: ARManager?
 	
 	var objects = [String: SCNNode?]()
 	
@@ -32,32 +31,31 @@ class ViewController: UIViewController {
 	}
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		arManager?.stop()
-		/*do {
+		do {
 		try vuforiaManager?.stop()
 		}catch let error {
 		print("\(error)")
-		}*/
+		}
 	}
 }
 
 private extension ViewController {
 	func prepare() {
-		arManager = ARManager(licenseKey: vuforiaLicenseKey, dataPath: vuforiaDataSetFile)
-		guard arManager != nil else{
-			print("Error, AR Manager is nil")
-			return
-		}
-		arManager?.delegate = self
-		
 		vuforiaManager = VuforiaManager(licenseKey: vuforiaLicenseKey, dataSetFile: vuforiaDataSetFile)
-		//if let manager = vuforiaManager {
-		// manager.delegate = self
-		//    manager.eaglView.sceneSource = self
-		//manager.eaglView.delegate = self
-		//manager.eaglView.setupRenderer()
-		//self.view = manager.eaglView
-		//}
+		if let manager = vuforiaManager {
+			manager.delegate = self
+			manager.eaglView.sceneSource = self
+			manager.eaglView.delegate = self
+			manager.eaglView.setupRenderer()
+			self.view = manager.eaglView
+		}
+		
+		let notificationCenter = NotificationCenter.default
+		notificationCenter.addObserver(self, selector: #selector(didRecieveWillResignActiveNotification),
+		                               name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+		
+		notificationCenter.addObserver(self, selector: #selector(didRecieveDidBecomeActiveNotification),
+		                               name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
 		
 		vuforiaManager?.prepare(with: .portrait)
 	}
@@ -111,8 +109,8 @@ extension ViewController: VuforiaManagerDelegate {
 			guard objects[name] == nil else{	//skip recognized objects
 				continue
 			}
-			
 			print("number of trackables: \(state.numberOfTrackableResults)")
+			
 			
 			//create new scnnodes
 			let circle = SCNNode(geometry: SCNSphere(radius: 1))
@@ -139,6 +137,10 @@ extension ViewController: VuforiaManagerDelegate {
 			}*/
 			
 		}
+	}
+	
+	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix: UnsafeMutablePointer<SCNMatrix4>!) {
+		print("got object \(number) at position \(swiftMatrix)")
 	}
 }
 
@@ -232,7 +234,4 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
 	}
 }
 
-extension ViewController: ARManagerDelegate{
-	
-}
 

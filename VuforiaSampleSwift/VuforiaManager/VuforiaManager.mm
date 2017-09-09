@@ -19,6 +19,7 @@
 #import <Vuforia/DataSet.h>
 #import <Vuforia/Trackable.h>
 
+
 #define DEBUG_SAMPLE_APP 1
 
 @interface VuforiaFrame ()
@@ -851,6 +852,10 @@ namespace {
     }
 }
 
+- (void) EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4*)swiftMatrix{
+	[_delegate vuforiaManager:self didGetObject:index withPosition:swiftMatrix];
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Callback function called by the tracker when each tracking cycle has finished
 void VuforiaApplication_UpdateCallback::Vuforia_onUpdate(Vuforia::State& state)
@@ -859,6 +864,7 @@ void VuforiaApplication_UpdateCallback::Vuforia_onUpdate(Vuforia::State& state)
         [instance Vuforia_onUpdate:&state];
     }
 }
+
 
 
 @end

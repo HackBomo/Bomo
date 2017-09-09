@@ -11,6 +11,7 @@
 #import "VuforiaObjects.h"
 #import "VuforiaEAGLView.h"
 
+
 typedef NS_ENUM(NSInteger, VuforiaError) {
     VuforiaError_InitializeError = -1,     ///< Error during initialization
     VuforiaError_DeviceNotSupported = -2,  ///< The device is not supported
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSInteger, VuforiaError) {
 - (void)vuforiaManagerDidFinishPreparing:(VuforiaManager*) manager;
 - (void)vuforiaManager:(VuforiaManager*)manager didFailToPreparingWithError:(NSError*)error;
 - (void)vuforiaManager:(VuforiaManager *)manager didUpdateWithState:(VuforiaState*)state;
+- (void)vuforiaManager:(VuforiaManager *)manager didGetObject:(int)number withPosition:(SCNMatrix4*)swiftMatrix;
 
 @end
 
@@ -80,6 +82,8 @@ typedef NS_ENUM(NSInteger, VuforiaError) {
 
 - (BOOL)start:(NSError **)error;
 - (BOOL)stop:(NSError **)error;
+
+- (void)EAGLViewUpdateObject:(int)index toPosition:(SCNMatrix4*)swiftMatrix;
 
 
 @end

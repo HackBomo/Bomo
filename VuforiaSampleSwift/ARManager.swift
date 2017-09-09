@@ -11,7 +11,7 @@ import Foundation
 protocol ARManagerDelegate {
 	
 }
-class ARManager: NSObject{
+@objc class ARManager: NSObject{
 	
 	var licenseKey: String!
 	var dataPath: String!
@@ -70,6 +70,9 @@ extension ARManager: VuforiaManagerDelegate{
 	}
 	func vuforiaManager(_ manager: VuforiaManager!, didUpdateWith state: VuforiaState!) {
 		print("Updated the state!!!")
+	}
+	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix: UnsafeMutablePointer<SCNMatrix4>!) {
+		//
 	}
 	
 	

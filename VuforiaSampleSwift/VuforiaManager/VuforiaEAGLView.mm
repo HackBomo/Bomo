@@ -235,10 +235,8 @@ namespace VuforiaEAGLViewUtils
 
 //------------------------------------------------------------------------------
 
-
 // *** Vuforia will call this method periodically on a background thread ***
-- (void)renderFrameVuforia
-{
+- (void)renderFrameVuforia{
     [self setFramebuffer];
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
@@ -258,21 +256,35 @@ namespace VuforiaEAGLViewUtils
         glFrontFace(GL_CCW);   //Back camera
     glViewport((GLint)_manager.viewport.origin.x, (GLint)_manager.viewport.origin.y,
                (GLsizei)_manager.viewport.size.width, (GLsizei)_manager.viewport.size.height);
-    
+	
+	
+	
     for (int i = 0; i < state.getNumTrackableResults(); ++i) {
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
 		
 		Vuforia::Matrix44F modelViewMatrix = Vuforia::Tool::convertPose2GLMatrix(result->getPose()); // get model view matrix
         VuforiaEAGLViewUtils::translatePoseMatrix(0.0f, 0.0f, _objectScale, &modelViewMatrix.data[0]);
         VuforiaEAGLViewUtils::scalePoseMatrix(_objectScale,  _objectScale,  _objectScale, &modelViewMatrix.data[0]);
-        
-        [self setCameraMatrix:modelViewMatrix]; // SCNCameraにセット
+		
+			//Code From Original Non-Swift
+		SCNMatrix4 swiftMatrix = [self SCNMatrix4FromVuforiaMatrix44:modelViewMatrix];
+			//move the swift node
+			//update line position
+			//tell swift renderer to render at current time
+			//how about calling manager.render(objects: coordinates for each object, atTime: time
+			//delegate.updateobject(index, matrix)
+			//End
+		
+			//[self setCameraMatrix:modelViewMatrix]; // SCNCameraにセット
+		
         CFAbsoluteTime currentTime = CFAbsoluteTimeGetCurrent() - _startTime;
         [_renderer renderAtTime: currentTime]; // render using SCNRenderer
         
         VuforiaEAGLViewUtils::checkGlError("EAGLView renderFrameVuforia");
     }
-    
+	
+	
+	
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_CULL_FACE);
     
@@ -290,7 +302,6 @@ namespace VuforiaEAGLViewUtils
     NSArray* results = [_renderer hitTest:pos options:nil];
     return [[results firstObject] node];
 }
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     CGPoint pos = [touches.anyObject locationInView:self];
     SCNNode* result = [self touchedNodeWithLocationInView:pos];
@@ -300,11 +311,9 @@ namespace VuforiaEAGLViewUtils
     }
     
 }
-
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
 }
-
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if(!_currentTouchNode) {
         return;
@@ -319,7 +328,6 @@ namespace VuforiaEAGLViewUtils
     }
     _currentTouchNode = nil;
 }
-
 - (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     if(_currentTouchNode) {
         [self.delegate vuforiaEAGLView:self didTouchCancelNode:_currentTouchNode];
@@ -330,8 +338,7 @@ namespace VuforiaEAGLViewUtils
 //------------------------------------------------------------------------------
 #pragma mark - OpenGL ES management
 
-- (void)createFramebuffer
-{
+- (void)createFramebuffer{
     if (_context) {
         // Create default framebuffer object
         glGenFramebuffers(1, &_defaultFramebuffer);
@@ -361,10 +368,7 @@ namespace VuforiaEAGLViewUtils
         glBindRenderbuffer(GL_RENDERBUFFER, _colorRenderbuffer);
     }
 }
-
-
-- (void)deleteFramebuffer
-{
+- (void)deleteFramebuffer{
     if (_context) {
         [EAGLContext setCurrentContext:_context];
         
@@ -384,10 +388,7 @@ namespace VuforiaEAGLViewUtils
         }
     }
 }
-
-
-- (void)setFramebuffer
-{
+- (void)setFramebuffer{
     // The EAGLContext must be set for each thread that wishes to use it.  Set
     // it the first time this method is called (on the render thread)
     if (_context != [EAGLContext currentContext]) {
@@ -403,10 +404,7 @@ namespace VuforiaEAGLViewUtils
     
     glBindFramebuffer(GL_FRAMEBUFFER, _defaultFramebuffer);
 }
-
-
-- (BOOL)presentFramebuffer
-{
+- (BOOL)presentFramebuffer{
     // setFramebuffer must have been called before presentFramebuffer, therefore
     // we know the context is valid and has been set for this (render) thread
     
@@ -415,10 +413,7 @@ namespace VuforiaEAGLViewUtils
     
     return [_context presentRenderbuffer:GL_RENDERBUFFER];
 }
-
-
 @end
-
 namespace VuforiaEAGLViewUtils
 {
     // Print a 4x4 matrix
