@@ -20,6 +20,7 @@ class ViewController: UIViewController {
 	var scene = SCNScene()
 	
 	var nodes = [String: SCNNode]()
+	var seen = [String]();
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -154,13 +155,13 @@ extension ViewController: VuforiaManagerDelegate {
 //			
 //		}
 	}
+	
+	func vuforiaManager(_ manager: VuforiaManager!, didGetObject name: UnsafeMutablePointer<Int8>!, withPosition swiftMatrix: SCNMatrix4) {
+		<#code#>
+	}
 	func vuforiaManager(_ manager: VuforiaManager!, didGetObject number: Int32, withPosition swiftMatrix:SCNMatrix4) {
 		//print("got object \(number) at position \(swiftMatrix)")
-		
-		guard let swiftRenderer = manager.eaglView.getRenderer() else {
-			print("Error, could not get renderer from eaglView")
-			return
-		}
+		seen[
 		
 		
 		//draw nodes
@@ -168,37 +169,35 @@ extension ViewController: VuforiaManagerDelegate {
 		//draw lines
 		//draw anything else
 		
+		
+	}
+	//One more function to delete nodes that do not appear/are not recognized
+	func vuforiaManager(_ manager: VuforiaManager!, finishedSendingObjects finished: Bool) {
+		for node in nodes{
+			if seen.contains(node.key){
+				scene.rootNode.addChildNode(node.value)
+			}else{
+				node.value.removeFromParentNode()
+			}
+		}
+		
+		guard let swiftRenderer = manager.eaglView.getRenderer() else {
+			print("Error, could not get renderer from eaglView")
+			return
+		}
 		if time == nil{
 			time = CFAbsoluteTimeGetCurrent()
 		}
 		let currentTime = CFAbsoluteTimeGetCurrent() - time!
 		swiftRenderer.render(atTime: currentTime)
-	}
-	//One more function to delete nodes that do not appear/are not recognized
-	func vuforiaManager(_ manager: VuforiaManager!, didGet context: EAGLContext!) {
-		//ALL TAKEN CARE OF IN EAGLEVIEW SETUP RENDERER
 		
-		//		swiftRenderer = manager.eaglView.getRenderer()
-//		
-//		//CLEAR AND RE-ADD ALL NODES
-//		for node in scene.rootNode.childNodes{
-//			node.removeFromParentNode()
-//		}
-//		for node in nodes{
-//			node.geometry = SCNSphere(radius: 0.1)
-//			scene.rootNode.addChildNode(node)
-//		}
-//		
-//		//CREATE SCENE
-//		self.scene = SCNScene()
-//		swiftRenderer!.scene = self.scene
-//		swiftRenderer!.isPlaying = true
-//		
-//		//CREATE CAMERA
-//		let cameraNode = SCNNode()
-//		cameraNode.camera = SCNCamera()
-//		scene.rootNode.addChildNode(cameraNode)
-//		swiftRenderer!.pointOfView = cameraNode
+		seen = [String]()
+	}
+	
+	
+	
+	func vuforiaManager(_ manager: VuforiaManager!, didGet context: EAGLContext!) {
+		//NOT IN USE
 	}
 }
 extension ViewController{	//MARK: Drawing Functions

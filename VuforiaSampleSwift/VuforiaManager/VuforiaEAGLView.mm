@@ -252,10 +252,6 @@ namespace VuforiaEAGLViewUtils
 	
 	
 		//create matrix position array fo size getNumTarckableResults
-	int size = state.getNumTrackables();
-	NSMutableArray *positionArray = [[NSMutableArray alloc] initWithCapacity:size];
-	NSMutableArray *nameArray = [[NSMutableArray alloc] initWithCapacity:size];
-
 	
     for (int i = 0; i < state.getNumTrackableResults(); ++i) {
         const Vuforia::TrackableResult* result = state.getTrackableResult(i);
@@ -269,16 +265,13 @@ namespace VuforiaEAGLViewUtils
 		
 			//Code From Original Non-Swift
 		SCNMatrix4 swiftMatrix = [self SCNMatrix4FromVuforiaMatrix44:modelViewMatrix];
-		[_manager EAGLViewUpdateObject:i toPosition:swiftMatrix];
-		
-		
-			//[positionArray addObject:[NSValue swiftMatrix]];
-		[nameArray addObject:char* trackable.getName()];
+		NSString *name = [NSString stringWithFormat:@"%c", trackable.getName()];
+		[_manager EAGLViewUpdateObject:name toPosition:swiftMatrix];
 		
         VuforiaEAGLViewUtils::checkGlError("EAGLView renderFrameVuforia");
     }
 	
-		//[_manager EAGLViewUpdatedObjects:
+	[_manager EAGLViewFinishedSendingObjects:YES];	//notify VC that it is time to update positions
 	
 	
     glDisable(GL_DEPTH_TEST);
