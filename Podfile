@@ -7,4 +7,5 @@ target 'VuforiaSampleSwift' do
 
   # Pods for VuforiaSampleSwift
 pod 'RealmSwift'
+pod 'Charts'
 end

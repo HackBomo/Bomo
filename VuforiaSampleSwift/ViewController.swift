@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MainVCDelegate{
+	func didCalculateAngle(angle: Float)
+}
+
 class ViewController: UIViewController {
 	var hud: HudViewController?
 	let nodeRadius = 1.0
@@ -16,6 +20,7 @@ class ViewController: UIViewController {
 	let vuforiaDataSetFile = "hackbomo-3.xml"
 	var vuforiaManager: VuforiaManager? = nil
 	
+	var delegate: MainVCDelegate?
 	var swiftRenderer: SCNRenderer?
 	var time: CFAbsoluteTime?
 	var scene = SCNScene()
@@ -127,6 +132,7 @@ extension ViewController: VuforiaManagerDelegate {
 			DispatchQueue.main.async {
 				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as! HudViewController
 				self.hud?.delegate = self
+				self.delegate = self.hud
 				self.present(self.hud!, animated: true, completion: {
 					print("presented the hud")
 				})
@@ -155,8 +161,9 @@ extension ViewController: VuforiaManagerDelegate {
 		for node in nodes{
 			if seen.contains(node.key) && node.value.parent == nil{
 				scene.rootNode.addChildNode(node.value)
-				node.value.geometry = SCNSphere(radius: CGFloat(nodeRadius))
-				node.value.geometry?.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 70, green: 201, blue: 242, alpha: 1)
+				let geometry = SCNSphere(radius: CGFloat(nodeRadius))
+				geometry.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 212/255, green: 242/255, blue: 245/255, alpha: 1)
+				node.value.geometry = geometry
 			}else if seen.contains(node.key){
 				continue
 			}else{
@@ -195,7 +202,8 @@ extension ViewController: VuforiaManagerDelegate {
 			let c = nodes[allNames[i+2]]!
 			let angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
 			if angle.isNormal{
-				drawAngle(between: a, b: b, c: c, text: "\(Int(angle))%")
+				drawAngle(between: a, b: b, c: c, text: "\(Int(angle))˚")
+				self.delegate?.didCalculateAngle(angle: angle)
 			}else{
 				drawAngle(between: a, b: b, c: c, text: "error")
 			}
@@ -283,9 +291,11 @@ extension ViewController{	//MARK: Drawing Functions
 	func drawAngle(between a: SCNNode, b: SCNNode, c: SCNNode, text: String){
 		let wordNode = SCNNode()
 		let myWord = SCNText(string: text, extrusionDepth: CGFloat(0))
-		myWord.font = UIFont.systemFont(ofSize: CGFloat((nodeRadius * 2.0)))
+		myWord.font = UIFont.systemFont(ofSize: CGFloat(nodeRadius * 2), weight: UIFontWeightBold)
+		
+		myWord.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 110/255, green: 164/255, blue: 210/255, alpha: 1)
+		myWord.chamferRadius = CGFloat(nodeRadius / 10.0)
 		wordNode.geometry = myWord
-		myWord.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 51, green: 231, blue: 230, alpha: 1)
 		
 //		let ap = subtract(a: b.position, b: a.position)
 //		let ab = subtract(a: c.position, b: a.position)
@@ -308,8 +318,8 @@ extension ViewController{	//MARK: Drawing Functions
 		let newPos = SCNVector3Make(x, y, z)
 		wordNode.position = newPos
 		let bounds = wordNode.boundingBox.min
-		wordNode.position.x = wordNode.position.x + (bounds.x / 2)
-		wordNode.position.y = wordNode.position.y + (bounds.y / 2)
+		//wordNode.position.x = wordNode.position.x - (bounds.x / 2)
+		//wordNode.position.y = wordNode.position.y + (bounds.y / 2)
 		
 		wordNode.eulerAngles = SCNVector3Make(0, Float.pi, Float.pi/2)
 		scene.rootNode.addChildNode(wordNode)

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Charts
 
 protocol HudViewDelegate {
 	func startSessionPressed()
@@ -24,13 +25,59 @@ class HudViewController: UIViewController{
 	@IBOutlet weak var startSessionButton: UIButton!
 	@IBOutlet weak var endSessionButton: UIButton!
 	
+	@IBOutlet weak var realtimeLineChart: LineChartView!
 	@IBOutlet weak var popupView: UIView!
 	
+	
+	var lineChartEntry = [ChartDataEntry]()
+	var currentTime: Double = 0
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		prepRealtimeData()
+	}
 	override func viewDidAppear(_ animated: Bool) {
 		UIView.animate(withDuration: 0.3) { 
 			self.popupView.alpha = 0.9
 		}
 	}
+	
+	func prepRealtimeData(){
+		let data = LineChartData()
+		let dataset = LineChartDataSet(values: nil, label: nil)
+		dataset.colors = [NSUIColor.red]
+		data.addDataSet(dataset)
+		
+		self.realtimeLineChart.data = data
+		self.realtimeLineChart.gridBackgroundColor = NSUIColor.white
+		self.realtimeLineChart.xAxis.enabled = false
+		
+		self.realtimeLineChart.rightAxis.enabled = false
+		self.realtimeLineChart.legend.enabled = false
+		self.realtimeLineChart.backgroundColor = UIColor.clear
+		
+		self.realtimeLineChart.chartDescription?.text = ""
+		
+		//Axis size setup
+		self.realtimeLineChart.leftAxis.axisMaximum = 180
+		self.realtimeLineChart.leftAxis.axisMinimum = 10
+		self.realtimeLineChart.leftAxis.drawGridLinesEnabled = false
+		self.realtimeLineChart.leftAxis.drawAxisLineEnabled = false
+		self.realtimeLineChart.leftAxis.drawLabelsEnabled = false
+		
+		
+		let lineChartSet = self.realtimeLineChart.data?.dataSets[0] as! LineChartDataSet
+		lineChartSet.drawValuesEnabled = false
+		lineChartSet.circleRadius = 0
+		lineChartSet.fillAlpha = 0
+		lineChartSet.mode = .cubicBezier
+		lineChartSet.lineWidth = 5
+		lineChartSet.label = ""
+		lineChartSet.drawCirclesEnabled = true
+		lineChartSet.drawFilledEnabled = true
+		lineChartSet.colors = [UIColor.white]
+	}
+	
 	
 	@IBAction func startSessionPressed(sender: AnyObject){
 		startSessionButton.isHidden = true
@@ -69,5 +116,26 @@ class HudViewController: UIViewController{
 		}
 	}
 	
+}
+
+extension HudViewController: MainVCDelegate {
+	func didCalculateAngle(angle: Float) {
+		print("got: \(angle)")
 	
+		
+		//take in a new entry as a parameter from the ARManager
+		let newEntry = ChartDataEntry(x: currentTime, y: Double(angle))
+		self.realtimeLineChart.data?.addEntry(newEntry, dataSetIndex: 0)
+		
+		//scrolls the view if larger than 100 points
+		if((self.realtimeLineChart.data?.entryCount)! > 50) {
+			self.realtimeLineChart.data?.removeEntry(xValue: 0, dataSetIndex: 0)
+		}
+		
+		//        print("changing dataset!")
+		self.realtimeLineChart.notifyDataSetChanged()
+		
+		currentTime+=1
+		
+	}
 }
