@@ -26,6 +26,9 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1890" y="140"/>
+=======
+            <point key="canvasLocation" x="222" y="140"/>
+>>>>>>> dfe8153ec47bac549aa20b4aaa5a96c1cba57b72
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="oLt-1G-Aol">
