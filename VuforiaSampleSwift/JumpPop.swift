@@ -21,6 +21,7 @@ class JumpPop: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		print("popup view loaded")
 		
 		// Do any additional setup after loading the view.
 		popupView.layer.cornerRadius = 10
@@ -37,8 +38,10 @@ class JumpPop: UIViewController {
 	}
 	
 	@IBAction func closePopup(_ sender: Any) {
-		delegate?.popupDidClose()
+		print("popup closing")
 		dismiss()
+		delegate?.popupDidClose()
+
 	}
 	
 	func dismiss()

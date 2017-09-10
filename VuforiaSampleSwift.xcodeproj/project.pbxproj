@@ -21,6 +21,8 @@
 		63915D501F64E36200A97D84 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4F1F64E36200A97D84 /* RealmManager.swift */; };
 		63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D531F64F5CD00A97D84 /* HudViewController.swift */; };
 		63915D561F65063F00A97D84 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D551F65063F00A97D84 /* Session.swift */; };
+		63915D611F65111E00A97D84 /* hackbomo-3.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63915D601F65111E00A97D84 /* hackbomo-3.xml */; };
+		63915D621F65113A00A97D84 /* hackbomo-3.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63915D5F1F65111800A97D84 /* hackbomo-3.dat */; };
 		639D3EE91F60CF210059EF83 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE51F60CF210059EF83 /* StonesAndChips.dat */; };
 		639D3EEA1F60CF210059EF83 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE61F60CF210059EF83 /* StonesAndChips.xml */; };
 		639D3EEB1F60CF210059EF83 /* Tarmac.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE71F60CF210059EF83 /* Tarmac.dat */; };
@@ -65,6 +67,8 @@
 		63915D4F1F64E36200A97D84 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		63915D531F64F5CD00A97D84 /* HudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudViewController.swift; sourceTree = "<group>"; };
 		63915D551F65063F00A97D84 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		63915D5F1F65111800A97D84 /* hackbomo-3.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hackbomo-3.dat"; path = "VuforiaSampleSwift/hackbomo-3.dat"; sourceTree = SOURCE_ROOT; };
+		63915D601F65111E00A97D84 /* hackbomo-3.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hackbomo-3.xml"; path = "VuforiaSampleSwift/hackbomo-3.xml"; sourceTree = SOURCE_ROOT; };
 		639D3EE51F60CF210059EF83 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = StonesAndChips.dat; path = VuforiaSampleSwift/StonesAndChips.dat; sourceTree = SOURCE_ROOT; };
 		639D3EE61F60CF210059EF83 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = VuforiaSampleSwift/StonesAndChips.xml; sourceTree = SOURCE_ROOT; };
 		639D3EE71F60CF210059EF83 /* Tarmac.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tarmac.dat; path = VuforiaSampleSwift/Tarmac.dat; sourceTree = SOURCE_ROOT; };
@@ -245,6 +249,8 @@
 			children = (
 				63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */,
 				63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */,
+				63915D601F65111E00A97D84 /* hackbomo-3.xml */,
+				63915D5F1F65111800A97D84 /* hackbomo-3.dat */,
 				639D3EED1F60CF3A0059EF83 /* IT_about.html */,
 				639D3EEE1F60CF3A0059EF83 /* IT.png */,
 				639D3EE51F60CF210059EF83 /* StonesAndChips.dat */,
@@ -329,7 +335,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63915D621F65113A00A97D84 /* hackbomo-3.dat in Resources */,
 				639D3EF01F60CF3A0059EF83 /* IT.png in Resources */,
+				63915D611F65111E00A97D84 /* hackbomo-3.xml in Resources */,
 				92AA11131D27A5EB00E56CBE /* LaunchScreen.storyboard in Resources */,
 				A96AFF241F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 in Resources */,
 				92AA11101D27A5EB00E56CBE /* Assets.xcassets in Resources */,

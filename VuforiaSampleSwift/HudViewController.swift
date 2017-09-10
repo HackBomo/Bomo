@@ -24,6 +24,14 @@ class HudViewController: UIViewController{
 	@IBOutlet weak var startSessionButton: UIButton!
 	@IBOutlet weak var endSessionButton: UIButton!
 	
+	@IBOutlet weak var popupView: UIView!
+	
+	override func viewDidAppear(_ animated: Bool) {
+		UIView.animate(withDuration: 0.3) { 
+			self.popupView.alpha = 0.9
+		}
+	}
+	
 	@IBAction func startSessionPressed(sender: AnyObject){
 		startSessionButton.isHidden = true
 		endSessionButton.isHidden = false
@@ -55,6 +63,11 @@ class HudViewController: UIViewController{
 		delegate?.endSetPressed()
 	}
 	
+	@IBAction func closePressed(){
+		UIView.animate(withDuration: 0.3) { 
+			self.popupView.alpha = 0
+		}
+	}
 	
 	
 }
