@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SpriteKit
 
 protocol MainVCDelegate{
 	func didCalculateAngle(angle: Float)
@@ -21,6 +22,7 @@ class ViewController: UIViewController {
 	var vuforiaManager: VuforiaManager? = nil
 	
 	var delegate: MainVCDelegate?
+	var currentSlideVal = 90
 	var swiftRenderer: SCNRenderer?
 	var time: CFAbsoluteTime?
 	var scene = SCNScene()
@@ -28,6 +30,8 @@ class ViewController: UIViewController {
 	var seen = [String]()
 	var cylinderNodes = [SCNNode]()
 	var angleNodes = [String: SCNNode]()	//string is the middle element of the angle
+	
+	var progressBarNode: SCNNode?
 	
 	var allNames = ["bomo-trackers-1","bomo-trackers-2","bomo-trackers-3","bomo-trackers-4"]
 	
@@ -63,6 +67,10 @@ class ViewController: UIViewController {
 		print("\(error)")
 		}
 	}
+	
+	@IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+		performSegue(withIdentifier: "unwind", sender: self)
+	}
 }
 extension ViewController: popupDelegate{
 	func popupDidClose() {
@@ -81,6 +89,13 @@ extension ViewController: HudViewDelegate{
 	}
 	func endSetPressed(){
 		print("end set pressed")
+	}
+	func sliderDidChange(value: Int) {
+		//print("got: \(value)")
+		self.currentSlideVal = value
+	}
+	func didDismiss() {
+		performSegue(withIdentifier: "unwind", sender: self)
 	}
 }
 
@@ -162,7 +177,7 @@ extension ViewController: VuforiaManagerDelegate {
 			if seen.contains(node.key) && node.value.parent == nil{
 				scene.rootNode.addChildNode(node.value)
 				let geometry = SCNSphere(radius: CGFloat(nodeRadius))
-				geometry.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 212/255, green: 242/255, blue: 245/255, alpha: 1)
+				geometry.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 70/255, green: 201/255, blue: 242/255, alpha: 1)
 				node.value.geometry = geometry
 			}else if seen.contains(node.key){
 				continue
@@ -201,12 +216,8 @@ extension ViewController: VuforiaManagerDelegate {
 			let b = nodes[allNames[i+1]]!
 			let c = nodes[allNames[i+2]]!
 			let angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
-			if angle.isNormal{
-				drawAngle(between: a, b: b, c: c, text: "\(Int(angle))˚")
-				self.delegate?.didCalculateAngle(angle: angle)
-			}else{
-				drawAngle(between: a, b: b, c: c, text: "error")
-			}
+			drawAngle(between: a, b: b, c: c, angle: angle)
+			self.delegate?.didCalculateAngle(angle: angle)
 		}
 		
 		guard let swiftRenderer = manager.eaglView.getRenderer() else {
@@ -288,12 +299,35 @@ extension ViewController{	//MARK: Drawing Functions
 		//print("drew line at position \(cylinder.position)")
 		return returnNode
 	}
-	func drawAngle(between a: SCNNode, b: SCNNode, c: SCNNode, text: String){
+	func createProgressBar(width: Double, position: SCNVector3) {
+		if(self.progressBarNode != nil) {
+			self.progressBarNode?.removeFromParentNode()
+		}
+		let skScene = SKScene(size: CGSize(width: 180, height: 80))
+		skScene.backgroundColor = UIColor.white
+		let bar = SKSpriteNode(color:.green,size:CGSize(width: width, height : 160))
+		skScene.addChild(bar)
+		let plane = SCNPlane(width: 0.1, height: 0.005)
+		self.progressBarNode = SCNNode(geometry: plane)
+		self.progressBarNode?.position = position
+		let material = SCNMaterial()
+		material.isDoubleSided = true
+		material.diffuse.contents = skScene
+		plane.materials = [material]
+		//self.scene.rootNode.addChildNode(self.progressBarNode!)
+	}
+	func drawAngle(between a: SCNNode, b: SCNNode, c: SCNNode, angle: Float){
+		var text = ""
+		if angle.isNormal{
+			text = "\(Int(angle))˚"
+		}else{
+			text = "NaN"
+		}
 		let wordNode = SCNNode()
 		let myWord = SCNText(string: text, extrusionDepth: CGFloat(0))
 		myWord.font = UIFont.systemFont(ofSize: CGFloat(nodeRadius * 2), weight: UIFontWeightBold)
 		
-		myWord.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 110/255, green: 164/255, blue: 210/255, alpha: 1)
+		myWord.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 51/255, green: 231/255, blue: 242/255, alpha: 1)
 		myWord.chamferRadius = CGFloat(nodeRadius / 10.0)
 		wordNode.geometry = myWord
 		
@@ -317,14 +351,18 @@ extension ViewController{	//MARK: Drawing Functions
 		let z = (a.position.z + b.position.z + c.position.z) / 3
 		let newPos = SCNVector3Make(x, y, z)
 		wordNode.position = newPos
+		
+		createProgressBar(width: Double(angle/Float(currentSlideVal)) , position: wordNode.position)
+		
 		let bounds = wordNode.boundingBox.min
 		//wordNode.position.x = wordNode.position.x - (bounds.x / 2)
 		//wordNode.position.y = wordNode.position.y + (bounds.y / 2)
 		
 		wordNode.eulerAngles = SCNVector3Make(0, Float.pi, Float.pi/2)
 		scene.rootNode.addChildNode(wordNode)
-		print("drawing angle \(text) at position: \(wordNode.position) on \(b.position)")
 	}
+	
+	
 	func dot(a: SCNVector3, b: SCNVector3) -> Float{
 		return (a.x * b.x) + (a.y + b.y) + (a.z + b.z)
 	}

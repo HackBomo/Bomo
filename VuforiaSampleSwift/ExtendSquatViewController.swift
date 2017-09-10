@@ -41,7 +41,11 @@ class ExtendSquatViewController: UIViewController {
 
         
     }
-    
+	
+	@IBAction func unwindToSquat(segue: UIStoryboardSegue){
+		print("unwinded")
+	}
+	
     override var prefersStatusBarHidden : Bool {
         return true
     }

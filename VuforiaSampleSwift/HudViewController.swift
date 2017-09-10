@@ -15,6 +15,8 @@ protocol HudViewDelegate {
 	func endSessionPressed()
 	func startSetPressed()
 	func endSetPressed()
+	func sliderDidChange(value: Int)
+	func didDismiss()
 }
 
 class HudViewController: UIViewController{
@@ -24,6 +26,10 @@ class HudViewController: UIViewController{
 	@IBOutlet weak var endSetButton: UIButton!
 	@IBOutlet weak var startSessionButton: UIButton!
 	@IBOutlet weak var endSessionButton: UIButton!
+	@IBOutlet weak var slider: UISlider!
+	@IBOutlet weak var goalLabel: UILabel!
+	
+	var currentSlideVal = 90
 	
 	@IBOutlet weak var realtimeLineChart: LineChartView!
 	@IBOutlet weak var popupView: UIView!
@@ -79,6 +85,13 @@ class HudViewController: UIViewController{
 	}
 	
 	
+	@IBAction func sliderChanged(_ sender: Any) {
+		var val = (sender as! UISlider).value
+		self.currentSlideVal = Int(val)
+		self.delegate?.sliderDidChange(value: currentSlideVal)
+		self.goalLabel.text = "Goal flexion: \(self.currentSlideVal)"
+	}
+	
 	@IBAction func startSessionPressed(sender: AnyObject){
 		startSessionButton.isHidden = true
 		endSessionButton.isHidden = false
@@ -115,12 +128,15 @@ class HudViewController: UIViewController{
 			self.popupView.alpha = 0
 		}
 	}
+	@IBAction func backPressed(){
+		performSegue(withIdentifier: "doubleUnwind", sender: self)
+	}
 	
 }
 
 extension HudViewController: MainVCDelegate {
 	func didCalculateAngle(angle: Float) {
-		print("got: \(angle)")
+		//print("got: \(angle)")
 	
 		
 		//take in a new entry as a parameter from the ARManager
