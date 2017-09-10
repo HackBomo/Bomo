@@ -7,7 +7,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -131,7 +130,7 @@
                                             <constraint firstAttribute="bottom" secondItem="xsK-pj-bGX" secondAttribute="bottom" constant="23" id="yh1-Wj-DLQ"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rV7-Jb-H3W">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rV7-Jb-H3W">
                                         <rect key="frame" x="80" y="546" width="85" height="42"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42" id="FXG-a9-SmQ"/>
@@ -141,7 +140,7 @@
                                             <action selector="endSetPressedWithSender:" destination="j9V-LF-o0c" eventType="touchUpInside" id="ESp-E2-pvl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqu-xT-MiE">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xqu-xT-MiE">
                                         <rect key="frame" x="248" y="617" width="84" height="30"/>
                                         <state key="normal" title="End Session"/>
                                         <connections>
@@ -158,7 +157,7 @@
                                             <action selector="startSessionPressedWithSender:" destination="j9V-LF-o0c" eventType="touchUpInside" id="74L-TE-RFH"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eri-5K-IO2">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eri-5K-IO2">
                                         <rect key="frame" x="231" y="546" width="119" height="44"/>
                                         <state key="normal" title="Start Set" backgroundImage="2"/>
                                         <connections>
@@ -200,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBX-em-tN5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2617" y="-651"/>
+            <point key="canvasLocation" x="2674" y="78"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="sjN-RP-lVs">
