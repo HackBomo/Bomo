@@ -21,7 +21,7 @@ class SquatStatsViewController: UIViewController {
     @IBOutlet weak var velocityButton: UIButton!
     @IBOutlet weak var powerButton: UIButton!
     
-    
+    @IBOutlet weak var graphImage: UIImageView!
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -36,6 +36,7 @@ class SquatStatsViewController: UIViewController {
         depthButton.setImage(#imageLiteral(resourceName: "depth-selected"), for: .normal)
         velocityButton.setImage(#imageLiteral(resourceName: "velocity-deselected"), for: .normal)
         powerButton.setImage(#imageLiteral(resourceName: "power-deselected"), for: .normal)
+        graphImage.image = UIImage(named: "Graph 1")
     }
     
  
@@ -44,12 +45,14 @@ class SquatStatsViewController: UIViewController {
         depthButton.setImage(#imageLiteral(resourceName: "depth-deselected"), for: .normal)
         velocityButton.setImage(#imageLiteral(resourceName: "velocity-selected"), for: .normal)
         powerButton.setImage(#imageLiteral(resourceName: "power-deselected"), for: .normal)
+        graphImage.image = UIImage(named: "Graph 2")
     }
     
     @IBAction func powerTapped(_ sender: Any) {
         depthButton.setImage(#imageLiteral(resourceName: "depth-deselected"), for: .normal)
         velocityButton.setImage(#imageLiteral(resourceName: "velocity-deselected"), for: .normal)
         powerButton.setImage(#imageLiteral(resourceName: "power-selected"), for: .normal)
+        graphImage.image = UIImage(named: "Graph 3")
     }
     
     

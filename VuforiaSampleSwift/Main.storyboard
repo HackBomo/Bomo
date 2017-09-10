@@ -202,9 +202,7 @@
             </objects>
             <point key="canvasLocation" x="2617" y="-651"/>
         </scene>
-     
-
-		<!--Category View Controller-->
+        <!--Category View Controller-->
         <scene sceneID="sjN-RP-lVs">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="Ivf-tY-jDg" customClass="CategoryViewController" customModule="VuforiaSampleSwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -515,6 +513,7 @@
                     <connections>
                         <outlet property="depthButton" destination="wsR-4Y-UXK" id="lGQ-PP-aFb"/>
                         <outlet property="goalButton" destination="QNU-ml-TZR" id="o51-R7-Xz0"/>
+                        <outlet property="graphImage" destination="nW2-3e-JS3" id="116-mQ-Cqk"/>
                         <outlet property="pastButton" destination="Uy9-5z-F11" id="jKL-g4-mEe"/>
                         <outlet property="powerButton" destination="1IF-5e-XmD" id="Ibb-WD-1Of"/>
                         <outlet property="scrollView" destination="TI2-n9-0Fp" id="7SA-fp-q59"/>
@@ -542,7 +541,6 @@
         <image name="Group 10" width="2970" height="1010"/>
         <image name="Group 2" width="3320" height="1730"/>
         <image name="Group 3" width="2970" height="2050"/>
-        <image name="Jump Pop Up" width="2670" height="3460"/>
         <image name="Past_Dark" width="1250" height="450"/>
         <image name="Pop Up" width="2670" height="3460"/>
         <image name="Squat Background" width="3750" height="6670"/>
