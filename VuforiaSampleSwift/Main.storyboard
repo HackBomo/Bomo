@@ -205,68 +205,7 @@
             </objects>
             <point key="canvasLocation" x="2617" y="-651"/>
         </scene>
-        <!--Squat Pop-->
-        <scene sceneID="Ynm-ia-smN">
-            <objects>
-                <viewController storyboardIdentifier="squatPop" id="zO1-lk-azl" customClass="SquatPop" customModule="VuforiaSampleSwift" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="OQC-jK-t8F"/>
-                        <viewControllerLayoutGuide type="bottom" id="8mt-td-bUH"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hvw-Va-uka">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-<<<<<<< HEAD
-=======
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jj3-T1-QoT">
-                                <rect key="frame" x="47" y="175" width="280" height="317"/>
-                                <subviews>
-<<<<<<< HEAD
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Jump Pop Up" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-jB-5uA">
-                                        <rect key="frame" x="0.0" y="-14" width="280" height="344"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsK-pj-bGX">
-                                        <rect key="frame" x="79" y="264" width="123" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" image="Close button"/>
-                                        <connections>
-                                            <action selector="closePopup:" destination="zO1-lk-azl" eventType="touchUpInside" id="O1y-qU-NE9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" searchField="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstItem="IuU-jB-5uA" firstAttribute="top" secondItem="jj3-T1-QoT" secondAttribute="top" constant="-14" id="6qS-tQ-08F"/>
-                                    <constraint firstItem="IuU-jB-5uA" firstAttribute="leading" secondItem="jj3-T1-QoT" secondAttribute="leading" id="MAF-ri-H6b"/>
-                                    <constraint firstAttribute="trailing" secondItem="xsK-pj-bGX" secondAttribute="trailing" constant="78" id="VjV-RR-prr"/>
-                                    <constraint firstItem="IuU-jB-5uA" firstAttribute="centerX" secondItem="xsK-pj-bGX" secondAttribute="centerX" id="aNJ-rf-i1q"/>
-                                    <constraint firstItem="IuU-jB-5uA" firstAttribute="centerY" secondItem="jj3-T1-QoT" secondAttribute="centerY" id="bKl-jC-2oY"/>
-                                    <constraint firstItem="xsK-pj-bGX" firstAttribute="leading" secondItem="jj3-T1-QoT" secondAttribute="leading" constant="79" id="l2z-aH-uup"/>
-                                    <constraint firstAttribute="bottom" secondItem="xsK-pj-bGX" secondAttribute="bottom" constant="23" id="yh1-Wj-DLQ"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="jj3-T1-QoT" firstAttribute="top" secondItem="OQC-jK-t8F" secondAttribute="bottom" constant="155" id="1qJ-nG-DT0"/>
-                            <constraint firstItem="jj3-T1-QoT" firstAttribute="leading" secondItem="hvw-Va-uka" secondAttribute="leadingMargin" constant="31" id="1v1-US-Bv2"/>
-                            <constraint firstItem="jj3-T1-QoT" firstAttribute="centerY" secondItem="hvw-Va-uka" secondAttribute="centerY" id="8V2-YE-KjO"/>
-                            <constraint firstItem="jj3-T1-QoT" firstAttribute="centerX" secondItem="hvw-Va-uka" secondAttribute="centerX" id="c6G-XI-zvm"/>
-                        </constraints>
->>>>>>> origin/master
-                    </view>
-                    <connections>
-                        <outlet property="popupView" destination="IuU-jB-5uA" id="cUU-X3-MO1"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rrn-51-CQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2620" y="139.880059970015"/>
-        </scene>
-        <!--Category View Controller-->
+		<!--Category View Controller-->
         <scene sceneID="sjN-RP-lVs">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="Ivf-tY-jDg" customClass="CategoryViewController" customModule="VuforiaSampleSwift" customModuleProvider="target" sceneMemberID="viewController">
