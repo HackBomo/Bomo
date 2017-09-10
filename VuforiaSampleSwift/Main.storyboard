@@ -425,7 +425,7 @@
                                             <action selector="goalTapped:" destination="GpK-LW-jM5" eventType="touchUpInside" id="RgH-xG-vWp"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2" translatesAutoresizingMaskIntoConstraints="NO" id="nW2-3e-JS3">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Graph 2" translatesAutoresizingMaskIntoConstraints="NO" id="nW2-3e-JS3">
                                         <rect key="frame" x="43" y="109" width="290" height="162"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="162" id="hSI-Pe-axD"/>
@@ -538,8 +538,8 @@
         <image name="Close button" width="1790" height="440"/>
         <image name="Get Started" width="1790" height="440"/>
         <image name="Goal_Dark" width="1260" height="450"/>
+        <image name="Graph 2" width="3320" height="1730"/>
         <image name="Group 10" width="2970" height="1010"/>
-        <image name="Group 2" width="3320" height="1730"/>
         <image name="Group 3" width="2970" height="2050"/>
         <image name="Past_Dark" width="1250" height="450"/>
         <image name="Pop Up" width="2670" height="3460"/>
