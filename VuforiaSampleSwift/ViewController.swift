@@ -131,6 +131,71 @@ extension ViewController: VuforiaManagerDelegate {
 					print("presented the hud")
 				})
 			}
+			
+//			var a = SCNNode()
+//			var word = SCNText(string: "Hi", extrusionDepth: 1)
+//			word.font = UIFont.systemFont(ofSize: 1)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+//			a.geometry = word
+//			a.position = SCNVector3Make(0, 0, 0.1)
+//			scene.rootNode.addChildNode(a)
+//
+//			
+//			a = SCNNode()
+//			word = SCNText(string: "Hi", extrusionDepth: 0.1)
+//			word.font = UIFont.systemFont(ofSize: 0.1)
+//			a.scale = SCNVector3Make(0.5, 0.5, 0.5)
+//			a.geometry = word
+//			a.position = SCNVector3Make(0, 0, 0.1)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+//			scene.rootNode.addChildNode(a)
+//			
+//			a = SCNNode()
+//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 0.01)
+//			word.font = UIFont.systemFont(ofSize: 0.01)
+//			a.position = SCNVector3Make(0, 0, 10)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+//			a.geometry = word
+//			scene.rootNode.addChildNode(a)
+//			
+//			a = SCNNode()
+//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 0.001)
+//			word.font = UIFont.systemFont(ofSize: 0.001)
+//			a.position = SCNVector3Make(0, 0, 10)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+//			a.geometry = word
+//			scene.rootNode.addChildNode(a)
+			
+			let a = SCNNode()
+			let word = SCNText(string: "Jake", extrusionDepth: 1)
+			word.font = UIFont.systemFont(ofSize: 1)
+			a.position = SCNVector3Make(0, 0, 10)
+			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+			a.geometry = word
+			a.constraints = [SCNBillboardConstraint()]
+			scene.rootNode.addChildNode(a)
+			
+//			a = SCNNode()
+//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 100)
+//			word.font = UIFont.systemFont(ofSize: 10)
+//			a.position = SCNVector3Make(0, 0, 10)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
+//			a.geometry = word
+//			scene.rootNode.addChildNode(a)
+			
+//			a = SCNNode(geometry: SCNSphere(radius: 1))
+//			a.position = SCNVector3Make(0, 0, 100)
+//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.green
+//			a.geometry = word
+//			scene.rootNode.addChildNode(a)
+			
+//			var b = SCNNode()
+//			word = SCNText(string: "ON The Node", extrusionDepth: 1)
+//			word.font = UIFont.systemFont(ofSize: 1)
+//			b.geometry = word
+//			b.position = SCNVector3Make(0, 0, 0)
+//			a.addChildNode(b)
+
 		}catch let error {
 			print("\(error)")
 		}
@@ -154,6 +219,7 @@ extension ViewController: VuforiaManagerDelegate {
 		for node in nodes{
 			if seen.contains(node.key) && node.value.parent == nil{
 				scene.rootNode.addChildNode(node.value)
+				node.value.geometry = SCNText(string: "TEST", extrusionDepth: CGFloat(nodeRadius/10))
 			}else if seen.contains(node.key){
 				continue
 			}else{
