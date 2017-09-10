@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol popupDelegate {
+	func popupDidClose()
+}
+
 class JumpPop: UIViewController {
 	
 	@IBOutlet weak var popupView: UIView!
+	
+	var delegate: popupDelegate?
 	
 	
 	override func viewDidLoad() {
@@ -31,6 +37,7 @@ class JumpPop: UIViewController {
 	}
 	
 	@IBAction func closePopup(_ sender: Any) {
+		delegate?.popupDidClose()
 		dismiss()
 	}
 	
