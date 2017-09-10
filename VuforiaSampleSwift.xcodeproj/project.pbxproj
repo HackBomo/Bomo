@@ -306,7 +306,7 @@
 				TargetAttributes = {
 					92AA11041D27A5EB00E56CBE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = W444RWV5J8;
+						DevelopmentTeam = 3D642QE477;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -546,7 +546,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W444RWV5J8;
+				DEVELOPMENT_TEAM = 3D642QE477;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/include\"";
 				INFOPLIST_FILE = VuforiaSampleSwift/Info.plist;
@@ -572,7 +572,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = W444RWV5J8;
+				DEVELOPMENT_TEAM = 3D642QE477;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/include\"";
 				INFOPLIST_FILE = VuforiaSampleSwift/Info.plist;

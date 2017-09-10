@@ -539,10 +539,7 @@
         <image name="Goal_Dark" width="1260" height="450"/>
         <image name="Graph 2" width="3320" height="1730"/>
         <image name="Group 10" width="2970" height="1010"/>
-<<<<<<< HEAD
-=======
         <image name="Group 3" width="2970" height="2050"/>
->>>>>>> origin/master
         <image name="Past_Dark" width="1250" height="450"/>
         <image name="Pop Up" width="2670" height="3460"/>
         <image name="Squat Background" width="3750" height="6670"/>
