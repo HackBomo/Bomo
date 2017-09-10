@@ -30,7 +30,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1890" y="140"/>
+            <point key="canvasLocation" x="1888.8" y="139.880059970015"/>
         </scene>
         <!--Intro View Controller-->
         <scene sceneID="oLt-1G-Aol">
@@ -96,7 +96,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jj3-T1-QoT">
                                 <rect key="frame" x="47" y="175" width="280" height="317"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-jB-5uA">
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-jB-5uA">
                                         <rect key="frame" x="0.0" y="-13.5" width="280" height="344"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="344" id="Xub-TT-Rqa"/>
@@ -114,7 +114,9 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" searchField="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="xsK-pj-bGX" secondAttribute="bottom" constant="23" id="0fq-bn-f0O"/>
                                     <constraint firstItem="IuU-jB-5uA" firstAttribute="centerY" secondItem="jj3-T1-QoT" secondAttribute="centerY" id="HId-WW-fLT"/>
@@ -125,7 +127,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jj3-T1-QoT" firstAttribute="centerY" secondItem="hvw-Va-uka" secondAttribute="centerY" id="HO2-Jd-Iuq"/>
                             <constraint firstItem="jj3-T1-QoT" firstAttribute="centerX" secondItem="hvw-Va-uka" secondAttribute="centerX" id="SRV-aM-FI7"/>
@@ -137,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rrn-51-CQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2620" y="140"/>
+            <point key="canvasLocation" x="2620" y="139.880059970015"/>
         </scene>
         <!--Category View Controller-->
         <scene sceneID="sjN-RP-lVs">
@@ -284,7 +285,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8V-6b-zag">
                                 <rect key="frame" x="47" y="175" width="280" height="317"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcK-Qa-csD">
+                                    <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcK-Qa-csD">
                                         <rect key="frame" x="0.0" y="-12" width="280" height="344"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Iv-Oo-D7W">
@@ -295,7 +296,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="rcK-Qa-csD" secondAttribute="bottom" constant="-15" id="1aP-wJ-kaA"/>
                                     <constraint firstAttribute="trailing" secondItem="rcK-Qa-csD" secondAttribute="trailing" id="2cH-IE-ooq"/>
@@ -308,7 +308,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V8V-6b-zag" firstAttribute="centerX" secondItem="6If-Wg-cYB" secondAttribute="centerX" id="n1Z-Bw-1OM"/>
                             <constraint firstItem="V8V-6b-zag" firstAttribute="centerY" secondItem="6If-Wg-cYB" secondAttribute="centerY" id="zBo-Dh-O1r"/>

@@ -8,3 +8,10 @@
 
 import Foundation
 import RealmSwift
+
+
+class RealmManager{
+	
+	
+	
+}

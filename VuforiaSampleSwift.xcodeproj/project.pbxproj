@@ -19,6 +19,8 @@
 		63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4B1F64D8C400A97D84 /* JumpPop.swift */; };
 		63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */; };
 		63915D501F64E36200A97D84 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4F1F64E36200A97D84 /* RealmManager.swift */; };
+		63915D521F64F37E00A97D84 /* HUDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63915D511F64F37E00A97D84 /* HUDView.xib */; };
+		63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D531F64F5CD00A97D84 /* HudViewController.swift */; };
 		639D3EE91F60CF210059EF83 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE51F60CF210059EF83 /* StonesAndChips.dat */; };
 		639D3EEA1F60CF210059EF83 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE61F60CF210059EF83 /* StonesAndChips.xml */; };
 		639D3EEB1F60CF210059EF83 /* Tarmac.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE71F60CF210059EF83 /* Tarmac.dat */; };
@@ -62,6 +64,8 @@
 		63915D4B1F64D8C400A97D84 /* JumpPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPop.swift; sourceTree = "<group>"; };
 		63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatStatsViewController.swift; sourceTree = "<group>"; };
 		63915D4F1F64E36200A97D84 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		63915D511F64F37E00A97D84 /* HUDView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDView.xib; sourceTree = "<group>"; };
+		63915D531F64F5CD00A97D84 /* HudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudViewController.swift; sourceTree = "<group>"; };
 		639D3EE51F60CF210059EF83 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = StonesAndChips.dat; path = VuforiaSampleSwift/StonesAndChips.dat; sourceTree = SOURCE_ROOT; };
 		639D3EE61F60CF210059EF83 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = VuforiaSampleSwift/StonesAndChips.xml; sourceTree = SOURCE_ROOT; };
 		639D3EE71F60CF210059EF83 /* Tarmac.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tarmac.dat; path = VuforiaSampleSwift/Tarmac.dat; sourceTree = SOURCE_ROOT; };
@@ -461,6 +465,8 @@
 				63915D481F64D6B600A97D84 /* ViewControllers */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
 				63915D461F64D32600A97D84 /* Main.storyboard */,
+				63915D511F64F37E00A97D84 /* HUDView.xib */,
+				63915D531F64F5CD00A97D84 /* HudViewController.swift */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
 				92AA11141D27A5EB00E56CBE /* Info.plist */,
 				92AA11841D27B96300E56CBE /* Localizable.strings */,
@@ -557,6 +563,7 @@
 				639D3EEA1F60CF210059EF83 /* StonesAndChips.xml in Resources */,
 				63915D471F64D32600A97D84 /* Main.storyboard in Resources */,
 				92AA11851D27B96300E56CBE /* Localizable.strings in Resources */,
+				63915D521F64F37E00A97D84 /* HUDView.xib in Resources */,
 				639D3EEC1F60CF210059EF83 /* Tarmac.xml in Resources */,
 				928C34241EAF608600BC07DE /* readme.txt in Resources */,
 				639D3EEB1F60CF210059EF83 /* Tarmac.dat in Resources */,
@@ -636,6 +643,7 @@
 				63915D431F64D0BE00A97D84 /* CategoryViewController.swift in Sources */,
 				927B76EC1D2806EF00C4F5CC /* VuforiaObjects.mm in Sources */,
 				63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */,
+				63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
