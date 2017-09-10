@@ -9,9 +9,6 @@
 import UIKit
 
 class ViewController: UIViewController {
-	var hudView: HudView?
-	
-	
 	let nodeRadius = 0.01
 	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
@@ -33,7 +30,6 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		startVuforia()
-
 	}
 	func startVuforia(){
 		let base = "bomo-trackers-"
@@ -46,7 +42,6 @@ class ViewController: UIViewController {
 		}
 		prepare()
 	}
-	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showPopup"{
 			let vc = segue.destination as! JumpPop
@@ -83,7 +78,6 @@ extension ViewController: HudViewDelegate{
 	func startSetPressed(){
 		print("start set pressed")
 	}
-	
 	func endSetPressed(){
 		print("end set pressed")
 	}

@@ -12,6 +12,21 @@ import RealmSwift
 
 class RealmManager{
 	
-	
+	static func startSession() -> Session{
+		return Session()
+	}
+	static func endSession(session: Session) -> Bool{
+		do{
+			let realm = try Realm()
+			try realm.write {
+				realm.add(session)
+			}
+			return true
+		}catch{
+			print(error)
+			return false
+		}
+		
+	}
 	
 }

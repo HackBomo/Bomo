@@ -101,17 +101,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jj3-T1-QoT">
                                 <rect key="frame" x="47" y="175" width="280" height="317"/>
                                 <subviews>
-<<<<<<< HEAD
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-jB-5uA">
                                         <rect key="frame" x="0.0" y="-13.5" width="280" height="344"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="344" id="Xub-TT-Rqa"/>
                                             <constraint firstAttribute="width" constant="280" id="asl-ef-shX"/>
                                         </constraints>
-=======
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Jump Pop Up" translatesAutoresizingMaskIntoConstraints="NO" id="IuU-jB-5uA">
                                         <rect key="frame" x="0.0" y="-14" width="280" height="344"/>
->>>>>>> origin/master
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsK-pj-bGX">
                                         <rect key="frame" x="79" y="264" width="123" height="30"/>
@@ -258,12 +255,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V8V-6b-zag">
                                 <rect key="frame" x="47" y="175" width="280" height="317"/>
                                 <subviews>
-<<<<<<< HEAD
                                     <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rcK-Qa-csD">
-=======
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pop Up" translatesAutoresizingMaskIntoConstraints="NO" id="rcK-Qa-csD">
->>>>>>> origin/master
-                                        <rect key="frame" x="0.0" y="-12" width="280" height="344"/>
+									<rect key="frame" x="0.0" y="-12" width="280" height="344"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Iv-Oo-D7W">
                                         <rect key="frame" x="79" y="264" width="123" height="30"/>
