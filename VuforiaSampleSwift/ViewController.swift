@@ -32,6 +32,13 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		//prep our scene
 		
+		let jumpPop = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
+		
+		self.addChildViewController(jumpPop)
+		jumpPop.view.frame = self.view.frame
+		self.view.addSubview(jumpPop.view)
+		jumpPop.didMove(toParentViewController: self)
+		
 		let base = "bomo-trackers-"
 		for i in 1...4{
 			let currentName = base + "\(i)"
