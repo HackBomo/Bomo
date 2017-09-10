@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 	let nodeRadius = 0.01
 	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
-	let vuforiaDataSetFile = "hackbomo-2.xml"
+	let vuforiaDataSetFile = "hackbomo-3.xml"
 	var vuforiaManager: VuforiaManager? = nil
 	
 	var swiftRenderer: SCNRenderer?
@@ -125,12 +125,10 @@ extension ViewController: VuforiaManagerDelegate {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
 			DispatchQueue.main.async {
-				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as? HudViewController
+				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as! HudViewController
 				self.hud?.delegate = self
-				self.present(self.hud!, animated: false, completion: {
+				self.present(self.hud!, animated: true, completion: {
 					print("presented the hud")
-					//let popup = self.storyboard?.instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
-					//self.hud?.present(popup, animated: true, completion: nil)
 				})
 			}
 		}catch let error {
