@@ -26,10 +26,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--View Controller-->
+        <!--Intro View Controller-->
         <scene sceneID="oLt-1G-Aol">
             <objects>
-                <viewController id="SQd-du-jKf" sceneMemberID="viewController">
+                <viewController id="SQd-du-jKf" customClass="IntroViewController" customModule="VuforiaSampleSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="re1-b4-9Ca"/>
                         <viewControllerLayoutGuide type="bottom" id="uX4-Pl-yMj"/>
