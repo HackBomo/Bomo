@@ -194,6 +194,8 @@ extension ViewController: VuforiaManagerDelegate {
 			}
 			
 		}
+
+		
 		
 		guard let swiftRenderer = manager.eaglView.getRenderer() else {
 			print("Error, could not get renderer from eaglView")
