@@ -10,10 +10,13 @@ import UIKit
 
 class SquatStatsViewController: UIViewController {
 	
+    @IBOutlet weak var scrollView: UIScrollView!
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
+        
+        scrollView.contentSize.height = scrollView.frame.height * 1
 	}
 	
 	override func didReceiveMemoryWarning() {
