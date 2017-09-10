@@ -49,10 +49,12 @@ class HudViewController: UIViewController{
 	}
 	
 	@IBAction func endSetPressed(sender: AnyObject){
-		endSetButton.isHidden = false
-		startSetButton.isHidden = true
+		endSetButton.isHidden = true
+		startSetButton.isHidden = false
 		print("end set pressed")
 		delegate?.endSetPressed()
 	}
+	
+	
 	
 }

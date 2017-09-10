@@ -9,17 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
+	var hud: HudViewController?
 	let nodeRadius = 0.01
 	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
 	let vuforiaDataSetFile = "hackbomo-2.xml"
-	
 	var vuforiaManager: VuforiaManager? = nil
 	
 	var swiftRenderer: SCNRenderer?
 	var time: CFAbsoluteTime?
 	var scene = SCNScene()
-	
 	var nodes = [String: SCNNode]()
 	var seen = [String]()
 	var cylinderNodes = [SCNNode]()
@@ -43,10 +42,7 @@ class ViewController: UIViewController {
 		prepare()
 	}
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "showPopup"{
-			let vc = segue.destination as! JumpPop
-			vc.delegate = self
-		}
+		print("segueing")
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -92,33 +88,12 @@ private extension ViewController {
 			manager.eaglView.delegate = self	//tell eagleview how to talk to us again
 			manager.eaglView.setupRenderer()	//eaglview builds a renderer with our scene
 			self.view = manager.eaglView
-			
-			self.hudView = UINib(nibName: "HUDView", bundle: nil).instantiate(withOwner: self, options: nil).first as? HudView
-			hudView?.delegate = self
-			if hudView != nil{
-				self.view.addSubview(hudView!)
-			}
-			hudView?.frame = self.view.frame
-			
-			//let hudGesture = UITapGestureRecognizer(target: self, action: #selector("testHudTap")
-			//hudView?.addGestureRecognizer(hudGesture)
-			
-			//let myGesture = UITapGestureRecognizer(target: self, action: #selector("ViewController")
-			//self.view.addGestureRecognizer(myGesture)
-			//self.view.bringSubview(toFront: hudView!)
-			let button = UIButton(frame: CGRect(x: 50, y: 50, width: 50, height: 50))
-			button.setTitle("Test Button", for: .normal)
-			self.view.addSubview(button)
 		}
-		
-		
 		let notificationCenter = NotificationCenter.default
 		notificationCenter.addObserver(self, selector: #selector(didRecieveWillResignActiveNotification),
 		                               name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-		
 		notificationCenter.addObserver(self, selector: #selector(didRecieveDidBecomeActiveNotification),
 		                               name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-		
 		vuforiaManager?.prepare(with: .portrait)
 	}
 	func testTap(){
@@ -146,12 +121,17 @@ private extension ViewController {
 extension ViewController: VuforiaManagerDelegate {
 	func vuforiaManagerDidFinishPreparing(_ manager: VuforiaManager!) {
 		print("did finish preparing\n")
-		
 		do {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
 			DispatchQueue.main.async {
-				self.performSegue(withIdentifier: "showPopup", sender: self)
+				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as? HudViewController
+				self.hud?.delegate = self
+				self.present(self.hud!, animated: false, completion: {
+					print("presented the hud")
+					//let popup = self.storyboard?.instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
+					//self.hud?.present(popup, animated: true, completion: nil)
+				})
 			}
 		}catch let error {
 			print("\(error)")
