@@ -9,18 +9,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-	
+	var hud: HudViewController?
 	let nodeRadius = 0.01
 	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
 	let vuforiaDataSetFile = "hackbomo-2.xml"
-	
 	var vuforiaManager: VuforiaManager? = nil
 	
 	var swiftRenderer: SCNRenderer?
 	var time: CFAbsoluteTime?
 	var scene = SCNScene()
-	
 	var nodes = [String: SCNNode]()
 	var seen = [String]()
 	var cylinderNodes = [SCNNode]()
@@ -31,13 +29,6 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		startVuforia()
-		//let jumpPop = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
-		
-		//self.addChildViewController(jumpPop)
-		//jumpPop.view.frame = self.view.frame
-		//self.view.addSubview(jumpPop.view)
-		//jumpPop.didMove(toParentViewController: self)
-		
 	}
 	func startVuforia(){
 		let base = "bomo-trackers-"
@@ -50,12 +41,8 @@ class ViewController: UIViewController {
 		}
 		prepare()
 	}
-	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-		if segue.identifier == "showPopup"{
-			let vc = segue.destination as! JumpPop
-			vc.delegate = self
-		}
+		print("segueing")
 	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
@@ -77,6 +64,21 @@ extension ViewController: popupDelegate{
 		print("closed")
 	}
 }
+extension ViewController: HudViewDelegate{
+	func startSessionPressed(){
+		print("start session pressed")
+	}
+	func endSessionPressed(){
+		print("end session pressed")
+	}
+	func startSetPressed(){
+		print("start set pressed")
+	}
+	func endSetPressed(){
+		print("end set pressed")
+	}
+}
+
 private extension ViewController {
 	func prepare() {
 		vuforiaManager = VuforiaManager(licenseKey: vuforiaLicenseKey, dataSetFile: vuforiaDataSetFile)
@@ -87,16 +89,18 @@ private extension ViewController {
 			manager.eaglView.setupRenderer()	//eaglview builds a renderer with our scene
 			self.view = manager.eaglView
 		}
-		
-		
 		let notificationCenter = NotificationCenter.default
 		notificationCenter.addObserver(self, selector: #selector(didRecieveWillResignActiveNotification),
 		                               name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-		
 		notificationCenter.addObserver(self, selector: #selector(didRecieveDidBecomeActiveNotification),
 		                               name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-		
 		vuforiaManager?.prepare(with: .portrait)
+	}
+	func testTap(){
+		print("view tapped")
+	}
+	func testHudTap(){
+		print("hud tapped")
 	}
 	func pause() {
 		do {
@@ -113,23 +117,21 @@ private extension ViewController {
 		}
 	}
 }
-extension ViewController {
-	func didRecieveWillResignActiveNotification(_ notification: Notification) {
-		pause()
-	}
-	func didRecieveDidBecomeActiveNotification(_ notification: Notification) {
-		resume()
-	}
-}
+
 extension ViewController: VuforiaManagerDelegate {
 	func vuforiaManagerDidFinishPreparing(_ manager: VuforiaManager!) {
 		print("did finish preparing\n")
-		
 		do {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
 			DispatchQueue.main.async {
-				self.performSegue(withIdentifier: "showPopup", sender: self)
+				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as? HudViewController
+				self.hud?.delegate = self
+				self.present(self.hud!, animated: false, completion: {
+					print("presented the hud")
+					//let popup = self.storyboard?.instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
+					//self.hud?.present(popup, animated: true, completion: nil)
+				})
 			}
 		}catch let error {
 			print("\(error)")
@@ -140,7 +142,6 @@ extension ViewController: VuforiaManagerDelegate {
 	}
 	func vuforiaManager(_ manager: VuforiaManager!, didUpdateWith state: VuforiaState!) {
 	}
-	
 	func vuforiaManager(_ manager: VuforiaManager!, didGetObject name: String!, withPosition swiftMatrix: SCNMatrix4) {
 		seen.append(name)
 		nodes[name]?.position = SCNVector3Make(swiftMatrix.m41, swiftMatrix.m42, swiftMatrix.m43)
@@ -148,7 +149,6 @@ extension ViewController: VuforiaManagerDelegate {
 			print("node \(name) is null")
 		}
 	}
-
 	//One more function to delete nodes that do not appear/are not recognized
 	func vuforiaManager(_ manager: VuforiaManager!, finishedSendingObjects finished: Bool) {
 		
@@ -185,7 +185,6 @@ extension ViewController: VuforiaManagerDelegate {
 		for node in angleNodes.values{
 			node.removeFromParentNode()
 		}
-		print("\(angleNodes.count) angle nodes")
 		for i in 0..<seen.count{
 			if i >= seen.count - 2{
 				break
@@ -208,6 +207,10 @@ extension ViewController: VuforiaManagerDelegate {
 		if time == nil{
 			time = CFAbsoluteTimeGetCurrent()
 		}
+		
+		//session.addData(coordinate data, timestamp)
+		
+		
 		let currentTime = CFAbsoluteTimeGetCurrent() - time!
 		swiftRenderer.render(atTime: currentTime)
 		seen = [String]()
@@ -282,7 +285,6 @@ extension ViewController{	//MARK: Drawing Functions
 		myWord.font = UIFont.systemFont(ofSize: CGFloat())
 		let wordNode = SCNNode(geometry: myWord)
 		angleNodes[b.name!] = wordNode
-		print("adding angle on node: \(b.name!)")
 		let x = (a.position.x + b.position.x + c.position.x) / 3
 		let y = (a.position.y + b.position.y + c.position.y) / 3
 		let z = (a.position.z + b.position.z + c.position.z) / 3
@@ -291,12 +293,9 @@ extension ViewController{	//MARK: Drawing Functions
 		let newPos = SCNVector3Make(0, 0, 0.3)
 		wordNode.position = newPos
 		
-		print("drawing angle \(text) at position: \(wordNode.position) on \(b.position)")
+		//print("drawing angle \(text) at position: \(wordNode.position) on \(b.position)")
 	}
-		
 }
-
-
 extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
 	func scene(for view: VuforiaEAGLView!) -> SCNScene! {
 		//return our scene. EAGLView will take care of the camera
@@ -322,16 +321,21 @@ extension ViewController{	//Physics and Math
 		return (acos( (a+b-c) / sqrt(4*a*b))) * Float(division);
 		
 	}
-	
 	func getDepth(ankle: SCNVector3, hip: SCNVector3) -> Float {
 		let depth = (hip.y - ankle.y)
 		return depth
 	}
-	
 	func getInwards(knee: SCNVector3, hip: SCNVector3) -> Float {
 		let difference = (hip.z - knee.z)
 		return difference
 	}
 }
-
+extension ViewController {
+	func didRecieveWillResignActiveNotification(_ notification: Notification) {
+		pause()
+	}
+	func didRecieveDidBecomeActiveNotification(_ notification: Notification) {
+		resume()
+	}
+}
 
