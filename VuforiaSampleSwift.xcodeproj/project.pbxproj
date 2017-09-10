@@ -35,15 +35,13 @@
 		927B77081D2824AB00C4F5CC /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B77071D2824AB00C4F5CC /* OpenGLES.framework */; };
 		927B77091D282DF100C4F5CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B76D31D27FDC600C4F5CC /* AudioToolbox.framework */; };
 		927B770B1D282E0A00C4F5CC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B770A1D282E0A00C4F5CC /* MediaPlayer.framework */; };
-		928C34221EAF608600BC07DE /* libVuforia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 928C341C1EAF608600BC07DE /* libVuforia.a */; };
-		928C34231EAF608600BC07DE /* license_3rdpartynotice.txt in Resources */ = {isa = PBXBuildFile; fileRef = 928C341E1EAF608600BC07DE /* license_3rdpartynotice.txt */; };
-		928C34241EAF608600BC07DE /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 928C341F1EAF608600BC07DE /* readme.txt */; };
-		928C34251EAF608600BC07DE /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 928C34211EAF608600BC07DE /* readme.txt */; };
 		92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA11081D27A5EB00E56CBE /* AppDelegate.swift */; };
 		92AA110B1D27A5EB00E56CBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA110A1D27A5EB00E56CBE /* ViewController.swift */; };
 		92AA11101D27A5EB00E56CBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92AA110F1D27A5EB00E56CBE /* Assets.xcassets */; };
 		92AA11131D27A5EB00E56CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */; };
 		92AA11851D27B96300E56CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AA11841D27B96300E56CBE /* Localizable.strings */; };
+		A96AFF241F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 in Resources */ = {isa = PBXBuildFile; fileRef = A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */; };
+		A96AFF261F64DC2000303C28 /* libVuforia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A96AFF251F64DC2000303C28 /* libVuforia.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,95 +77,6 @@
 		927B76FC1D2816DB00C4F5CC /* VuforiaShaderUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VuforiaShaderUtils.m; path = VuforiaManager/VuforiaShaderUtils.m; sourceTree = "<group>"; };
 		927B77071D2824AB00C4F5CC /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		927B770A1D282E0A00C4F5CC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		928C33C51EAF608600BC07DE /* Area.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Area.h; sourceTree = "<group>"; };
-		928C33C61EAF608600BC07DE /* Box3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Box3D.h; sourceTree = "<group>"; };
-		928C33C71EAF608600BC07DE /* CameraCalibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraCalibration.h; sourceTree = "<group>"; };
-		928C33C81EAF608600BC07DE /* CameraDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraDevice.h; sourceTree = "<group>"; };
-		928C33C91EAF608600BC07DE /* CameraField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraField.h; sourceTree = "<group>"; };
-		928C33CA1EAF608600BC07DE /* CustomViewerParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomViewerParameters.h; sourceTree = "<group>"; };
-		928C33CB1EAF608600BC07DE /* CylinderTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylinderTarget.h; sourceTree = "<group>"; };
-		928C33CC1EAF608600BC07DE /* CylinderTargetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CylinderTargetResult.h; sourceTree = "<group>"; };
-		928C33CD1EAF608600BC07DE /* DataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSet.h; sourceTree = "<group>"; };
-		928C33CE1EAF608600BC07DE /* Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		928C33CF1EAF608600BC07DE /* DeviceTrackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTrackable.h; sourceTree = "<group>"; };
-		928C33D01EAF608600BC07DE /* DeviceTrackableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTrackableResult.h; sourceTree = "<group>"; };
-		928C33D11EAF608600BC07DE /* DeviceTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceTracker.h; sourceTree = "<group>"; };
-		928C33D21EAF608600BC07DE /* EyeID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyeID.h; sourceTree = "<group>"; };
-		928C33D31EAF608600BC07DE /* EyewearCalibrationProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyewearCalibrationProfileManager.h; sourceTree = "<group>"; };
-		928C33D41EAF608600BC07DE /* EyewearCalibrationReading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyewearCalibrationReading.h; sourceTree = "<group>"; };
-		928C33D51EAF608600BC07DE /* EyewearDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyewearDevice.h; sourceTree = "<group>"; };
-		928C33D61EAF608600BC07DE /* EyewearUserCalibrator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EyewearUserCalibrator.h; sourceTree = "<group>"; };
-		928C33D71EAF608600BC07DE /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Frame.h; sourceTree = "<group>"; };
-		928C33D81EAF608600BC07DE /* GLRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLRenderer.h; sourceTree = "<group>"; };
-		928C33D91EAF608600BC07DE /* HandheldTransformModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HandheldTransformModel.h; sourceTree = "<group>"; };
-		928C33DA1EAF608600BC07DE /* HeadTransformModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadTransformModel.h; sourceTree = "<group>"; };
-		928C33DB1EAF608600BC07DE /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
-		928C33DC1EAF608600BC07DE /* ImageTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTarget.h; sourceTree = "<group>"; };
-		928C33DD1EAF608600BC07DE /* ImageTargetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTargetBuilder.h; sourceTree = "<group>"; };
-		928C33DE1EAF608600BC07DE /* ImageTargetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageTargetResult.h; sourceTree = "<group>"; };
-		928C33DF1EAF608600BC07DE /* InstanceId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstanceId.h; sourceTree = "<group>"; };
-		928C33E01EAF608600BC07DE /* Matrices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrices.h; sourceTree = "<group>"; };
-		928C33E11EAF608600BC07DE /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
-		928C33E21EAF608600BC07DE /* MetalRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetalRenderer.h; sourceTree = "<group>"; };
-		928C33E31EAF608600BC07DE /* MultiTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTarget.h; sourceTree = "<group>"; };
-		928C33E41EAF608600BC07DE /* MultiTargetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiTargetResult.h; sourceTree = "<group>"; };
-		928C33E51EAF608600BC07DE /* NonCopyable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NonCopyable.h; sourceTree = "<group>"; };
-		928C33E61EAF608600BC07DE /* Obb2D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obb2D.h; sourceTree = "<group>"; };
-		928C33E71EAF608600BC07DE /* Obb3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obb3D.h; sourceTree = "<group>"; };
-		928C33E81EAF608600BC07DE /* ObjectTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectTarget.h; sourceTree = "<group>"; };
-		928C33E91EAF608600BC07DE /* ObjectTargetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectTargetResult.h; sourceTree = "<group>"; };
-		928C33EA1EAF608600BC07DE /* ObjectTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectTracker.h; sourceTree = "<group>"; };
-		928C33EB1EAF608600BC07DE /* Prop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prop.h; sourceTree = "<group>"; };
-		928C33EC1EAF608600BC07DE /* PropResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PropResult.h; sourceTree = "<group>"; };
-		928C33ED1EAF608600BC07DE /* Reconstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reconstruction.h; sourceTree = "<group>"; };
-		928C33EE1EAF608600BC07DE /* ReconstructionFromTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReconstructionFromTarget.h; sourceTree = "<group>"; };
-		928C33EF1EAF608600BC07DE /* Rectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rectangle.h; sourceTree = "<group>"; };
-		928C33F01EAF608600BC07DE /* Renderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renderer.h; sourceTree = "<group>"; };
-		928C33F11EAF608600BC07DE /* RenderingPrimitives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingPrimitives.h; sourceTree = "<group>"; };
-		928C33F21EAF608600BC07DE /* RotationalDeviceTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotationalDeviceTracker.h; sourceTree = "<group>"; };
-		928C33F31EAF608600BC07DE /* SmartTerrainBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTerrainBuilder.h; sourceTree = "<group>"; };
-		928C33F41EAF608600BC07DE /* SmartTerrainTrackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTerrainTrackable.h; sourceTree = "<group>"; };
-		928C33F51EAF608600BC07DE /* SmartTerrainTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTerrainTracker.h; sourceTree = "<group>"; };
-		928C33F61EAF608600BC07DE /* State.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = State.h; sourceTree = "<group>"; };
-		928C33F71EAF608600BC07DE /* StateUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StateUpdater.h; sourceTree = "<group>"; };
-		928C33F81EAF608600BC07DE /* Surface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Surface.h; sourceTree = "<group>"; };
-		928C33F91EAF608600BC07DE /* SurfaceResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurfaceResult.h; sourceTree = "<group>"; };
-		928C33FA1EAF608600BC07DE /* System.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = System.h; sourceTree = "<group>"; };
-		928C33FB1EAF608600BC07DE /* TargetFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetFinder.h; sourceTree = "<group>"; };
-		928C33FC1EAF608600BC07DE /* TargetSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetSearchResult.h; sourceTree = "<group>"; };
-		928C33FD1EAF608600BC07DE /* TextTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextTracker.h; sourceTree = "<group>"; };
-		928C33FE1EAF608600BC07DE /* Tool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
-		928C33FF1EAF608600BC07DE /* Trackable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trackable.h; sourceTree = "<group>"; };
-		928C34001EAF608600BC07DE /* TrackableResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackableResult.h; sourceTree = "<group>"; };
-		928C34011EAF608600BC07DE /* TrackableSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackableSource.h; sourceTree = "<group>"; };
-		928C34021EAF608600BC07DE /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
-		928C34031EAF608600BC07DE /* TrackerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackerManager.h; sourceTree = "<group>"; };
-		928C34041EAF608600BC07DE /* TransformModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransformModel.h; sourceTree = "<group>"; };
-		928C34051EAF608600BC07DE /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		928C34061EAF608600BC07DE /* UIGLViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIGLViewProtocol.h; sourceTree = "<group>"; };
-		928C34071EAF608600BC07DE /* UpdateCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateCallback.h; sourceTree = "<group>"; };
-		928C34081EAF608600BC07DE /* Vectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vectors.h; sourceTree = "<group>"; };
-		928C34091EAF608600BC07DE /* VideoBackgroundConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoBackgroundConfig.h; sourceTree = "<group>"; };
-		928C340A1EAF608600BC07DE /* VideoBackgroundTextureInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoBackgroundTextureInfo.h; sourceTree = "<group>"; };
-		928C340B1EAF608600BC07DE /* VideoMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoMode.h; sourceTree = "<group>"; };
-		928C340C1EAF608600BC07DE /* View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = View.h; sourceTree = "<group>"; };
-		928C340D1EAF608600BC07DE /* ViewerParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerParameters.h; sourceTree = "<group>"; };
-		928C340E1EAF608600BC07DE /* ViewerParametersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewerParametersList.h; sourceTree = "<group>"; };
-		928C340F1EAF608600BC07DE /* ViewList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewList.h; sourceTree = "<group>"; };
-		928C34101EAF608600BC07DE /* VirtualButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualButton.h; sourceTree = "<group>"; };
-		928C34111EAF608600BC07DE /* VirtualButtonResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VirtualButtonResult.h; sourceTree = "<group>"; };
-		928C34121EAF608600BC07DE /* Vuforia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vuforia.h; sourceTree = "<group>"; };
-		928C34131EAF608600BC07DE /* Vuforia_iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vuforia_iOS.h; sourceTree = "<group>"; };
-		928C34141EAF608600BC07DE /* VuMarkTarget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VuMarkTarget.h; sourceTree = "<group>"; };
-		928C34151EAF608600BC07DE /* VuMarkTargetResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VuMarkTargetResult.h; sourceTree = "<group>"; };
-		928C34161EAF608600BC07DE /* VuMarkTemplate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VuMarkTemplate.h; sourceTree = "<group>"; };
-		928C34171EAF608600BC07DE /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		928C34181EAF608600BC07DE /* WordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordList.h; sourceTree = "<group>"; };
-		928C34191EAF608600BC07DE /* WordResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordResult.h; sourceTree = "<group>"; };
-		928C341C1EAF608600BC07DE /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libVuforia.a; sourceTree = "<group>"; };
-		928C341E1EAF608600BC07DE /* license_3rdpartynotice.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license_3rdpartynotice.txt; sourceTree = "<group>"; };
-		928C341F1EAF608600BC07DE /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
-		928C34211EAF608600BC07DE /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
 		92AA11051D27A5EB00E56CBE /* VuforiaSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VuforiaSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92AA11081D27A5EB00E56CBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92AA110A1D27A5EB00E56CBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +85,9 @@
 		92AA11141D27A5EB00E56CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92AA11801D27A6CD00E56CBE /* VuforiaSampleSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VuforiaSampleSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		92AA11841D27B96300E56CBE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A96AFF211F64DB4500303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-5-19/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
+		A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "vuforia-sdk-ios-6-2-9"; sourceTree = "<group>"; };
+		A96AFF251F64DC2000303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,13 +95,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96AFF261F64DC2000303C28 /* libVuforia.a in Frameworks */,
 				926096D41D4163B600510C24 /* SpriteKit.framework in Frameworks */,
 				927B770B1D282E0A00C4F5CC /* MediaPlayer.framework in Frameworks */,
 				927B77091D282DF100C4F5CC /* AudioToolbox.framework in Frameworks */,
 				927B77081D2824AB00C4F5CC /* OpenGLES.framework in Frameworks */,
 				927B76DE1D27FE0500C4F5CC /* CoreMedia.framework in Frameworks */,
 				927B76DB1D27FDE500C4F5CC /* SceneKit.framework in Frameworks */,
-				928C34221EAF608600BC07DE /* libVuforia.a in Frameworks */,
 				927B76DC1D27FDE500C4F5CC /* SystemConfiguration.framework in Frameworks */,
 				927B76D71D27FDC600C4F5CC /* AVFoundation.framework in Frameworks */,
 				927B76D81D27FDC600C4F5CC /* CoreMotion.framework in Frameworks */,
@@ -252,163 +164,12 @@
 			path = VuforiaAssets;
 			sourceTree = "<group>";
 		};
-		928C33C11EAF608600BC07DE /* vuforia-sdk-ios-6-2-9 */ = {
-			isa = PBXGroup;
-			children = (
-				928C33C21EAF608600BC07DE /* build */,
-				928C341D1EAF608600BC07DE /* licenses */,
-				928C341F1EAF608600BC07DE /* readme.txt */,
-				928C34201EAF608600BC07DE /* samples */,
-			);
-			path = "vuforia-sdk-ios-6-2-9";
-			sourceTree = "<group>";
-		};
-		928C33C21EAF608600BC07DE /* build */ = {
-			isa = PBXGroup;
-			children = (
-				928C33C31EAF608600BC07DE /* include */,
-				928C341A1EAF608600BC07DE /* lib */,
-			);
-			path = build;
-			sourceTree = "<group>";
-		};
-		928C33C31EAF608600BC07DE /* include */ = {
-			isa = PBXGroup;
-			children = (
-				928C33C41EAF608600BC07DE /* Vuforia */,
-			);
-			path = include;
-			sourceTree = "<group>";
-		};
-		928C33C41EAF608600BC07DE /* Vuforia */ = {
-			isa = PBXGroup;
-			children = (
-				928C33C51EAF608600BC07DE /* Area.h */,
-				928C33C61EAF608600BC07DE /* Box3D.h */,
-				928C33C71EAF608600BC07DE /* CameraCalibration.h */,
-				928C33C81EAF608600BC07DE /* CameraDevice.h */,
-				928C33C91EAF608600BC07DE /* CameraField.h */,
-				928C33CA1EAF608600BC07DE /* CustomViewerParameters.h */,
-				928C33CB1EAF608600BC07DE /* CylinderTarget.h */,
-				928C33CC1EAF608600BC07DE /* CylinderTargetResult.h */,
-				928C33CD1EAF608600BC07DE /* DataSet.h */,
-				928C33CE1EAF608600BC07DE /* Device.h */,
-				928C33CF1EAF608600BC07DE /* DeviceTrackable.h */,
-				928C33D01EAF608600BC07DE /* DeviceTrackableResult.h */,
-				928C33D11EAF608600BC07DE /* DeviceTracker.h */,
-				928C33D21EAF608600BC07DE /* EyeID.h */,
-				928C33D31EAF608600BC07DE /* EyewearCalibrationProfileManager.h */,
-				928C33D41EAF608600BC07DE /* EyewearCalibrationReading.h */,
-				928C33D51EAF608600BC07DE /* EyewearDevice.h */,
-				928C33D61EAF608600BC07DE /* EyewearUserCalibrator.h */,
-				928C33D71EAF608600BC07DE /* Frame.h */,
-				928C33D81EAF608600BC07DE /* GLRenderer.h */,
-				928C33D91EAF608600BC07DE /* HandheldTransformModel.h */,
-				928C33DA1EAF608600BC07DE /* HeadTransformModel.h */,
-				928C33DB1EAF608600BC07DE /* Image.h */,
-				928C33DC1EAF608600BC07DE /* ImageTarget.h */,
-				928C33DD1EAF608600BC07DE /* ImageTargetBuilder.h */,
-				928C33DE1EAF608600BC07DE /* ImageTargetResult.h */,
-				928C33DF1EAF608600BC07DE /* InstanceId.h */,
-				928C33E01EAF608600BC07DE /* Matrices.h */,
-				928C33E11EAF608600BC07DE /* Mesh.h */,
-				928C33E21EAF608600BC07DE /* MetalRenderer.h */,
-				928C33E31EAF608600BC07DE /* MultiTarget.h */,
-				928C33E41EAF608600BC07DE /* MultiTargetResult.h */,
-				928C33E51EAF608600BC07DE /* NonCopyable.h */,
-				928C33E61EAF608600BC07DE /* Obb2D.h */,
-				928C33E71EAF608600BC07DE /* Obb3D.h */,
-				928C33E81EAF608600BC07DE /* ObjectTarget.h */,
-				928C33E91EAF608600BC07DE /* ObjectTargetResult.h */,
-				928C33EA1EAF608600BC07DE /* ObjectTracker.h */,
-				928C33EB1EAF608600BC07DE /* Prop.h */,
-				928C33EC1EAF608600BC07DE /* PropResult.h */,
-				928C33ED1EAF608600BC07DE /* Reconstruction.h */,
-				928C33EE1EAF608600BC07DE /* ReconstructionFromTarget.h */,
-				928C33EF1EAF608600BC07DE /* Rectangle.h */,
-				928C33F01EAF608600BC07DE /* Renderer.h */,
-				928C33F11EAF608600BC07DE /* RenderingPrimitives.h */,
-				928C33F21EAF608600BC07DE /* RotationalDeviceTracker.h */,
-				928C33F31EAF608600BC07DE /* SmartTerrainBuilder.h */,
-				928C33F41EAF608600BC07DE /* SmartTerrainTrackable.h */,
-				928C33F51EAF608600BC07DE /* SmartTerrainTracker.h */,
-				928C33F61EAF608600BC07DE /* State.h */,
-				928C33F71EAF608600BC07DE /* StateUpdater.h */,
-				928C33F81EAF608600BC07DE /* Surface.h */,
-				928C33F91EAF608600BC07DE /* SurfaceResult.h */,
-				928C33FA1EAF608600BC07DE /* System.h */,
-				928C33FB1EAF608600BC07DE /* TargetFinder.h */,
-				928C33FC1EAF608600BC07DE /* TargetSearchResult.h */,
-				928C33FD1EAF608600BC07DE /* TextTracker.h */,
-				928C33FE1EAF608600BC07DE /* Tool.h */,
-				928C33FF1EAF608600BC07DE /* Trackable.h */,
-				928C34001EAF608600BC07DE /* TrackableResult.h */,
-				928C34011EAF608600BC07DE /* TrackableSource.h */,
-				928C34021EAF608600BC07DE /* Tracker.h */,
-				928C34031EAF608600BC07DE /* TrackerManager.h */,
-				928C34041EAF608600BC07DE /* TransformModel.h */,
-				928C34051EAF608600BC07DE /* Type.h */,
-				928C34061EAF608600BC07DE /* UIGLViewProtocol.h */,
-				928C34071EAF608600BC07DE /* UpdateCallback.h */,
-				928C34081EAF608600BC07DE /* Vectors.h */,
-				928C34091EAF608600BC07DE /* VideoBackgroundConfig.h */,
-				928C340A1EAF608600BC07DE /* VideoBackgroundTextureInfo.h */,
-				928C340B1EAF608600BC07DE /* VideoMode.h */,
-				928C340C1EAF608600BC07DE /* View.h */,
-				928C340D1EAF608600BC07DE /* ViewerParameters.h */,
-				928C340E1EAF608600BC07DE /* ViewerParametersList.h */,
-				928C340F1EAF608600BC07DE /* ViewList.h */,
-				928C34101EAF608600BC07DE /* VirtualButton.h */,
-				928C34111EAF608600BC07DE /* VirtualButtonResult.h */,
-				928C34121EAF608600BC07DE /* Vuforia.h */,
-				928C34131EAF608600BC07DE /* Vuforia_iOS.h */,
-				928C34141EAF608600BC07DE /* VuMarkTarget.h */,
-				928C34151EAF608600BC07DE /* VuMarkTargetResult.h */,
-				928C34161EAF608600BC07DE /* VuMarkTemplate.h */,
-				928C34171EAF608600BC07DE /* Word.h */,
-				928C34181EAF608600BC07DE /* WordList.h */,
-				928C34191EAF608600BC07DE /* WordResult.h */,
-			);
-			path = Vuforia;
-			sourceTree = "<group>";
-		};
-		928C341A1EAF608600BC07DE /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				928C341B1EAF608600BC07DE /* arm */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		928C341B1EAF608600BC07DE /* arm */ = {
-			isa = PBXGroup;
-			children = (
-				928C341C1EAF608600BC07DE /* libVuforia.a */,
-			);
-			path = arm;
-			sourceTree = "<group>";
-		};
-		928C341D1EAF608600BC07DE /* licenses */ = {
-			isa = PBXGroup;
-			children = (
-				928C341E1EAF608600BC07DE /* license_3rdpartynotice.txt */,
-			);
-			path = licenses;
-			sourceTree = "<group>";
-		};
-		928C34201EAF608600BC07DE /* samples */ = {
-			isa = PBXGroup;
-			children = (
-				928C34211EAF608600BC07DE /* readme.txt */,
-			);
-			path = samples;
-			sourceTree = "<group>";
-		};
 		92AA10FC1D27A5EB00E56CBE = {
 			isa = PBXGroup;
 			children = (
 				92AA11071D27A5EB00E56CBE /* VuforiaSampleSwift */,
 				92AA11061D27A5EB00E56CBE /* Products */,
+				A96AFF201F64DB4500303C28 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -434,7 +195,7 @@
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
 				92AA11141D27A5EB00E56CBE /* Info.plist */,
 				92AA11841D27B96300E56CBE /* Localizable.strings */,
-				928C33C11EAF608600BC07DE /* vuforia-sdk-ios-6-2-9 */,
+				A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */,
 				927B76DF1D27FE5900C4F5CC /* Frameworks */,
 			);
 			path = VuforiaSampleSwift;
@@ -453,6 +214,15 @@
 				639D3EE81F60CF210059EF83 /* Tarmac.xml */,
 			);
 			path = ImageTargets;
+			sourceTree = "<group>";
+		};
+		A96AFF201F64DB4500303C28 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A96AFF251F64DC2000303C28 /* libVuforia.a */,
+				A96AFF211F64DB4500303C28 /* libVuforia.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -487,7 +257,7 @@
 				TargetAttributes = {
 					92AA11041D27A5EB00E56CBE = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 3D642QE477;
+						DevelopmentTeam = W444RWV5J8;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 					};
@@ -517,15 +287,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				639D3EF01F60CF3A0059EF83 /* IT.png in Resources */,
-				928C34231EAF608600BC07DE /* license_3rdpartynotice.txt in Resources */,
 				92AA11131D27A5EB00E56CBE /* LaunchScreen.storyboard in Resources */,
+				A96AFF241F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 in Resources */,
 				92AA11101D27A5EB00E56CBE /* Assets.xcassets in Resources */,
-				928C34251EAF608600BC07DE /* readme.txt in Resources */,
 				639D3EEA1F60CF210059EF83 /* StonesAndChips.xml in Resources */,
 				63915D471F64D32600A97D84 /* Main.storyboard in Resources */,
 				92AA11851D27B96300E56CBE /* Localizable.strings in Resources */,
 				639D3EEC1F60CF210059EF83 /* Tarmac.xml in Resources */,
-				928C34241EAF608600BC07DE /* readme.txt in Resources */,
 				639D3EEB1F60CF210059EF83 /* Tarmac.dat in Resources */,
 				63915D3F1F647AAD00A97D84 /* hackbomo-2.dat in Resources */,
 				639D3EE91F60CF210059EF83 /* StonesAndChips.dat in Resources */,
@@ -666,7 +434,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3D642QE477;
+				DEVELOPMENT_TEAM = W444RWV5J8;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/include\"";
 				INFOPLIST_FILE = VuforiaSampleSwift/Info.plist;
@@ -674,6 +442,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/lib/arm",
+					"$(PROJECT_DIR)/VuforiaSampleSwift/vuforia-sdk-ios-6-5-19/build/lib/arm",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sputnik-apps.VuforiaSampleSwift";
 				PRODUCT_NAME = VuforiaSampleSwift;
@@ -690,7 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 3D642QE477;
+				DEVELOPMENT_TEAM = W444RWV5J8;
 				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/include\"";
 				INFOPLIST_FILE = VuforiaSampleSwift/Info.plist;
@@ -698,6 +467,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/lib/arm",
+					"$(PROJECT_DIR)/VuforiaSampleSwift/vuforia-sdk-ios-6-5-19/build/lib/arm",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.sputnik-apps.VuforiaSampleSwift";
 				PRODUCT_NAME = VuforiaSampleSwift;
