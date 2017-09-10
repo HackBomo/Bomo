@@ -17,6 +17,11 @@ class SquatStatsViewController: UIViewController {
     @IBOutlet weak var goalButton: UIButton!
     
     
+    @IBOutlet weak var depthButton: UIButton!
+    @IBOutlet weak var velocityButton: UIButton!
+    @IBOutlet weak var powerButton: UIButton!
+    
+    
     
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -24,8 +29,32 @@ class SquatStatsViewController: UIViewController {
 		// Do any additional setup after loading the view.
         scrollView.contentSize.height = 900
         
-        
 	}
+    
+    
+    @IBAction func depthTapped(_ sender: Any) {
+        depthButton.setImage(#imageLiteral(resourceName: "depth-selected"), for: .normal)
+        velocityButton.setImage(#imageLiteral(resourceName: "velocity-deselected"), for: .normal)
+        powerButton.setImage(#imageLiteral(resourceName: "power-deselected"), for: .normal)
+    }
+    
+ 
+    
+    @IBAction func velocityTapped(_ sender: Any) {
+        depthButton.setImage(#imageLiteral(resourceName: "depth-deselected"), for: .normal)
+        velocityButton.setImage(#imageLiteral(resourceName: "velocity-selected"), for: .normal)
+        powerButton.setImage(#imageLiteral(resourceName: "power-deselected"), for: .normal)
+    }
+    
+    @IBAction func powerTapped(_ sender: Any) {
+        depthButton.setImage(#imageLiteral(resourceName: "depth-deselected"), for: .normal)
+        velocityButton.setImage(#imageLiteral(resourceName: "velocity-deselected"), for: .normal)
+        powerButton.setImage(#imageLiteral(resourceName: "power-selected"), for: .normal)
+    }
+    
+    
+    
+    
 
     @IBAction func pastTapped(_ sender: Any) {
         pastButton.setImage(#imageLiteral(resourceName: "Past_Bright"), for: .normal)
