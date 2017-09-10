@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0752131D3B11170367AAEC93 /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F60FACC791D1EB5B9B39220 /* Pods_VuforiaSampleSwift.framework */; };
+		416346210B2E4460383F7B00 /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08901F95E2EAA43CD3208B3C /* Pods_VuforiaSampleSwift.framework */; };
 		6317A0411F64678100B5AEAF /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6317A0401F64678100B5AEAF /* ARManager.swift */; };
 		63915D3E1F647AAD00A97D84 /* hackbomo-2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */; };
 		63915D3F1F647AAD00A97D84 /* hackbomo-2.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		01DF36BA6494B3E20FECC306 /* Pods-VuforiaSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		08901F95E2EAA43CD3208B3C /* Pods_VuforiaSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VuforiaSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6317A0401F64678100B5AEAF /* ARManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
 		63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hackbomo-2.xml"; path = "VuforiaSampleSwift/hackbomo-2.xml"; sourceTree = SOURCE_ROOT; };
 		63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hackbomo-2.dat"; path = "VuforiaSampleSwift/hackbomo-2.dat"; sourceTree = SOURCE_ROOT; };
@@ -91,14 +93,11 @@
 		92AA11141D27A5EB00E56CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92AA11801D27A6CD00E56CBE /* VuforiaSampleSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VuforiaSampleSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		92AA11841D27B96300E56CBE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-<<<<<<< HEAD
+		9F60FACC791D1EB5B9B39220 /* Pods_VuforiaSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VuforiaSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A96AFF211F64DB4500303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-5-19/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
 		A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "vuforia-sdk-ios-6-2-9"; sourceTree = "<group>"; };
 		A96AFF251F64DC2000303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
 		A96AFF271F64EE2700303C28 /* ExtendSquatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendSquatViewController.swift; sourceTree = "<group>"; };
-=======
-		9F60FACC791D1EB5B9B39220 /* Pods_VuforiaSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VuforiaSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
->>>>>>> 6caebdffe0d01dd768fb155dec32ace132cb43c8
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +116,7 @@
 				927B76D71D27FDC600C4F5CC /* AVFoundation.framework in Frameworks */,
 				927B76D81D27FDC600C4F5CC /* CoreMotion.framework in Frameworks */,
 				0752131D3B11170367AAEC93 /* Pods_VuforiaSampleSwift.framework in Frameworks */,
+				416346210B2E4460383F7B00 /* Pods_VuforiaSampleSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,12 +199,9 @@
 			children = (
 				92AA11071D27A5EB00E56CBE /* VuforiaSampleSwift */,
 				92AA11061D27A5EB00E56CBE /* Products */,
-<<<<<<< HEAD
 				A96AFF201F64DB4500303C28 /* Frameworks */,
-=======
 				3E16131FE9FF619025B35EAA /* Pods */,
 				0C460C716C5A5B075A5ED5A9 /* Frameworks */,
->>>>>>> 6caebdffe0d01dd768fb155dec32ace132cb43c8
 			);
 			sourceTree = "<group>";
 		};
@@ -257,6 +254,7 @@
 			children = (
 				A96AFF251F64DC2000303C28 /* libVuforia.a */,
 				A96AFF211F64DB4500303C28 /* libVuforia.a */,
+				08901F95E2EAA43CD3208B3C /* Pods_VuforiaSampleSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -365,9 +363,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -380,13 +383,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VuforiaSampleSwift-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

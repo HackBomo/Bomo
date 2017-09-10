@@ -374,54 +374,76 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="887"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jyo-dj-adK">
-                                        <rect key="frame" x="0.0" y="82" width="125" height="37"/>
+                                        <rect key="frame" x="0.0" y="82" width="125" height="41"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="37" id="LZn-Ab-A67"/>
-                                            <constraint firstAttribute="width" constant="125" id="bah-B7-2KO"/>
+                                            <constraint firstAttribute="width" constant="125" id="iGK-OC-vNP"/>
                                         </constraints>
                                         <state key="normal" title="Button" image="Past_Dark"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkO-6S-syz">
-                                        <rect key="frame" x="125" y="82" width="125" height="37"/>
+                                        <rect key="frame" x="125" y="82" width="125" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0bG-w6-iSq"/>
+                                        </constraints>
                                         <state key="normal" title="Button" image="Today_Bright"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nmd-5Q-wV0">
-                                        <rect key="frame" x="250" y="82" width="125" height="37"/>
+                                        <rect key="frame" x="250" y="82" width="125" height="41"/>
                                         <state key="normal" title="Button" image="Goal_Dark"/>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Ut-r3-MqG">
-                                        <rect key="frame" x="27" y="147" width="314" height="202"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 10" translatesAutoresizingMaskIntoConstraints="NO" id="fMN-wq-mpU">
+                                        <rect key="frame" x="38" y="728" width="299" height="99"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="99" id="LNu-Ak-frB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 3" translatesAutoresizingMaskIntoConstraints="NO" id="Pgc-XB-Qb3">
+                                        <rect key="frame" x="32" y="469" width="305" height="202"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 2" translatesAutoresizingMaskIntoConstraints="NO" id="7Ut-r3-MqG">
+                                        <rect key="frame" x="25" y="220" width="318" height="179"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="179" id="tXv-il-5AZ"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerY" secondItem="1bN-3k-jrj" secondAttribute="centerY" id="1z3-ee-GyN"/>
-                                    <constraint firstItem="fkO-6S-syz" firstAttribute="firstBaseline" secondItem="nmd-5Q-wV0" secondAttribute="firstBaseline" id="3H1-Cc-IAj"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerX" secondItem="1bN-3k-jrj" secondAttribute="centerX" id="42U-rd-OzR"/>
-                                    <constraint firstAttribute="trailing" secondItem="O2A-Ee-DJv" secondAttribute="trailing" id="7Ih-LI-LFO"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerX" secondItem="fkO-6S-syz" secondAttribute="centerX" id="EaN-NS-rzV"/>
-                                    <constraint firstItem="nmd-5Q-wV0" firstAttribute="leading" secondItem="fkO-6S-syz" secondAttribute="trailing" id="FPz-HA-WVd"/>
-                                    <constraint firstAttribute="bottom" secondItem="O2A-Ee-DJv" secondAttribute="bottom" id="FZo-vR-eDQ"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="leading" secondItem="1bN-3k-jrj" secondAttribute="leading" id="GJW-71-bds"/>
-                                    <constraint firstItem="fkO-6S-syz" firstAttribute="top" secondItem="nmd-5Q-wV0" secondAttribute="top" id="Gq8-zj-Fug"/>
-                                    <constraint firstItem="jyo-dj-adK" firstAttribute="firstBaseline" secondItem="fkO-6S-syz" secondAttribute="firstBaseline" id="Hmn-Uc-eNV"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="trailing" secondItem="nmd-5Q-wV0" secondAttribute="trailing" id="MiB-6O-aS5"/>
-                                    <constraint firstItem="fkO-6S-syz" firstAttribute="leading" secondItem="jyo-dj-adK" secondAttribute="trailing" id="Mma-HW-7xh"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="leading" secondItem="jyo-dj-adK" secondAttribute="leading" id="RbY-aw-3np"/>
-                                    <constraint firstItem="jyo-dj-adK" firstAttribute="top" secondItem="fkO-6S-syz" secondAttribute="top" id="UXz-Er-bJD"/>
-                                    <constraint firstItem="jyo-dj-adK" firstAttribute="baseline" secondItem="fkO-6S-syz" secondAttribute="baseline" id="V0Q-o3-v4c"/>
-                                    <constraint firstItem="jyo-dj-adK" firstAttribute="top" secondItem="1bN-3k-jrj" secondAttribute="top" constant="82" id="bRF-Pv-OV8"/>
-                                    <constraint firstItem="fkO-6S-syz" firstAttribute="baseline" secondItem="nmd-5Q-wV0" secondAttribute="baseline" id="pdB-XZ-Hhd"/>
-                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="top" secondItem="1bN-3k-jrj" secondAttribute="top" id="vbN-cW-e3q"/>
+                                    <constraint firstItem="fkO-6S-syz" firstAttribute="top" secondItem="nmd-5Q-wV0" secondAttribute="top" id="2LE-g0-zLp"/>
+                                    <constraint firstItem="7Ut-r3-MqG" firstAttribute="leading" secondItem="1bN-3k-jrj" secondAttribute="leading" constant="25" id="3Wf-CY-Z9w"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerX" secondItem="1bN-3k-jrj" secondAttribute="centerX" id="7VE-vx-q6Y"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="trailing" secondItem="nmd-5Q-wV0" secondAttribute="trailing" id="8zP-XZ-vhN"/>
+                                    <constraint firstItem="fkO-6S-syz" firstAttribute="centerX" secondItem="fMN-wq-mpU" secondAttribute="centerX" id="9vA-5A-b94"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerX" secondItem="fMN-wq-mpU" secondAttribute="centerX" id="Au9-pZ-d9Q"/>
+                                    <constraint firstItem="Pgc-XB-Qb3" firstAttribute="trailing" secondItem="fMN-wq-mpU" secondAttribute="trailing" id="BSM-Es-1VF"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="top" secondItem="1bN-3k-jrj" secondAttribute="top" id="EUI-hS-2V8"/>
+                                    <constraint firstAttribute="bottom" secondItem="O2A-Ee-DJv" secondAttribute="bottom" id="IeA-ia-kOg"/>
+                                    <constraint firstItem="fkO-6S-syz" firstAttribute="leading" secondItem="jyo-dj-adK" secondAttribute="trailing" id="Lh0-zf-6dV"/>
+                                    <constraint firstItem="fMN-wq-mpU" firstAttribute="leading" secondItem="1bN-3k-jrj" secondAttribute="leading" constant="38" id="MmT-RE-rQQ"/>
+                                    <constraint firstItem="fMN-wq-mpU" firstAttribute="top" secondItem="Pgc-XB-Qb3" secondAttribute="bottom" constant="57" id="OH1-yK-Yec"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="top" secondItem="fkO-6S-syz" secondAttribute="top" id="U0E-fp-y1l"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="leading" secondItem="1bN-3k-jrj" secondAttribute="leading" id="VCr-9r-a8u"/>
+                                    <constraint firstItem="7Ut-r3-MqG" firstAttribute="top" secondItem="jyo-dj-adK" secondAttribute="bottom" constant="97" id="VRF-w0-xFd"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="centerY" secondItem="1bN-3k-jrj" secondAttribute="centerY" id="YYY-Ee-8HI"/>
+                                    <constraint firstItem="nmd-5Q-wV0" firstAttribute="leading" secondItem="fkO-6S-syz" secondAttribute="trailing" id="ZM7-s1-Ztc"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="baseline" secondItem="nmd-5Q-wV0" secondAttribute="baseline" id="ZtD-CB-gNB"/>
+                                    <constraint firstItem="Pgc-XB-Qb3" firstAttribute="top" secondItem="7Ut-r3-MqG" secondAttribute="bottom" constant="70" id="ae4-Cq-Eoi"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="centerY" secondItem="fkO-6S-syz" secondAttribute="centerY" id="lNl-FC-ICz"/>
+                                    <constraint firstItem="Pgc-XB-Qb3" firstAttribute="leading" secondItem="1bN-3k-jrj" secondAttribute="leading" constant="32" id="oYo-Ff-Y4w"/>
+                                    <constraint firstItem="7Ut-r3-MqG" firstAttribute="centerX" secondItem="Pgc-XB-Qb3" secondAttribute="centerX" id="pHb-CI-36X"/>
+                                    <constraint firstItem="O2A-Ee-DJv" firstAttribute="leading" secondItem="jyo-dj-adK" secondAttribute="leading" id="tRC-eP-pti"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="firstBaseline" secondItem="nmd-5Q-wV0" secondAttribute="firstBaseline" id="uvK-NJ-pT5"/>
+                                    <constraint firstItem="jyo-dj-adK" firstAttribute="top" secondItem="1bN-3k-jrj" secondAttribute="top" constant="82" id="vxM-bE-Kgn"/>
+                                    <constraint firstAttribute="trailing" secondItem="nmd-5Q-wV0" secondAttribute="trailing" id="wCB-nt-dCF"/>
+                                    <constraint firstAttribute="bottom" secondItem="fMN-wq-mpU" secondAttribute="bottom" constant="60" id="xqV-O0-AYz"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1bN-3k-jrj" secondAttribute="trailing" id="7dZ-tu-1xO"/>
-                            <constraint firstItem="1bN-3k-jrj" firstAttribute="leading" secondItem="xKB-y8-8IT" secondAttribute="leading" id="En1-ed-eUJ"/>
-                            <constraint firstItem="1bN-3k-jrj" firstAttribute="top" secondItem="xKB-y8-8IT" secondAttribute="top" id="hum-2s-MeS"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="1bN-3k-jrj" secondAttribute="bottom" constant="-2" id="kHk-XP-LXX"/>
+                            <constraint firstAttribute="trailing" secondItem="1bN-3k-jrj" secondAttribute="trailing" id="5OE-LO-YNl"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1bN-3k-jrj" secondAttribute="bottom" constant="-2" id="IfI-zO-Wfo"/>
+                            <constraint firstItem="1bN-3k-jrj" firstAttribute="leading" secondItem="xKB-y8-8IT" secondAttribute="leading" id="K9C-Bp-K66"/>
+                            <constraint firstItem="1bN-3k-jrj" firstAttribute="top" secondItem="xKB-y8-8IT" secondAttribute="top" id="s7Q-8y-3KZ"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -447,6 +469,9 @@
         <image name="Close button" width="1790" height="440"/>
         <image name="Get Started" width="1790" height="440"/>
         <image name="Goal_Dark" width="1260" height="450"/>
+        <image name="Group 10" width="2970" height="1010"/>
+        <image name="Group 2" width="3320" height="1730"/>
+        <image name="Group 3" width="2970" height="2050"/>
         <image name="Jump Pop Up" width="2670" height="3460"/>
         <image name="Past_Dark" width="1250" height="450"/>
         <image name="Pop Up" width="2670" height="3460"/>
