@@ -195,6 +195,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		63915D481F64D6B600A97D84 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				92AA110A1D27A5EB00E56CBE /* ViewController.swift */,
+				63915D401F64D09700A97D84 /* StartHomeViewController.swift */,
+				63915D421F64D0BE00A97D84 /* CategoryViewController.swift */,
+				63915D441F64D11C00A97D84 /* IntroViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		927B76DF1D27FE5900C4F5CC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,10 +422,7 @@
 				927B76ED1D28070D00C4F5CC /* VuforiaAssets */,
 				92AA11081D27A5EB00E56CBE /* AppDelegate.swift */,
 				6317A0401F64678100B5AEAF /* ARManager.swift */,
-				92AA110A1D27A5EB00E56CBE /* ViewController.swift */,
-				63915D401F64D09700A97D84 /* StartHomeViewController.swift */,
-				63915D421F64D0BE00A97D84 /* CategoryViewController.swift */,
-				63915D441F64D11C00A97D84 /* IntroViewController.swift */,
+				63915D481F64D6B600A97D84 /* ViewControllers */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
 				63915D461F64D32600A97D84 /* Main.storyboard */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
