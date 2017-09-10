@@ -131,71 +131,6 @@ extension ViewController: VuforiaManagerDelegate {
 					print("presented the hud")
 				})
 			}
-			
-//			var a = SCNNode()
-//			var word = SCNText(string: "Hi", extrusionDepth: 1)
-//			word.font = UIFont.systemFont(ofSize: 1)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-//			a.geometry = word
-//			a.position = SCNVector3Make(0, 0, 0.1)
-//			scene.rootNode.addChildNode(a)
-//
-//			
-//			a = SCNNode()
-//			word = SCNText(string: "Hi", extrusionDepth: 0.1)
-//			word.font = UIFont.systemFont(ofSize: 0.1)
-//			a.scale = SCNVector3Make(0.5, 0.5, 0.5)
-//			a.geometry = word
-//			a.position = SCNVector3Make(0, 0, 0.1)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-//			scene.rootNode.addChildNode(a)
-//			
-//			a = SCNNode()
-//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 0.01)
-//			word.font = UIFont.systemFont(ofSize: 0.01)
-//			a.position = SCNVector3Make(0, 0, 10)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-//			a.geometry = word
-//			scene.rootNode.addChildNode(a)
-//			
-//			a = SCNNode()
-//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 0.001)
-//			word.font = UIFont.systemFont(ofSize: 0.001)
-//			a.position = SCNVector3Make(0, 0, 10)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-//			a.geometry = word
-//			scene.rootNode.addChildNode(a)
-			
-			let a = SCNNode()
-			let word = SCNText(string: "Jake", extrusionDepth: 0)
-			word.font = UIFont.systemFont(ofSize: 0.1)
-			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-			a.geometry = word
-		
-			a.eulerAngles = SCNVector3Make(0, Float.pi, Float.pi/2)
-			a.position = SCNVector3Make(1, 0, 1)	//x, y, z
-			scene.rootNode.addChildNode(a)
-			
-//			a = SCNNode()
-//			word = SCNText(string: "dfsasdhfdahsfsdjfhdsajkfhdsajkflhdsajklfhdsajkl", extrusionDepth: 100)
-//			word.font = UIFont.systemFont(ofSize: 10)
-//			a.position = SCNVector3Make(0, 0, 10)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-//			a.geometry = word
-//			scene.rootNode.addChildNode(a)
-			
-//			a = SCNNode(geometry: SCNSphere(radius: 1))
-//			a.position = SCNVector3Make(0, 0, 100)
-//			a.geometry?.firstMaterial?.diffuse.contents = UIColor.green
-//			a.geometry = word
-//			scene.rootNode.addChildNode(a)
-			
-//			var b = SCNNode()
-//			word = SCNText(string: "ON The Node", extrusionDepth: 1)
-//			word.font = UIFont.systemFont(ofSize: 1)
-//			b.geometry = word
-//			b.position = SCNVector3Make(0, 0, 0)
-//			a.addChildNode(b)
 
 		}catch let error {
 			print("\(error)")
@@ -221,6 +156,7 @@ extension ViewController: VuforiaManagerDelegate {
 			if seen.contains(node.key) && node.value.parent == nil{
 				scene.rootNode.addChildNode(node.value)
 				node.value.geometry = SCNSphere(radius: CGFloat(nodeRadius))
+				node.value.geometry?.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 70, green: 201, blue: 242, alpha: 1)
 			}else if seen.contains(node.key){
 				continue
 			}else{
@@ -349,7 +285,21 @@ extension ViewController{	//MARK: Drawing Functions
 		let myWord = SCNText(string: text, extrusionDepth: CGFloat(0))
 		myWord.font = UIFont.systemFont(ofSize: CGFloat((nodeRadius * 2.0)))
 		wordNode.geometry = myWord
-		myWord.firstMaterial?.diffuse.contents = UIColor.green
+		myWord.firstMaterial?.diffuse.contents = UIColor(colorLiteralRed: 51, green: 231, blue: 230, alpha: 1)
+		
+//		let ap = subtract(a: b.position, b: a.position)
+//		let ab = subtract(a: c.position, b: a.position)
+//		let apab = dot(a: ap, b: ab)
+//		let abab = dot(a: ab, b: ab)
+//		let divided = multiply(a: ab, val: apab / abab)
+//		let newPoint = add(a: a.position, b: divided)
+//		let transform = subtract(a: newPoint, b: b.position)
+//		let normTransform = divide(a: transform, val: magnitude(a: transform))
+//		
+//		let translation = multiply(a: normTransform, val: Float(nodeRadius * 4.0))
+//		//move towards norm transform of distance b radius
+//		let newPos = add(a: b.position, b: translation)
+		
 		
 		angleNodes[b.name!] = wordNode
 		let x = (a.position.x + b.position.x + c.position.x) / 3
@@ -357,11 +307,33 @@ extension ViewController{	//MARK: Drawing Functions
 		let z = (a.position.z + b.position.z + c.position.z) / 3
 		let newPos = SCNVector3Make(x, y, z)
 		wordNode.position = newPos
-		wordNode.position.x = wordNode.position.x 
+		let bounds = wordNode.boundingBox.min
+		wordNode.position.x = wordNode.position.x + (bounds.x / 2)
+		wordNode.position.y = wordNode.position.y + (bounds.y / 2)
+		
 		wordNode.eulerAngles = SCNVector3Make(0, Float.pi, Float.pi/2)
-
 		scene.rootNode.addChildNode(wordNode)
 		print("drawing angle \(text) at position: \(wordNode.position) on \(b.position)")
+	}
+	func dot(a: SCNVector3, b: SCNVector3) -> Float{
+		return (a.x * b.x) + (a.y + b.y) + (a.z + b.z)
+	}
+	func add(a: SCNVector3, b: SCNVector3) -> SCNVector3{
+		return SCNVector3Make(a.x + b.x, a.y + b.y, a.z + b.z)
+	}
+	func subtract(a: SCNVector3, b: SCNVector3) -> SCNVector3{
+		return SCNVector3Make(a.x - b.x, a.y - b.y, a.z - b.z)
+	}
+	func multiply(a: SCNVector3, val: Float) -> SCNVector3{
+		return SCNVector3Make(a.x * val, a.y * val, a.z * val)
+	}
+	func divide(a: SCNVector3, val: Float) -> SCNVector3{
+		return SCNVector3Make(a.x / val, a.y / val, a.z / val)
+	}
+	
+	func magnitude(a: SCNVector3) -> Float{
+		let sum = powf(a.x, 2) + powf(a.y, 2) + powf(a.z, 2)
+		return sqrt(sum)
 	}
 }
 extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
