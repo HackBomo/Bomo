@@ -30,15 +30,16 @@ class ViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		//prep our scene
+		startVuforia()
+		//let jumpPop = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
 		
-		let jumpPop = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "jumpPop") as! JumpPop
+		//self.addChildViewController(jumpPop)
+		//jumpPop.view.frame = self.view.frame
+		//self.view.addSubview(jumpPop.view)
+		//jumpPop.didMove(toParentViewController: self)
 		
-		self.addChildViewController(jumpPop)
-		jumpPop.view.frame = self.view.frame
-		self.view.addSubview(jumpPop.view)
-		jumpPop.didMove(toParentViewController: self)
-		
+	}
+	func startVuforia(){
 		let base = "bomo-trackers-"
 		for i in 1...4{
 			let currentName = base + "\(i)"
@@ -47,14 +48,15 @@ class ViewController: UIViewController {
 			nodes[currentName]!.name = currentName
 			nodes[currentName]!.geometry?.firstMaterial?.diffuse.contents = UIColor.purple
 		}
-		
-		//let wordGeometry = SCNText(string: "TEST", extrusionDepth: nodeRadius / 5)
-		//let wordNode = SCNNode(geometry: wordGeometry)
-		//wordNode.
-	
 		prepare()
 	}
 	
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "showPopup"{
+			let vc = segue.destination as! JumpPop
+			vc.delegate = self
+		}
+	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 	}
@@ -70,7 +72,11 @@ class ViewController: UIViewController {
 		}
 	}
 }
-
+extension ViewController: popupDelegate{
+	func popupDidClose() {
+		print("closed")
+	}
+}
 private extension ViewController {
 	func prepare() {
 		vuforiaManager = VuforiaManager(licenseKey: vuforiaLicenseKey, dataSetFile: vuforiaDataSetFile)
@@ -122,7 +128,9 @@ extension ViewController: VuforiaManagerDelegate {
 		do {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
-			
+			DispatchQueue.main.async {
+				self.performSegue(withIdentifier: "showPopup", sender: self)
+			}
 		}catch let error {
 			print("\(error)")
 		}
@@ -131,44 +139,6 @@ extension ViewController: VuforiaManagerDelegate {
 		print("did faid to preparing \(error)\n")
 	}
 	func vuforiaManager(_ manager: VuforiaManager!, didUpdateWith state: VuforiaState!) {
-		//	print("looking at \(state.numberOfTrackableResults) trackables")
-		
-//		for index in 0 ..< state.numberOfTrackableResults {
-//			guard let result = state.trackableResult(at: index) else{
-//				continue
-//			}
-//			let name = result.trackable.name!
-//			guard objects[name] == nil else{	//skip recognized objects
-//				continue
-//			}
-//			print("number of trackables: \(state.numberOfTrackableResults)")
-//			
-//			
-//			//create new scnnodes
-//			let circle = SCNNode(geometry: SCNSphere(radius: 1))
-//			let renderer: SCNRenderer = manager.eaglView.getRenderer()
-//			renderer.scene?.rootNode.addChildNode(circle)
-//			print("adding node on \(name)")
-//			objects[name] = circle
-//			
-//			//let trackerableName = result?.trackable.name
-//			if trackerableName == "stones" {
-//			boxMaterial.diffuse.contents = UIColor.red
-//			
-//			if lastSceneName != "stones" {
-//			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "stones"])
-//			lastSceneName = "stones"
-//			}
-//			}else {
-//			boxMaterial.diffuse.contents = UIColor.blue
-//			
-//			if lastSceneName != "chips" {
-//			manager.eaglView.setNeedsChangeSceneWithUserInfo(["scene" : "chips"])
-//			lastSceneName = "chips"
-//			}
-//			}
-//			
-//		}
 	}
 	
 	func vuforiaManager(_ manager: VuforiaManager!, didGetObject name: String!, withPosition swiftMatrix: SCNMatrix4) {
@@ -362,7 +332,6 @@ extension ViewController{	//Physics and Math
 		let difference = (hip.z - knee.z)
 		return difference
 	}
-
 }
 
 

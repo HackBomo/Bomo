@@ -10,12 +10,13 @@
 		6317A0411F64678100B5AEAF /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6317A0401F64678100B5AEAF /* ARManager.swift */; };
 		63915D3E1F647AAD00A97D84 /* hackbomo-2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */; };
 		63915D3F1F647AAD00A97D84 /* hackbomo-2.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */; };
-		63915D411F64D09700A97D84 /* StartHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D401F64D09700A97D84 /* StartHomeViewController.swift */; };
+		63915D411F64D09700A97D84 /* StatHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D401F64D09700A97D84 /* StatHomeViewController.swift */; };
 		63915D431F64D0BE00A97D84 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D421F64D0BE00A97D84 /* CategoryViewController.swift */; };
 		63915D451F64D11C00A97D84 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D441F64D11C00A97D84 /* IntroViewController.swift */; };
 		63915D471F64D32600A97D84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63915D461F64D32600A97D84 /* Main.storyboard */; };
 		63915D4A1F64D87800A97D84 /* SquatPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D491F64D87800A97D84 /* SquatPop.swift */; };
 		63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4B1F64D8C400A97D84 /* JumpPop.swift */; };
+		63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */; };
 		639D3EE91F60CF210059EF83 /* StonesAndChips.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE51F60CF210059EF83 /* StonesAndChips.dat */; };
 		639D3EEA1F60CF210059EF83 /* StonesAndChips.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE61F60CF210059EF83 /* StonesAndChips.xml */; };
 		639D3EEB1F60CF210059EF83 /* Tarmac.dat in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE71F60CF210059EF83 /* Tarmac.dat */; };
@@ -48,12 +49,13 @@
 		6317A0401F64678100B5AEAF /* ARManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
 		63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hackbomo-2.xml"; path = "VuforiaSampleSwift/hackbomo-2.xml"; sourceTree = SOURCE_ROOT; };
 		63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hackbomo-2.dat"; path = "VuforiaSampleSwift/hackbomo-2.dat"; sourceTree = SOURCE_ROOT; };
-		63915D401F64D09700A97D84 /* StartHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartHomeViewController.swift; sourceTree = "<group>"; };
+		63915D401F64D09700A97D84 /* StatHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatHomeViewController.swift; sourceTree = "<group>"; };
 		63915D421F64D0BE00A97D84 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		63915D441F64D11C00A97D84 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		63915D461F64D32600A97D84 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		63915D491F64D87800A97D84 /* SquatPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatPop.swift; sourceTree = "<group>"; };
 		63915D4B1F64D8C400A97D84 /* JumpPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPop.swift; sourceTree = "<group>"; };
+		63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatStatsViewController.swift; sourceTree = "<group>"; };
 		639D3EE51F60CF210059EF83 /* StonesAndChips.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = StonesAndChips.dat; path = VuforiaSampleSwift/StonesAndChips.dat; sourceTree = SOURCE_ROOT; };
 		639D3EE61F60CF210059EF83 /* StonesAndChips.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = StonesAndChips.xml; path = VuforiaSampleSwift/StonesAndChips.xml; sourceTree = SOURCE_ROOT; };
 		639D3EE71F60CF210059EF83 /* Tarmac.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = Tarmac.dat; path = VuforiaSampleSwift/Tarmac.dat; sourceTree = SOURCE_ROOT; };
@@ -115,11 +117,12 @@
 			isa = PBXGroup;
 			children = (
 				92AA110A1D27A5EB00E56CBE /* ViewController.swift */,
-				63915D401F64D09700A97D84 /* StartHomeViewController.swift */,
+				63915D401F64D09700A97D84 /* StatHomeViewController.swift */,
 				63915D421F64D0BE00A97D84 /* CategoryViewController.swift */,
 				63915D441F64D11C00A97D84 /* IntroViewController.swift */,
 				63915D491F64D87800A97D84 /* SquatPop.swift */,
 				63915D4B1F64D8C400A97D84 /* JumpPop.swift */,
+				63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -318,9 +321,10 @@
 				63915D451F64D11C00A97D84 /* IntroViewController.swift in Sources */,
 				63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */,
 				927B76EB1D2806EF00C4F5CC /* VuforiaManager.mm in Sources */,
-				63915D411F64D09700A97D84 /* StartHomeViewController.swift in Sources */,
+				63915D411F64D09700A97D84 /* StatHomeViewController.swift in Sources */,
 				63915D431F64D0BE00A97D84 /* CategoryViewController.swift in Sources */,
 				927B76EC1D2806EF00C4F5CC /* VuforiaObjects.mm in Sources */,
+				63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
