@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 	var hud: HudViewController?
-	let nodeRadius = 0.35
+	let nodeRadius = 1.0
 	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
 	let vuforiaDataSetFile = "hackbomo-3.xml"
@@ -347,7 +347,7 @@ extension ViewController{	//MARK: Drawing Functions
 	func drawAngle(between a: SCNNode, b: SCNNode, c: SCNNode, text: String){
 		let wordNode = SCNNode()
 		let myWord = SCNText(string: text, extrusionDepth: CGFloat(0))
-		myWord.font = UIFont.systemFont(ofSize: CGFloat(nodeRadius * 5))
+		myWord.font = UIFont.systemFont(ofSize: CGFloat((nodeRadius * 2.0)))
 		wordNode.geometry = myWord
 		myWord.firstMaterial?.diffuse.contents = UIColor.green
 		
@@ -357,6 +357,7 @@ extension ViewController{	//MARK: Drawing Functions
 		let z = (a.position.z + b.position.z + c.position.z) / 3
 		let newPos = SCNVector3Make(x, y, z)
 		wordNode.position = newPos
+		wordNode.position.x = wordNode.position.x 
 		wordNode.eulerAngles = SCNVector3Make(0, Float.pi, Float.pi/2)
 
 		scene.rootNode.addChildNode(wordNode)
