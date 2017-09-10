@@ -20,7 +20,7 @@ class IntroViewController: UIViewController {
 		super.viewDidLoad()
 		
 		mainScrollView.frame = view.frame
-		imageArray = [#imageLiteral(resourceName: "Swipe 1"), #imageLiteral(resourceName: "Swipe 2"), #imageLiteral(resourceName: "Swipe 3")]
+		imageArray = [#imageLiteral(resourceName: "Swipe 2"), #imageLiteral(resourceName: "Swipe 2-1"), #imageLiteral(resourceName: "Swipe 3")]
 		
 		for i in 0..<imageArray.count {
 			
