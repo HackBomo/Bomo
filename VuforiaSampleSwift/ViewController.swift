@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 	
+	let nodeRadius = 0.01
+	
 	let vuforiaLicenseKey = "AdNdvf//////AAAAGX73xujGC0bysCKLZBA64OEy16TIA5ZmV70H4YTYmkLFGTr/fGVBIEghyUqPX00RbK1rb1eS/YB1Szy8ncX4Ij6LmzTrqNoXSYh0AFbSg5Md6qr0WP68KEQqb5M0cvJnJG6yPte8jj6gfpFaQ7W9KpJdyPKNQ/McGah1EYMTrvP5LjM4oCgYJaPC62iPnRODg9fc3Ep0CWgDL5gR/ePBJ2IoSlibyw32hs/mpFE4RZfklrYKsVD3Mb3qiOEWFvcgA1LOyfrX7/RtWYqXA7ppeK0YJlWEXkQtRiVAHLSwhdvg2SlK3s6iusfgSXZ4ioveOi+LqLC+pDkFiik706acfEzc/B+380PyXCtJzhZetkpb"
 	let vuforiaDataSetFile = "hackbomo-2.xml"
 	
@@ -21,6 +23,9 @@ class ViewController: UIViewController {
 	
 	var nodes = [String: SCNNode]()
 	var seen = [String]()
+	var cylinderNodes = [SCNNode]()
+	var angleNodes = [String: SCNNode]()	//string is the middle element of the angle
+	
 	var allNames = ["bomo-trackers-1","bomo-trackers-2","bomo-trackers-3","bomo-trackers-4"]
 	
 	override func viewDidLoad() {
@@ -31,10 +36,14 @@ class ViewController: UIViewController {
 		for i in 1...4{
 			let currentName = base + "\(i)"
 			print("adding node: \(currentName)")
-			nodes[currentName] = SCNNode(geometry: SCNSphere(radius: 0.01))
+			nodes[currentName] = SCNNode(geometry: SCNSphere(radius: CGFloat(nodeRadius)))
 			nodes[currentName]!.name = currentName
 			nodes[currentName]!.geometry?.firstMaterial?.diffuse.contents = UIColor.purple
 		}
+		
+		//let wordGeometry = SCNText(string: "TEST", extrusionDepth: nodeRadius / 5)
+		//let wordNode = SCNNode(geometry: wordGeometry)
+		//wordNode.
 	
 		prepare()
 	}
@@ -194,8 +203,26 @@ extension ViewController: VuforiaManagerDelegate {
 			}
 			
 		}
-
 		
+		//draw Angles
+		for node in angleNodes.values{
+			node.removeFromParentNode()
+		}
+		print("\(angleNodes.count) angle nodes")
+		for i in 0..<seen.count{
+			if i >= seen.count - 2{
+				break
+			}
+			let a = nodes[allNames[i]]!
+			let b = nodes[allNames[i+1]]!
+			let c = nodes[allNames[i+2]]!
+			let angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
+			if angle.isNormal{
+				drawAngle(between: a, b: b, c: c, text: "\(Int(angle))%")
+			}else{
+				drawAngle(between: a, b: b, c: c, text: "error")
+			}
+		}
 		
 		guard let swiftRenderer = manager.eaglView.getRenderer() else {
 			print("Error, could not get renderer from eaglView")
@@ -212,12 +239,13 @@ extension ViewController: VuforiaManagerDelegate {
 		//NOT IN USE
 	}
 }
+
 extension ViewController{	//MARK: Drawing Functions
 	func drawCylinder(nodeA: SCNNode, nodeB: SCNNode) -> SCNNode{
 		let positionStart = nodeA.position
 		let positionEnd = nodeB.position
 		
-		let radius = CGFloat(0.005)
+		let radius = CGFloat(nodeRadius / 2)
 		let height = CGFloat(GLKVector3Distance(SCNVector3ToGLKVector3(positionStart), SCNVector3ToGLKVector3(positionEnd)))
 		
 		let startNode = SCNNode()
@@ -271,10 +299,28 @@ extension ViewController{	//MARK: Drawing Functions
 		//print("drew line at position \(cylinder.position)")
 		return returnNode
 	}
-
-}
-extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
+	func drawAngle(between a: SCNNode, b: SCNNode, c: SCNNode, text: String){
+		let myWord = SCNText(string: text, extrusionDepth: CGFloat(0.01))
+		myWord.firstMaterial?.diffuse.contents = UIColor.green
+		myWord.font = UIFont.systemFont(ofSize: CGFloat())
+		let wordNode = SCNNode(geometry: myWord)
+		angleNodes[b.name!] = wordNode
+		print("adding angle on node: \(b.name!)")
+		let x = (a.position.x + b.position.x + c.position.x) / 3
+		let y = (a.position.y + b.position.y + c.position.y) / 3
+		let z = (a.position.z + b.position.z + c.position.z) / 3
+		scene.rootNode.addChildNode(wordNode)
 	
+		let newPos = SCNVector3Make(0, 0, 0.3)
+		wordNode.position = newPos
+		
+		print("drawing angle \(text) at position: \(wordNode.position) on \(b.position)")
+	}
+		
+}
+
+
+extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
 	func scene(for view: VuforiaEAGLView!) -> SCNScene! {
 		//return our scene. EAGLView will take care of the camera
 		return self.scene
@@ -288,6 +334,28 @@ extension ViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDelegate {
 	func vuforiaEAGLView(_ view: VuforiaEAGLView!, didTouchCancel node: SCNNode!) {
 		print("touch cancel \(node.name ?? "")\n")
 	}
+}
+extension ViewController{	//Physics and Math
+	func getAngle(ankle: SCNVector3, knee: SCNVector3, hip: SCNVector3) -> Float {
+		let a = pow(knee.x - ankle.x,2) + pow(knee.y-ankle.y,2) + pow(knee.z-ankle.z,2)
+		let b = pow(knee.x-hip.x,2) + pow(knee.y-hip.y,2) + pow(knee.z-hip.z,2)
+		let c = pow(hip.x-ankle.x,2) + pow(hip.y-ankle.y,2) + pow(hip.z-ankle.z,2)
+		
+		var division = (360 / (2 * M_PI))
+		return (acos( (a+b-c) / sqrt(4*a*b))) * Float(division);
+		
+	}
+	
+	func getDepth(ankle: SCNVector3, hip: SCNVector3) -> Float {
+		let depth = (hip.y - ankle.y)
+		return depth
+	}
+	
+	func getInwards(knee: SCNVector3, hip: SCNVector3) -> Float {
+		let difference = (hip.z - knee.z)
+		return difference
+	}
+
 }
 
 
