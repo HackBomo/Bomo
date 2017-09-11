@@ -1,65 +1,20 @@
-# VuforiaSampleSwift
+# BOMO
+## AR Physical Therapy App (PennApps Semi-Finalist Fall 2017)
+BOMO is an AR mobile app that allows clinicians, coaches, and patients alike to easily quantify body movement.
 
-Vuforia sample code with SceneKit using Swift.
+*Built using Vuforia Object Tracking and SceneKit*
+DevPost Project Link: https://devpost.com/software/bomo
 
-## Requirement
+# What BOMO really solves #
+### The 3 C’s of Healthcare: Cost, convenience, consistency.
 
-* Xcode 8.3
-* iOS 10.3
-* Vuforia SDK for iOS v6.2.9
+### COST
+Software to accurately track joint flexion, walking patterns, and body movement is extremely costly and hard to setup in a normal environment: e.g., a home, gym, or small doctor’s office.
 
-## Setup
+### CONVENIENCE
+In order to actually get accurate measurmenets, you likely have to go to a motion analysis lab and have the ability to access one in the first place.
 
-* Download Vuforia SDK for iOS.  
-  [Vuforia SDK](https://developer.vuforia.com/downloads/sdk)
-* Put the SDK on your path as like bellow:  
-  `VuforiaSampleSwift/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9`
-* Download Vuforiat Sample Targets.  
-  [Vuforiat Sample](https://developer.vuforia.com/downloads/samples)
-* Put your targets on your path as like bellow:  
-  `VuforiaSampleSwift/VuforiaSampleSwift/VuforiaAssets/ImageTargets`
-* If you needs to fix to links to these files and settings in project, fix it.  
-  If you failed to build, check `Header Search Paths` and `Libarary Search Paths` in Build Settings.
-* Set your `lincenseKey` and `dataSetFile` in ViewController.swift.
+### CONSISTENCY 
+Physical therapists and doctors often don’t take enough care to consistently take accurate measurments and often “eyeball” their results.
 
 
-## Usage
-
-See ViewController.swift.
-
-``` swift
-
-vuforiaManager = VuforiaManager(licenseKey: "your license key", dataSetFile: "your target xml file")
-if let manager = vuforiaManager {
-    manager.delegate = self
-    manager.eaglView.sceneSource = self
-    manager.eaglView.delegate = self
-    manager.eaglView.setupRenderer()
-    self.view = manager.eaglView
-}
-
-vuforiaManager?.prepareWithOrientation(.Portrait)
-
-...
-
-do {
-    try vuforiaManager?.start()
-}catch let error {
-    print("\(error)")
-}
-
-```
-
-## ScreenShot
-
-![screenshot](https://github.com/yshrkt/VuforiaSampleSwift/blob/master/screenshot.jpg)
-
-## License
-
-MIT license. [See LICENSE](https://github.com/yshrkt/VuforiaSampleSwift/blob/master/LICENSE) for details.
-
-## Thanks
-
-I am referring to the following page.
-
-* [Making Augmented Reality app easily with Scenekit + Vuforia (in English)](http://qiita.com/akira108/items/a743138fca532ee193fe)
