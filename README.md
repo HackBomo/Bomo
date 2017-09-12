@@ -1,5 +1,5 @@
 ![bomo gif](https://github.com/HackBomo/Bomo/blob/master/Images/BomoGif.gif)
-<iframe src="https://giphy.com/embed/o4cs9ONuLZRM4" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/motion-capture-vuforia-bomo-o4cs9ONuLZRM4">via GIPHY</a></p>
+![squat_gif](https://github.com/HackBomo/Bomo/blob/master/Images/squat%20gif.gif)
 
 # BOMO
 ### AR 3D Motion Tracking App (PennApps Semi-Finalist Fall 2017)
