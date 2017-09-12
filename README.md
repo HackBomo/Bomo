@@ -1,3 +1,4 @@
+![donut gif](https://github.com/HackBomo/Bomo/blob/master/Images/Eating_Donuts.gif)
 ![bomo gif](https://github.com/HackBomo/Bomo/blob/master/Images/BomoGif.gif)
 ![squat_gif](https://github.com/HackBomo/Bomo/blob/master/Images/squat%20gif.gif)
 
