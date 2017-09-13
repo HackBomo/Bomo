@@ -32,8 +32,10 @@ In order to actually get accurate measurmenets, you likely have to go to a motio
 ### CONSISTENCY 
 Physical therapists and doctors often don’t take enough care to consistently take accurate measurments and often “eyeball” their results.
 
-![image](https://github.com/HackBomo/Bomo/blob/master/Images/Screenshots.jpg)
+![group](https://github.com/HackBomo/Bomo/blob/master/Images/GroupPhoto.jpg)
 
-![image](https://github.com/HackBomo/Bomo/blob/master/Images/Stats%20Page.jpg)
+![image1](https://github.com/HackBomo/Bomo/blob/master/Images/Screenshots.jpg)
+
+![image2](https://github.com/HackBomo/Bomo/blob/master/Images/Stats%20Page.jpg)
 
 
