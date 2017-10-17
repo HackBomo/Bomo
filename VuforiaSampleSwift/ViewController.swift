@@ -228,6 +228,38 @@ extension ViewController: VuforiaManagerDelegate {
 			time = CFAbsoluteTimeGetCurrent()
 		}
 		
+		//Create new realm objects
+		do{
+			let realm = try Realm()
+			
+			var dataPoint = DataPoint()
+			dataPoint.startTime = Date()
+			
+			if let n1 = nodes[allNames[0]]{
+				dataPoint.x1 = n1.position.x
+				dataPoint.y1 = n1.position.y
+				dataPoint.z1 = n1.position.z
+			}
+			if let n2 = nodes[allNames[1]]{
+				dataPoint.x2 = n2.position.x
+				dataPoint.y2 = n2.position.y
+				dataPoint.z2 = n2.position.z
+			}
+			if let n3 = nodes[allNames[2]]{
+				dataPoint.x3 = n3.position.x
+				dataPoint.y3 = n3.position.y
+				dataPoint.z3 = n3.position.z
+			}
+			
+			realm.write{
+				realm.add(dataPoint)
+			}
+			
+		}catch{
+			NSLog("Error saving: \(error)")
+		}
+		
+		
 		//session.addData(coordinate data, timestamp)
 		
 		
