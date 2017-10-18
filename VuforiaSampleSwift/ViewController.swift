@@ -15,6 +15,9 @@ protocol MainVCDelegate{
 }
 
 class ViewController: UIViewController {
+	var profileID: String?
+	var sessionID: String?
+	
 	var hud: HudViewController?
 	let nodeRadius = 1.0
 	
