@@ -78,22 +78,19 @@ extension ViewController: popupDelegate{
 	}
 }
 extension ViewController: HudViewDelegate{
-	func startSessionPressed(){
-		print("start session pressed")
-	}
-	func endSessionPressed(){
-		print("end session pressed")
-	}
-	func startSetPressed(){
-		print("start set pressed")
-	}
-	func endSetPressed(){
-		print("end set pressed")
-	}
-	func sliderDidChange(value: Int) {
-		//print("got: \(value)")
-		self.currentSlideVal = value
-	}
+    
+    func didSaveSession() {
+        
+    }
+    
+    func didStartSession() {
+        
+    }
+    
+    func didCancelSession() {
+        
+    }
+    
 	func didDismiss() {
 		performSegue(withIdentifier: "unwind", sender: self)
 	}
@@ -148,9 +145,10 @@ extension ViewController: VuforiaManagerDelegate {
 				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as! HudViewController
 				self.hud?.delegate = self
 				self.delegate = self.hud
-				self.present(self.hud!, animated: true, completion: {
-					print("presented the hud")
-				})
+                
+                self.present(self.hud!, animated: true, completion: {
+                    print("presented the hud")
+                })
 			}
 
 		}catch let error {
@@ -208,15 +206,20 @@ extension ViewController: VuforiaManagerDelegate {
 		for node in angleNodes.values{
 			node.removeFromParentNode()
 		}
+        
 		for i in 0..<seen.count{
 			if i >= seen.count - 2{
 				break
 			}
+            
 			let a = nodes[allNames[i]]!
 			let b = nodes[allNames[i+1]]!
 			let c = nodes[allNames[i+2]]!
+            
 			let angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
+            
 			drawAngle(between: a, b: b, c: c, angle: angle)
+            
 			self.delegate?.didCalculateAngle(angle: angle)
 		}
 		
@@ -441,15 +444,18 @@ extension ViewController{	//Physics and Math
 		return (acos( (a+b-c) / sqrt(4*a*b))) * Float(division);
 		
 	}
+    
 	func getDepth(ankle: SCNVector3, hip: SCNVector3) -> Float {
 		let depth = (hip.y - ankle.y)
 		return depth
 	}
+    
 	func getInwards(knee: SCNVector3, hip: SCNVector3) -> Float {
 		let difference = (hip.z - knee.z)
 		return difference
 	}
 }
+
 extension ViewController {
 	func didRecieveWillResignActiveNotification(_ notification: Notification) {
 		pause()
