@@ -14,4 +14,5 @@ class Session: Object{
 	dynamic var startTime: Date?
 	
 	
+	
 }

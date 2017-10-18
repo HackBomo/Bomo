@@ -8,6 +8,7 @@
 
 import UIKit
 import SpriteKit
+import RealmSwift
 
 protocol MainVCDelegate{
 	func didCalculateAngle(angle: Float)
@@ -239,22 +240,22 @@ extension ViewController: VuforiaManagerDelegate {
 			dataPoint.startTime = Date()
 			
 			if let n1 = nodes[allNames[0]]{
-				dataPoint.x1 = n1.position.x
-				dataPoint.y1 = n1.position.y
-				dataPoint.z1 = n1.position.z
+				dataPoint.x1 = Double(n1.position.x)
+				dataPoint.y1 = Double(n1.position.y)
+				dataPoint.z1 = Double(n1.position.z)
 			}
 			if let n2 = nodes[allNames[1]]{
-				dataPoint.x2 = n2.position.x
-				dataPoint.y2 = n2.position.y
-				dataPoint.z2 = n2.position.z
+				dataPoint.x2 = Double(n2.position.x)
+				dataPoint.y2 = Double(n2.position.y)
+				dataPoint.z2 = Double(n2.position.z)
 			}
 			if let n3 = nodes[allNames[2]]{
-				dataPoint.x3 = n3.position.x
-				dataPoint.y3 = n3.position.y
-				dataPoint.z3 = n3.position.z
+				dataPoint.x3 = Double(n3.position.x)
+				dataPoint.y3 = Double(n3.position.y)
+				dataPoint.z3 = Double(n3.position.z)
 			}
 			
-			realm.write{
+			try realm.write{
 				realm.add(dataPoint)
 			}
 			
