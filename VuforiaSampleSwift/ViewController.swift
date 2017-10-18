@@ -18,8 +18,6 @@ class ViewController: UIViewController {
 	var profileID: String?
 	var sessionID: String?
 	
-	var realmThread = DispatchQueue(label: <#T##String#>, qos: <#T##DispatchQoS#>, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
-	
 	var hud: HudViewController?
 	let nodeRadius = 1.0
 	
@@ -242,6 +240,7 @@ extension ViewController: VuforiaManagerDelegate {
 			
 			do{
 				let realm = try Realm()
+				guard let session = realm.object(ofType: Session, forPrimaryKey: sessionID)
 				
 				var dataPoint = DataPoint()
 				dataPoint.startTime = Date()
@@ -263,7 +262,7 @@ extension ViewController: VuforiaManagerDelegate {
 				}
 				
 				try realm.write{
-					realm.add(dataPoint)
+					session?.dataPoints.append(dataPoint)
 				}
 				
 			}catch{
