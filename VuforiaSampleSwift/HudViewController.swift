@@ -11,28 +11,24 @@ import UIKit
 import Charts
 
 protocol HudViewDelegate {
-	func startSessionPressed()
-	func endSessionPressed()
-	func startSetPressed()
-	func endSetPressed()
-	func sliderDidChange(value: Int)
+	func didStartSession()
+	func didSaveSession()
+    func didCancelSession()
 	func didDismiss()
 }
 
 class HudViewController: UIViewController{
 	
 	var delegate: HudViewDelegate?
-	@IBOutlet weak var startSetButton: UIButton!
-	@IBOutlet weak var endSetButton: UIButton!
-	@IBOutlet weak var startSessionButton: UIButton!
-	@IBOutlet weak var endSessionButton: UIButton!
-	@IBOutlet weak var slider: UISlider!
-	@IBOutlet weak var goalLabel: UILabel!
-	
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var backButton: UIButton!
+    
 	var currentSlideVal = 90
 	
 	@IBOutlet weak var realtimeLineChart: LineChartView!
-	@IBOutlet weak var popupView: UIView!
 	
 	
 	var lineChartEntry = [ChartDataEntry]()
@@ -40,14 +36,18 @@ class HudViewController: UIViewController{
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        cancelButton.layer.cornerRadius = 10
+        saveButton.layer.cornerRadius = 10
+        startButton.layer.cornerRadius = 10
+        
+        cancelButton.isHidden = true
+        saveButton.isHidden = true
+        backButton.isHidden = true
+        
 		prepRealtimeData()
 	}
-	override func viewDidAppear(_ animated: Bool) {
-		UIView.animate(withDuration: 0.3) { 
-			self.popupView.alpha = 0.9
-		}
-	}
-	
+
 	func prepRealtimeData(){
 		let data = LineChartData()
 		let dataset = LineChartDataSet(values: nil, label: nil)
@@ -83,51 +83,34 @@ class HudViewController: UIViewController{
 		lineChartSet.drawFilledEnabled = true
 		lineChartSet.colors = [UIColor.white]
 	}
-	
-	
-	@IBAction func sliderChanged(_ sender: Any) {
-		var val = (sender as! UISlider).value
-		self.currentSlideVal = Int(val)
-		self.delegate?.sliderDidChange(value: currentSlideVal)
-		self.goalLabel.text = "Goal flexion: \(self.currentSlideVal)"
-	}
-	
-	@IBAction func startSessionPressed(sender: AnyObject){
-		startSessionButton.isHidden = true
-		endSessionButton.isHidden = false
-		startSetButton.isHidden = false
-		endSetButton.isHidden = true
-		print("start session pressed")
-		delegate?.startSessionPressed()
-		
-	}
-	@IBAction func endSessionPressed(sender: AnyObject){
-		startSessionButton.isHidden = false
-		endSessionButton.isHidden = true
-		startSetButton.isHidden = true
-		endSetButton.isHidden = true
-		print("end session pressed")
-		delegate?.endSessionPressed()
-	}
-	@IBAction func startSetPressed(sender: AnyObject){
-		endSetButton.isHidden = false
-		startSetButton.isHidden = true
-		print("start set pressed")
-		delegate?.startSetPressed()
-	}
-	
-	@IBAction func endSetPressed(sender: AnyObject){
-		endSetButton.isHidden = true
-		startSetButton.isHidden = false
-		print("end set pressed")
-		delegate?.endSetPressed()
-	}
-	
-	@IBAction func closePressed(){
-		UIView.animate(withDuration: 0.3) { 
-			self.popupView.alpha = 0
-		}
-	}
+    
+    // MARK: MAIN HUD DELEGATE METHODS
+    
+    @IBAction func startPressed(_ sender: Any) {
+        self.delegate?.didStartSession()
+        
+        self.cancelButton.isHidden = false
+        self.saveButton.isHidden = false
+        self.startButton.isHidden = true
+    }
+    
+    @IBAction func cancelPressed(_ sender: Any) {
+        self.delegate?.didCancelSession()
+        
+        self.cancelButton.isHidden = true
+        self.saveButton.isHidden = true
+        self.startButton.isHidden = false
+    }
+    
+    @IBAction func savePressed(_ sender: Any) {
+        self.delegate?.didSaveSession()
+        
+        self.cancelButton.isHidden = true
+        self.saveButton.isHidden = true
+        self.startButton.isHidden = false
+
+    }
+
 	@IBAction func backPressed(){
 		performSegue(withIdentifier: "doubleUnwind", sender: self)
 	}
