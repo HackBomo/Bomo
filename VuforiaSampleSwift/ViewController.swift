@@ -240,9 +240,11 @@ extension ViewController: VuforiaManagerDelegate {
 			
 			do{
 				let realm = try Realm()
-				guard let session = realm.object(ofType: Session, forPrimaryKey: sessionID)
+				guard let session = realm.object(ofType: Session.self, forPrimaryKey: sessionID) else{
+					throw NSError(domain: "error getting session", code: 0, userInfo: nil)
+				}
 				
-				var dataPoint = DataPoint()
+				let dataPoint = DataPoint()
 				dataPoint.startTime = Date()
 				
 				if let n1 = nodes[allNames[0]]{
@@ -262,7 +264,7 @@ extension ViewController: VuforiaManagerDelegate {
 				}
 				
 				try realm.write{
-					session?.dataPoints.append(dataPoint)
+					session.dataPoints.append(dataPoint)
 				}
 				
 			}catch{
