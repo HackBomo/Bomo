@@ -11,7 +11,13 @@ import RealmSwift
 
 class Session: Object{
 	
+	dynamic var owner: Profile?
 	dynamic var startTime: Date?
+	let dataPoints = List<DataPoint>()
 	
+	let id = NSUUID().uuidString
+	override static func primaryKey() -> String? {
+		return "id"
+	}
 	
 }

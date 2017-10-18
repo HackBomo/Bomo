@@ -1,65 +1,41 @@
-# VuforiaSampleSwift
+![donut gif](https://github.com/HackBomo/Bomo/blob/master/Images/Eating_Donuts.gif)
+![bomo gif](https://github.com/HackBomo/Bomo/blob/master/Images/BomoGif.gif)
+![squat_gif](https://github.com/HackBomo/Bomo/blob/master/Images/squat%20gif.gif)
 
-Vuforia sample code with SceneKit using Swift.
+# BOMO
+### AR 3D Motion Tracking App (PennApps Semi-Finalist Fall 2017)
+*Built in Objective-C, C++, and Swift using Vuforia Object Tracking and SceneKit*
 
-## Requirement
+BOMO allows clinicians, coaches, and patients alike to easily and affordably quantify body movement.
 
-* Xcode 8.3
-* iOS 10.3
-* Vuforia SDK for iOS v6.2.9
+DevPost Project Link: https://devpost.com/software/bomo
 
-## Setup
+[![Demo Video](https://img.youtube.com/vi/T-njDnVP4bc9I/0.jpg)](https://www.youtube.com/watch?v=njDnVP4bc9I)
 
-* Download Vuforia SDK for iOS.  
-  [Vuforia SDK](https://developer.vuforia.com/downloads/sdk)
-* Put the SDK on your path as like bellow:  
-  `VuforiaSampleSwift/VuforiaSampleSwift/vuforia-sdk-ios-6-2-9`
-* Download Vuforiat Sample Targets.  
-  [Vuforiat Sample](https://developer.vuforia.com/downloads/samples)
-* Put your targets on your path as like bellow:  
-  `VuforiaSampleSwift/VuforiaSampleSwift/VuforiaAssets/ImageTargets`
-* If you needs to fix to links to these files and settings in project, fix it.  
-  If you failed to build, check `Header Search Paths` and `Libarary Search Paths` in Build Settings.
-* Set your `lincenseKey` and `dataSetFile` in ViewController.swift.
+Not only can BOMO track joint flexion angles, which are useful for measuring range of motion, but also BOMO can track joint movement in 3d, allowing users to track overall joint stabliity, identify muscular imbalances, and analyze common dysfunctions such as lateral knee movement during walking and running…all with just a smartphone.
 
 
-## Usage
+# How It Works
+BOMO uses Vuforia for offline object tracking and SceneKit to build and render the 3d skeletal overlay. This prototype uses physical markers to track joint movement, but with further development, pose estimation technology and improved phone hardware will allow us to forgo the markers and track 3d motion natively like the Xbox kinect.
 
-See ViewController.swift.
+# Vuforia?... Why not ARKit?
+Unfortunately, ARKit does not yet offer support for image/marker tracking, so we used Vuforia as the base library for our computer vision. Also, Vuforia is much faster.
 
-``` swift
+# What BOMO really solves
 
-vuforiaManager = VuforiaManager(licenseKey: "your license key", dataSetFile: "your target xml file")
-if let manager = vuforiaManager {
-    manager.delegate = self
-    manager.eaglView.sceneSource = self
-    manager.eaglView.delegate = self
-    manager.eaglView.setupRenderer()
-    self.view = manager.eaglView
-}
+### COST
+Software to accurately track joint flexion, walking patterns, and body movement is extremely costly and hard to setup in a normal environment: e.g., a home, gym, or small doctor’s office.
 
-vuforiaManager?.prepareWithOrientation(.Portrait)
+### CONVENIENCE
+In order to actually get accurate measurmenets, you likely have to go to a motion analysis lab and have the ability to access one in the first place.
 
-...
+### CONSISTENCY 
+Physical therapists and doctors often don’t take enough care to consistently take accurate measurments and often “eyeball” their results.
 
-do {
-    try vuforiaManager?.start()
-}catch let error {
-    print("\(error)")
-}
+![group](https://github.com/HackBomo/Bomo/blob/master/Images/GroupPhoto.jpg)
 
-```
+![image1](https://github.com/HackBomo/Bomo/blob/master/Images/Screenshots.jpg)
 
-## ScreenShot
+![image2](https://github.com/HackBomo/Bomo/blob/master/Images/Stats%20Page.jpg)
 
-![screenshot](https://github.com/yshrkt/VuforiaSampleSwift/blob/master/screenshot.jpg)
 
-## License
-
-MIT license. [See LICENSE](https://github.com/yshrkt/VuforiaSampleSwift/blob/master/LICENSE) for details.
-
-## Thanks
-
-I am referring to the following page.
-
-* [Making Augmented Reality app easily with Scenekit + Vuforia (in English)](http://qiita.com/akira108/items/a743138fca532ee193fe)

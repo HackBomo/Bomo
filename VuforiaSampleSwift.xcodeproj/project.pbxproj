@@ -29,6 +29,8 @@
 		639D3EEC1F60CF210059EF83 /* Tarmac.xml in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EE81F60CF210059EF83 /* Tarmac.xml */; };
 		639D3EEF1F60CF3A0059EF83 /* IT_about.html in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EED1F60CF3A0059EF83 /* IT_about.html */; };
 		639D3EF01F60CF3A0059EF83 /* IT.png in Resources */ = {isa = PBXBuildFile; fileRef = 639D3EEE1F60CF3A0059EF83 /* IT.png */; };
+		63A0860F1F9665C400A788F2 /* DataPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A0860E1F9665C400A788F2 /* DataPoint.swift */; };
+		63A086111F97EFA400A788F2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A086101F97EFA400A788F2 /* Profile.swift */; };
 		926096D41D4163B600510C24 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 926096D31D4163B600510C24 /* SpriteKit.framework */; };
 		927B76D71D27FDC600C4F5CC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B76D41D27FDC600C4F5CC /* AVFoundation.framework */; };
 		927B76D81D27FDC600C4F5CC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B76D51D27FDC600C4F5CC /* CoreMotion.framework */; };
@@ -75,6 +77,8 @@
 		639D3EE81F60CF210059EF83 /* Tarmac.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Tarmac.xml; path = VuforiaSampleSwift/Tarmac.xml; sourceTree = SOURCE_ROOT; };
 		639D3EED1F60CF3A0059EF83 /* IT_about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = IT_about.html; path = VuforiaSampleSwift/IT_about.html; sourceTree = SOURCE_ROOT; };
 		639D3EEE1F60CF3A0059EF83 /* IT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IT.png; path = VuforiaSampleSwift/IT.png; sourceTree = SOURCE_ROOT; };
+		63A0860E1F9665C400A788F2 /* DataPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPoint.swift; sourceTree = "<group>"; };
+		63A086101F97EFA400A788F2 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		7015F4523AC061B33C72F6B1 /* Pods-VuforiaSampleSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.release.xcconfig"; sourceTree = "<group>"; };
 		926096D31D4163B600510C24 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		927B76D31D27FDC600C4F5CC /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -227,6 +231,8 @@
 				92AA11801D27A6CD00E56CBE /* VuforiaSampleSwift-Bridging-Header.h */,
 				63915D4F1F64E36200A97D84 /* RealmManager.swift */,
 				63915D551F65063F00A97D84 /* Session.swift */,
+				63A086101F97EFA400A788F2 /* Profile.swift */,
+				63A0860E1F9665C400A788F2 /* DataPoint.swift */,
 				927B76E31D27FF2300C4F5CC /* VuforiaManager */,
 				927B76ED1D28070D00C4F5CC /* VuforiaAssets */,
 				92AA11081D27A5EB00E56CBE /* AppDelegate.swift */,
@@ -423,6 +429,7 @@
 				92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */,
 				63915D501F64E36200A97D84 /* RealmManager.swift in Sources */,
 				63915D4A1F64D87800A97D84 /* SquatPop.swift in Sources */,
+				63A086111F97EFA400A788F2 /* Profile.swift in Sources */,
 				63915D451F64D11C00A97D84 /* IntroViewController.swift in Sources */,
 				63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */,
 				927B76EB1D2806EF00C4F5CC /* VuforiaManager.mm in Sources */,
@@ -432,6 +439,7 @@
 				A96AFF281F64EE2700303C28 /* ExtendSquatViewController.swift in Sources */,
 				63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */,
 				63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */,
+				63A0860F1F9665C400A788F2 /* DataPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
