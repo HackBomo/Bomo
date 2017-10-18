@@ -18,6 +18,8 @@ class ViewController: UIViewController {
 	var profileID: String?
 	var sessionID: String?
 	
+	var realmThread = DispatchQueue(label: <#T##String#>, qos: <#T##DispatchQoS#>, attributes: <#T##DispatchQueue.Attributes#>, autoreleaseFrequency: <#T##DispatchQueue.AutoreleaseFrequency#>, target: <#T##DispatchQueue?#>)
+	
 	var hud: HudViewController?
 	let nodeRadius = 1.0
 	
@@ -236,37 +238,40 @@ extension ViewController: VuforiaManagerDelegate {
 		}
 		
 		//Create new realm objects
-		do{
-			let realm = try Realm()
+		if profileID != nil && sessionID != nil{
 			
-			var dataPoint = DataPoint()
-			dataPoint.startTime = Date()
-			
-			if let n1 = nodes[allNames[0]]{
-				dataPoint.x1 = Double(n1.position.x)
-				dataPoint.y1 = Double(n1.position.y)
-				dataPoint.z1 = Double(n1.position.z)
+			do{
+				let realm = try Realm()
+				
+				var dataPoint = DataPoint()
+				dataPoint.startTime = Date()
+				
+				if let n1 = nodes[allNames[0]]{
+					dataPoint.x1 = Double(n1.position.x)
+					dataPoint.y1 = Double(n1.position.y)
+					dataPoint.z1 = Double(n1.position.z)
+				}
+				if let n2 = nodes[allNames[1]]{
+					dataPoint.x2 = Double(n2.position.x)
+					dataPoint.y2 = Double(n2.position.y)
+					dataPoint.z2 = Double(n2.position.z)
+				}
+				if let n3 = nodes[allNames[2]]{
+					dataPoint.x3 = Double(n3.position.x)
+					dataPoint.y3 = Double(n3.position.y)
+					dataPoint.z3 = Double(n3.position.z)
+				}
+				
+				try realm.write{
+					realm.add(dataPoint)
+				}
+				
+			}catch{
+				NSLog("Error saving: \(error)")
 			}
-			if let n2 = nodes[allNames[1]]{
-				dataPoint.x2 = Double(n2.position.x)
-				dataPoint.y2 = Double(n2.position.y)
-				dataPoint.z2 = Double(n2.position.z)
-			}
-			if let n3 = nodes[allNames[2]]{
-				dataPoint.x3 = Double(n3.position.x)
-				dataPoint.y3 = Double(n3.position.y)
-				dataPoint.z3 = Double(n3.position.z)
-			}
-			
-			try realm.write{
-				realm.add(dataPoint)
-			}
-			
-		}catch{
-			NSLog("Error saving: \(error)")
+		}else{
+			NSLog("Error in Vuforia VC. Missing Profile ID or session ID, cannot save data")
 		}
-		
-		
 		//session.addData(coordinate data, timestamp)
 		
 		
