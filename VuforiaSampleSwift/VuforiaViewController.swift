@@ -232,12 +232,15 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 				break
 			}
             
-			let a = nodes[allNames[i]]!
-			let b = nodes[allNames[i+1]]!
-			let c = nodes[allNames[i+2]]!
             
-			angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
-			drawAngle(between: a, b: b, c: c, angle: angle)
+            //allnames = bomo-1, bomo-2, bomo-3, bomo-4
+            
+			let node1 = nodes[allNames[i]]!
+			let node2 = nodes[allNames[i+1]]!
+			let node3 = nodes[allNames[i+2]]!
+            
+			angle = getAngle(n1: node1.position, n2: node2.position, n3: node3.position)
+			drawAngle(between: node1, b: node2, c: node3, angle: angle)
             
 			self.delegate?.didCalculateAngle(angle: angle)
 		}
@@ -276,11 +279,13 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y1 = Double(n1.position.y)
 					dataPoint.z1 = Double(n1.position.z)
 				}
+                
 				if let n2 = nodes[allNames[1]]{
 					dataPoint.x2 = Double(n2.position.x)
 					dataPoint.y2 = Double(n2.position.y)
 					dataPoint.z2 = Double(n2.position.z)
 				}
+                
 				if let n3 = nodes[allNames[2]]{
 					dataPoint.x3 = Double(n3.position.x)
 					dataPoint.y3 = Double(n3.position.y)
@@ -474,12 +479,12 @@ extension VuforiaViewController: VuforiaEAGLViewSceneSource, VuforiaEAGLViewDele
 	}
 }
 extension VuforiaViewController{	//Physics and Math
-	func getAngle(ankle: SCNVector3, knee: SCNVector3, hip: SCNVector3) -> Float {
-		let a = pow(knee.x - ankle.x,2) + pow(knee.y-ankle.y,2) + pow(knee.z-ankle.z,2)
-		let b = pow(knee.x-hip.x,2) + pow(knee.y-hip.y,2) + pow(knee.z-hip.z,2)
-		let c = pow(hip.x-ankle.x,2) + pow(hip.y-ankle.y,2) + pow(hip.z-ankle.z,2)
+	func getAngle(n1: SCNVector3, n2: SCNVector3, n3: SCNVector3) -> Float {
+		let a = pow(n2.x - n1.x,2) + pow(n2.y-n1.y,2) + pow(n2.z-n1.z,2)
+		let b = pow(n2.x-n3.x,2) + pow(n2.y-n3.y,2) + pow(n2.z-n3.z,2)
+		let c = pow(n3.x-n1.x,2) + pow(n3.y-n1.y,2) + pow(n3.z-n1.z,2)
 		
-		var division = (360 / (2 * M_PI))
+        let division = (360 / (2 * M_PI))
 		return (acos( (a+b-c) / sqrt(4*a*b))) * Float(division);
 		
 	}

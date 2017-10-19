@@ -20,6 +20,7 @@ class SubjectDetailViewController: UIViewController {
     // MARK: Realm references
 	var profileID: String?
 	var subject: Profile?
+    var sessionType: String?
 	
     @IBOutlet weak var startNewSessionButton: UIButton! {
         didSet {
@@ -37,7 +38,32 @@ class SubjectDetailViewController: UIViewController {
     }
 
 	@IBAction func starSessionPressed(sender: AnyObject){
-		self.performSegue(withIdentifier: "segueVuforiaVC", sender: self)
+        
+        let alert = UIAlertController(title: "Name session", message: nil, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Begin", style: .default) { (_) in
+            if let field = alert.textFields?[0] {
+                
+                // Create the subject with the test field
+                self.sessionType = field.text!
+                
+                self.performSegue(withIdentifier: "segueVuforiaVC", sender: self)
+
+            } else {
+                print("not filled in")
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter session type here"
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
 	}
 
 	@IBAction func exportAllPressed(sender: AnyObject){
@@ -59,6 +85,7 @@ class SubjectDetailViewController: UIViewController {
 			let session = Session()
 			try realm.write {
 				session.owner = profile
+                session.sessionType = self.sessionType
 				profile.sessions.append(session)
 			}
 			return session.id
@@ -159,7 +186,7 @@ class SubjectDetailViewController: UIViewController {
 				}
 				df.dateStyle = .short
 				df.timeStyle = .short
-				let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime)).csv"
+				let fileName = "\(session.owner!.subjectNumber)_\(session.sessionType!)_\(df.string(from: session.startTime)).csv"
 				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
 				
 			}
@@ -259,6 +286,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         
         cell.sessionID = id
         cell.sessionLabel.text = "Session: \(indexPath.row+1)"
+        cell.sessionTypeLabel.text = currentSession.sessionType
         
         let df = DateFormatter()
         df.dateStyle = .long

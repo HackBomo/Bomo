@@ -17,6 +17,7 @@ class SessionCell: UITableViewCell {
 	var delegate: CellButtonDelegate?
     
     // MARK: IBOutlets
+    @IBOutlet weak var sessionTypeLabel: UILabel!
     @IBOutlet weak var sessionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var exportButton: UIButton!

@@ -12,6 +12,7 @@ import RealmSwift
 class Session: Object{
 	
 	dynamic var owner: Profile?
+    dynamic var sessionType: String?
 	dynamic var startTime = Date()
 	let dataPoints = List<DataPoint>()
 	
