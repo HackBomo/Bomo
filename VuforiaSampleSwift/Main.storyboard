@@ -219,6 +219,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="gWf-SX-Vcc" id="iAJ-6Z-teO"/>
+                                    <outlet property="delegate" destination="gWf-SX-Vcc" id="dz9-dc-5z5"/>
+                                </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-Uf-ZS9">
                                 <rect key="frame" x="16" y="548" width="343" height="57"/>
