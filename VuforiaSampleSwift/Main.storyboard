@@ -97,7 +97,7 @@
                                         <connections>
                                             <outlet property="sessionsLabel" destination="hLM-KA-UKl" id="q4d-rn-2PB"/>
                                             <outlet property="subjectLabel" destination="e6L-at-CHy" id="d2H-74-LSW"/>
-                                            <segue destination="gWf-SX-Vcc" kind="show" id="qMf-Yx-mHa"/>
+                                            <segue destination="gWf-SX-Vcc" kind="show" identifier="segueSubjectDetailVC" id="qMf-Yx-mHa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -216,7 +216,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="6Fl-wi-bJk"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="segueVuforiaVC" id="6Fl-wi-bJk"/>
                                 </connections>
                             </button>
                         </subviews>
