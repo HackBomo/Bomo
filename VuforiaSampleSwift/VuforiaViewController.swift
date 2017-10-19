@@ -42,7 +42,6 @@ class VuforiaViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
         
-        self.navi
 		startVuforia()
 	}
 	func startVuforia(){
@@ -209,7 +208,7 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 			node.removeFromParentNode()
 		}
 		
-		var angle = 0
+        var angle: Float = 0
 		for i in 0..<seen.count{
 			if i >= seen.count - 2{
 				break
@@ -262,14 +261,7 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y3 = Double(n3.position.y)
 					dataPoint.z3 = Double(n3.position.z)
 				}
-<<<<<<< HEAD
-                
-                
-                dataPoint.angle = 0
-				
-=======
->>>>>>> origin/master
-				try realm.write{
+                try realm.write{
 					session.dataPoints.append(dataPoint)
 				}
 				
