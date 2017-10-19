@@ -184,6 +184,11 @@ class SubjectDetailViewController: UIViewController {
 			NSLog("Error exporting data, can't open realm: \(error)")
 		}
 	}
+
+	 @IBAction func unwindToSubjectDetailVC(segue: UIStoryboardSegue) {
+		
+	}
+
 }
 
 extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSource {
