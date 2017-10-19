@@ -180,8 +180,9 @@ class SubjectDetailViewController: UIViewController {
 			
 			var dataString = NSMutableString()
 			dataString.append("Date, angle, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
+            
 			for dp in session.dataPoints{
-				dataString.append("\(df.string(from: dp.startTime!)), \(dp.angle), \(dp.x1), \(dp.y1), \(dp.z1), ")
+				dataString.append("\(dp.startTimeString!)), \(dp.angle), \(dp.x1), \(dp.y1), \(dp.z1), ")
 				dataString.append("\(dp.x2), \(dp.y2), \(dp.z2), \(dp.x3), \(dp.y3), \(dp.z3)\n")
 			}
 			
@@ -249,8 +250,13 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         let id = currentSession.id
         
         cell.sessionID = id
-        cell.sessionLabel.text = "Session: \(id)"
-        cell.dateLabel.text = "Date: \(String(describing: currentSession.startTime))"
+        cell.sessionLabel.text = "Session: \(indexPath.row+1)"
+        
+        let df = DateFormatter()
+        df.dateStyle = .long
+        df.timeStyle = .medium
+
+        cell.dateLabel.text = "\(df.string(from: currentSession.startTime))"
         cell.delegate = self
         return cell
 	}
