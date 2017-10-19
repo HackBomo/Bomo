@@ -12,8 +12,9 @@ import RealmSwift
 class Profile: Object{
 	
 	@objc dynamic var subjectNumber = ""
+	@objc dynamic var id = NSUUID().uuidString
+	
 	let sessions = List<Session>()
-	let id = NSUUID().uuidString
 	
 	override static func primaryKey() -> String? {
 		return "id"

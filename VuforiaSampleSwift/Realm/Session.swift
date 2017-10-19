@@ -15,7 +15,7 @@ class Session: Object{
 	dynamic var startTime = Date()
 	let dataPoints = List<DataPoint>()
 	
-	let id = NSUUID().uuidString
+	@objc dynamic var id = NSUUID().uuidString
 	override static func primaryKey() -> String? {
 		return "id"
 	}
