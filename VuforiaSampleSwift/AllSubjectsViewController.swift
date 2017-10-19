@@ -49,7 +49,7 @@ class AllSubjectsViewController: UIViewController {
 			NSLog("Error creating subject in AllSubjectsVC")
 		}
 	}
-	func deleteSubject(with profileID: String){
+	func deleteSubject(with profileID: String) -> Bool{
 		do{
 			let realm = try Realm()
 			guard let profile = realm.object(ofType: Profile.self, forPrimaryKey: profileID) else{
