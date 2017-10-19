@@ -12,12 +12,7 @@
 		6317A0411F64678100B5AEAF /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6317A0401F64678100B5AEAF /* ARManager.swift */; };
 		63915D3E1F647AAD00A97D84 /* hackbomo-2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */; };
 		63915D3F1F647AAD00A97D84 /* hackbomo-2.dat in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */; };
-		63915D431F64D0BE00A97D84 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D421F64D0BE00A97D84 /* CategoryViewController.swift */; };
-		63915D451F64D11C00A97D84 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D441F64D11C00A97D84 /* IntroViewController.swift */; };
 		63915D471F64D32600A97D84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63915D461F64D32600A97D84 /* Main.storyboard */; };
-		63915D4A1F64D87800A97D84 /* SquatPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D491F64D87800A97D84 /* SquatPop.swift */; };
-		63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4B1F64D8C400A97D84 /* JumpPop.swift */; };
-		63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */; };
 		63915D501F64E36200A97D84 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D4F1F64E36200A97D84 /* RealmManager.swift */; };
 		63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D531F64F5CD00A97D84 /* HudViewController.swift */; };
 		63915D561F65063F00A97D84 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63915D551F65063F00A97D84 /* Session.swift */; };
@@ -45,13 +40,12 @@
 		927B77091D282DF100C4F5CC /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B76D31D27FDC600C4F5CC /* AudioToolbox.framework */; };
 		927B770B1D282E0A00C4F5CC /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 927B770A1D282E0A00C4F5CC /* MediaPlayer.framework */; };
 		92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA11081D27A5EB00E56CBE /* AppDelegate.swift */; };
-		92AA110B1D27A5EB00E56CBE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA110A1D27A5EB00E56CBE /* ViewController.swift */; };
+		92AA110B1D27A5EB00E56CBE /* VuforiaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AA110A1D27A5EB00E56CBE /* VuforiaViewController.swift */; };
 		92AA11101D27A5EB00E56CBE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92AA110F1D27A5EB00E56CBE /* Assets.xcassets */; };
 		92AA11131D27A5EB00E56CBE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */; };
 		92AA11851D27B96300E56CBE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 92AA11841D27B96300E56CBE /* Localizable.strings */; };
 		A96AFF241F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 in Resources */ = {isa = PBXBuildFile; fileRef = A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */; };
 		A96AFF261F64DC2000303C28 /* libVuforia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A96AFF251F64DC2000303C28 /* libVuforia.a */; };
-		A96AFF281F64EE2700303C28 /* ExtendSquatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AFF271F64EE2700303C28 /* ExtendSquatViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,12 +54,7 @@
 		6317A0401F64678100B5AEAF /* ARManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
 		63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hackbomo-2.xml"; path = "VuforiaSampleSwift/hackbomo-2.xml"; sourceTree = SOURCE_ROOT; };
 		63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hackbomo-2.dat"; path = "VuforiaSampleSwift/hackbomo-2.dat"; sourceTree = SOURCE_ROOT; };
-		63915D421F64D0BE00A97D84 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		63915D441F64D11C00A97D84 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		63915D461F64D32600A97D84 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		63915D491F64D87800A97D84 /* SquatPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatPop.swift; sourceTree = "<group>"; };
-		63915D4B1F64D8C400A97D84 /* JumpPop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpPop.swift; sourceTree = "<group>"; };
-		63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquatStatsViewController.swift; sourceTree = "<group>"; };
 		63915D4F1F64E36200A97D84 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		63915D531F64F5CD00A97D84 /* HudViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HudViewController.swift; sourceTree = "<group>"; };
 		63915D551F65063F00A97D84 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -99,7 +88,7 @@
 		927B770A1D282E0A00C4F5CC /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		92AA11051D27A5EB00E56CBE /* VuforiaSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VuforiaSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92AA11081D27A5EB00E56CBE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		92AA110A1D27A5EB00E56CBE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		92AA110A1D27A5EB00E56CBE /* VuforiaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VuforiaViewController.swift; sourceTree = "<group>"; };
 		92AA110F1D27A5EB00E56CBE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92AA11121D27A5EB00E56CBE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		92AA11141D27A5EB00E56CBE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -109,7 +98,6 @@
 		A96AFF211F64DB4500303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-5-19/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
 		A96AFF231F64DC0A00303C28 /* vuforia-sdk-ios-6-2-9 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "vuforia-sdk-ios-6-2-9"; sourceTree = "<group>"; };
 		A96AFF251F64DC2000303C28 /* libVuforia.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libVuforia.a; path = "VuforiaSampleSwift/vuforia-sdk-ios-6-2-9/build/lib/arm/libVuforia.a"; sourceTree = "<group>"; };
-		A96AFF271F64EE2700303C28 /* ExtendSquatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtendSquatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,13 +143,8 @@
 		63915D481F64D6B600A97D84 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				92AA110A1D27A5EB00E56CBE /* ViewController.swift */,
-				63915D421F64D0BE00A97D84 /* CategoryViewController.swift */,
-				63915D441F64D11C00A97D84 /* IntroViewController.swift */,
-				63915D491F64D87800A97D84 /* SquatPop.swift */,
-				63915D4B1F64D8C400A97D84 /* JumpPop.swift */,
-				63915D4D1F64DACE00A97D84 /* SquatStatsViewController.swift */,
-				A96AFF271F64EE2700303C28 /* ExtendSquatViewController.swift */,
+				63915D531F64F5CD00A97D84 /* HudViewController.swift */,
+				92AA110A1D27A5EB00E56CBE /* VuforiaViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -240,7 +223,6 @@
 				63915D481F64D6B600A97D84 /* ViewControllers */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
 				63915D461F64D32600A97D84 /* Main.storyboard */,
-				63915D531F64F5CD00A97D84 /* HudViewController.swift */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
 				92AA11141D27A5EB00E56CBE /* Info.plist */,
 				92AA11841D27B96300E56CBE /* Localizable.strings */,
@@ -425,19 +407,13 @@
 				927B76EA1D2806EF00C4F5CC /* VuforiaEAGLView.mm in Sources */,
 				6317A0411F64678100B5AEAF /* ARManager.swift in Sources */,
 				927B76FD1D2816DB00C4F5CC /* VuforiaShaderUtils.m in Sources */,
-				92AA110B1D27A5EB00E56CBE /* ViewController.swift in Sources */,
+				92AA110B1D27A5EB00E56CBE /* VuforiaViewController.swift in Sources */,
 				92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */,
 				63915D501F64E36200A97D84 /* RealmManager.swift in Sources */,
-				63915D4A1F64D87800A97D84 /* SquatPop.swift in Sources */,
 				63A086111F97EFA400A788F2 /* Profile.swift in Sources */,
-				63915D451F64D11C00A97D84 /* IntroViewController.swift in Sources */,
-				63915D4C1F64D8C400A97D84 /* JumpPop.swift in Sources */,
 				927B76EB1D2806EF00C4F5CC /* VuforiaManager.mm in Sources */,
-				63915D431F64D0BE00A97D84 /* CategoryViewController.swift in Sources */,
 				927B76EC1D2806EF00C4F5CC /* VuforiaObjects.mm in Sources */,
 				63915D561F65063F00A97D84 /* Session.swift in Sources */,
-				A96AFF281F64EE2700303C28 /* ExtendSquatViewController.swift in Sources */,
-				63915D4E1F64DACE00A97D84 /* SquatStatsViewController.swift in Sources */,
 				63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */,
 				63A0860F1F9665C400A788F2 /* DataPoint.swift in Sources */,
 			);

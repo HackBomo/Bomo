@@ -11,7 +11,6 @@ import UIKit
 import Charts
 
 protocol HudViewDelegate {
-	func didStartSession()
 	func didSaveSession()
     func didCancelSession()
 	func didDismiss()
@@ -23,7 +22,6 @@ class HudViewController: UIViewController{
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     
 	var currentSlideVal = 90
@@ -39,11 +37,6 @@ class HudViewController: UIViewController{
         
         cancelButton.layer.cornerRadius = 10
         saveButton.layer.cornerRadius = 10
-        startButton.layer.cornerRadius = 10
-        
-        cancelButton.isHidden = true
-        saveButton.isHidden = true
-        backButton.isHidden = true
         
 		prepRealtimeData()
 	}
@@ -86,28 +79,12 @@ class HudViewController: UIViewController{
     
     // MARK: MAIN HUD DELEGATE METHODS
     
-    @IBAction func startPressed(_ sender: Any) {
-        self.delegate?.didStartSession()
-        
-        self.cancelButton.isHidden = false
-        self.saveButton.isHidden = false
-        self.startButton.isHidden = true
-    }
-    
     @IBAction func cancelPressed(_ sender: Any) {
         self.delegate?.didCancelSession()
-        
-        self.cancelButton.isHidden = true
-        self.saveButton.isHidden = true
-        self.startButton.isHidden = false
     }
     
     @IBAction func savePressed(_ sender: Any) {
         self.delegate?.didSaveSession()
-        
-        self.cancelButton.isHidden = true
-        self.saveButton.isHidden = true
-        self.startButton.isHidden = false
 
     }
 
