@@ -139,6 +139,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		368494741F983FAA00D0D1A4 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				63915D4F1F64E36200A97D84 /* RealmManager.swift */,
+				63915D551F65063F00A97D84 /* Session.swift */,
+				63A086101F97EFA400A788F2 /* Profile.swift */,
+				63A0860E1F9665C400A788F2 /* DataPoint.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		36DDC9991F98394F002CE98B /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,11 +241,8 @@
 		92AA11071D27A5EB00E56CBE /* VuforiaSampleSwift */ = {
 			isa = PBXGroup;
 			children = (
+				368494741F983FAA00D0D1A4 /* Realm */,
 				92AA11801D27A6CD00E56CBE /* VuforiaSampleSwift-Bridging-Header.h */,
-				63915D4F1F64E36200A97D84 /* RealmManager.swift */,
-				63915D551F65063F00A97D84 /* Session.swift */,
-				63A086101F97EFA400A788F2 /* Profile.swift */,
-				63A0860E1F9665C400A788F2 /* DataPoint.swift */,
 				927B76E31D27FF2300C4F5CC /* VuforiaManager */,
 				927B76ED1D28070D00C4F5CC /* VuforiaAssets */,
 				92AA11081D27A5EB00E56CBE /* AppDelegate.swift */,

@@ -23,7 +23,8 @@ class SessionCell: UITableViewCell {
     @IBOutlet weak var exportButton: UIButton!
     
     override func awakeFromNib() {
-        
+        exportButton.layer.cornerRadius = 10
+        exportButton.clipsToBounds = true
     }
     
     // MARK: IBActions

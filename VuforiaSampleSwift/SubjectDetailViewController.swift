@@ -12,11 +12,16 @@ import RealmSwift
 
 class SubjectDetailViewController: UIViewController {
 	
+    // MARK: Realm references
 	var profileID: String?
 	var subject: Profile?
 	
+    // MARK: IBOutlets
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadSubject()
     }
 	
 	func createSession() -> String?{
@@ -70,5 +75,45 @@ class SubjectDetailViewController: UIViewController {
 			vc.sessionID = sender as! String
 		}
 	}
+    
+}
+
+extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        guard let subject = self.subject else {
+            return 0
+        }
+        
+        return subject.sessions.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell") as! SessionCell
+        
+        guard let sessions = subject?.sessions else {
+            return cell
+        }
+        
+        let currentSession = sessions[indexPath.row]
+        let id = currentSession.id
+        
+        cell.sessionID = id
+        cell.sessionLabel.text = "Session: \(id)"
+        cell.dateLabel.text = "Date: \(String(describing: currentSession.startTime))"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     
 }
