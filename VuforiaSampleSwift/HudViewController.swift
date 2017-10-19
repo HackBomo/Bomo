@@ -80,7 +80,13 @@ class HudViewController: UIViewController{
     // MARK: MAIN HUD DELEGATE METHODS
     
     @IBAction func cancelPressed(_ sender: Any) {
-        self.delegate?.didCancelSession()
+        
+        let alert = UIAlertController(title: "Cancel session", message: "Are you sure you want to cancel?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (alert) in
+            self.delegate?.didCancelSession()
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func savePressed(_ sender: Any) {
