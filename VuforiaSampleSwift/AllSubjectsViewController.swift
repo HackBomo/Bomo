@@ -38,7 +38,10 @@ class AllSubjectsViewController: UIViewController {
 	func deleteUser(with id: String){
 		do{
 			let realm = try Realm()
-			let user = realm.object(ofType: Profile.self, forPrimaryKey: id)
+			guard let user = realm.object(ofType: Profile.self, forPrimaryKey: id) else{
+				NSLog("Error deleting user, not found")
+				return
+			}
 			try realm.write {
 				realm.delete(user)
 			}

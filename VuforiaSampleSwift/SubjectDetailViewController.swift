@@ -103,7 +103,10 @@ class SubjectDetailViewController: UIViewController {
 	func deleteSession(with id: String){
 		do{
 			let realm = try Realm()
-			let session = realm.object(ofType: Session.self, forPrimaryKey: id)
+			guard let session = realm.object(ofType: Session.self, forPrimaryKey: id) else{
+				NSLog("eror deleting session, not found")
+				return
+			}
 			realm.write {
 				realm.delete(session)
 			}
