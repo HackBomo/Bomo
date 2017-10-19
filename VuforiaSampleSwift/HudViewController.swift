@@ -20,12 +20,10 @@ class HudViewController: UIViewController{
 	
 	var delegate: HudViewDelegate?
     
+    // MARK: IBOutlets
+    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
-    
-	var currentSlideVal = 90
-	
 	@IBOutlet weak var realtimeLineChart: LineChartView!
 	
 	
@@ -99,8 +97,7 @@ class HudViewController: UIViewController{
 
 	@IBAction func backPressed(){
 		performSegue(withIdentifier: "unwindToSubjectDetailVC", sender: self)
-	}
-	
+	}	
 }
 
 extension HudViewController: MainVCDelegate {
@@ -113,7 +110,7 @@ extension HudViewController: MainVCDelegate {
 		self.realtimeLineChart.data?.addEntry(newEntry, dataSetIndex: 0)
 		
 		//scrolls the view if larger than 100 points
-		if((self.realtimeLineChart.data?.entryCount)! > 50) {
+		if((self.realtimeLineChart.data?.entryCount)! > 100) {
 			self.realtimeLineChart.data?.removeEntry(xValue: 0, dataSetIndex: 0)
 		}
 		

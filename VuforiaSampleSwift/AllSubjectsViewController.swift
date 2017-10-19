@@ -116,6 +116,10 @@ extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate 
 		return subjects!.count
 	}
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard subjects != nil, subjects!.count > indexPath.row else{
 			NSLog("Cannot make cell for profile")
@@ -125,7 +129,7 @@ extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate 
 		let cell = tableView.dequeueReusableCell(withIdentifier: "testSubjectCell") as! TestSubjectCell
 		cell.testSubjectID = profile.id
 		cell.sessionsLabel.text = "Sessions: \(profile.sessions.count)"
-		cell.subjectLabel.text = "Subject Number: \(profile.subjectNumber)"
+		cell.subjectLabel.text = "Subject: \(profile.subjectNumber)"
 		return cell
 	}
 	

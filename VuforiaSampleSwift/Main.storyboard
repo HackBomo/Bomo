@@ -322,21 +322,8 @@
                                     <constraint firstItem="bCC-ww-IYW" firstAttribute="baseline" secondItem="tpt-fL-NFe" secondAttribute="firstBaseline" id="z4L-q0-dZJ"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fdH-mj-dGf" userLabel="back">
-                                <rect key="frame" x="10" y="10" width="15" height="26"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="BPT-mV-uZo"/>
-                                    <constraint firstAttribute="height" constant="26" id="IyY-GF-dsF"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="back"/>
-                                <connections>
-                                    <action selector="backPressed" destination="j9V-LF-o0c" eventType="touchUpInside" id="qNy-3W-uvw"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="fdH-mj-dGf" firstAttribute="top" secondItem="xBM-4w-n25" secondAttribute="top" constant="10" id="7bV-8Z-qwf"/>
-                            <constraint firstItem="fdH-mj-dGf" firstAttribute="leading" secondItem="xBM-4w-n25" secondAttribute="leading" constant="10" id="8WU-C8-gCX"/>
                             <constraint firstItem="AI8-gQ-uYz" firstAttribute="leading" secondItem="xBM-4w-n25" secondAttribute="leading" id="Omi-Vv-Uei"/>
                             <constraint firstAttribute="trailing" secondItem="AI8-gQ-uYz" secondAttribute="trailing" id="W79-eU-kU2"/>
                             <constraint firstItem="AI8-gQ-uYz" firstAttribute="top" secondItem="xBM-4w-n25" secondAttribute="top" id="XeN-Xf-PzR"/>
@@ -344,7 +331,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="fdH-mj-dGf" id="X9n-mQ-tv0"/>
                         <outlet property="cancelButton" destination="bCC-ww-IYW" id="L08-v6-zUL"/>
                         <outlet property="realtimeLineChart" destination="Sb4-sf-3Fq" id="Inj-0g-mMD"/>
                         <outlet property="saveButton" destination="tpt-fL-NFe" id="oKX-hX-BLz"/>
@@ -357,7 +343,4 @@
             <point key="canvasLocation" x="3396" y="134"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="back" width="120" height="220"/>
-    </resources>
 </document>

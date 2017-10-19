@@ -44,6 +44,7 @@ class VuforiaViewController: UIViewController {
         
 		startVuforia()
 	}
+    
 	func startVuforia(){
 		let base = "bomo-trackers-"
 		for i in 1...4{
@@ -63,9 +64,13 @@ class VuforiaViewController: UIViewController {
 	}
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+
 	}
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+
 		do {
 		try vuforiaManager?.stop()
 		}catch let error {
