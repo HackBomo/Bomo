@@ -41,6 +41,8 @@ class VuforiaViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        
+        self.navi
 		startVuforia()
 	}
 	func startVuforia(){
@@ -139,7 +141,9 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 		do {
 			try vuforiaManager?.start()
 			vuforiaManager?.setContinuousAutofocusEnabled(true)
+            
 			DispatchQueue.main.async {
+                
 				self.hud = self.storyboard?.instantiateViewController(withIdentifier: "hud") as! HudViewController
 				self.hud?.delegate = self
 				self.delegate = self.hud

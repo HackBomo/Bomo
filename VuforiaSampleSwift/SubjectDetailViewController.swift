@@ -143,7 +143,7 @@ class SubjectDetailViewController: UIViewController {
 	func exportSessionData(sessionId: String){
 		do{
 			let realm = try Realm()
-			guard let session = realm.object(ofType: Session.self, forPrimaryKey: sessionID) else{
+			guard let session = realm.object(ofType: Session.self, forPrimaryKey: sessionId) else{
 				NSLog("Error exporting session, can't find session")
 				return
 			}
