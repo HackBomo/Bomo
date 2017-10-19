@@ -235,6 +235,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 				return
 			}
 			deleteSession(with: id)
+			tableView.reloadData()
 		}
 	}
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

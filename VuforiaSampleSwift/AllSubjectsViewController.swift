@@ -154,6 +154,8 @@ extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate 
 				return
 			}
 			deleteUser(with: id)
+			tableView.reloadData()
+
 		}
 	}
 	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
