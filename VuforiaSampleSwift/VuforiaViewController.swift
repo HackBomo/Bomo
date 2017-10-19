@@ -286,13 +286,19 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y3 = Double(n3.position.y)
 					dataPoint.z3 = Double(n3.position.z)
 				}
+<<<<<<< HEAD
                 
                 print("DATA: \(dataPoint)")
                 
                 try realm.write{
 					session.dataPoints.append(dataPoint)
+=======
+				if dataPoint.x1 != 0 && dataPoint.x2 != 0 && dataPoint.x3 != 0{
+					try realm.write{
+						session.dataPoints.append(dataPoint)
+					}
+>>>>>>> origin/master
 				}
-				
 			}catch{
 				NSLog("Error saving: \(error)")
 			}

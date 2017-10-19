@@ -45,9 +45,13 @@ class SubjectDetailViewController: UIViewController {
 	func createSession() -> String?{
 		do{
 			let realm = try Realm()
+			guard let profile = realm.object(ofType: Profile.self, forPrimaryKey: profileID) else{
+				NSLog("Error creating session, could not get user profile")
+				return nil
+			}
 			let session = Session()
 			try realm.write {
-				realm.add(session)
+				profile.sessions.append(session)
 			}
 			return session.id
 		}catch{
@@ -91,6 +95,7 @@ class SubjectDetailViewController: UIViewController {
 			let vc = segue.destination as! VuforiaViewController
 			vc.profileID = self.profileID
 			vc.sessionID = createSession()
+			NSLog("Successfully created a new session")
 		}
 	}
 
@@ -197,27 +202,22 @@ class SubjectDetailViewController: UIViewController {
 extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         guard let subject = self.subject else {
             return 0
         }
-        
+
         return subject.sessions.count
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell") as! SessionCell
-        
         guard let sessions = subject?.sessions else {
             return cell
         }
-        
         let currentSession = sessions[indexPath.row]
         let id = currentSession.id
         
@@ -226,13 +226,10 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         cell.dateLabel.text = "Date: \(String(describing: currentSession.startTime))"
         cell.delegate = self
         return cell
-    }
-    
+	}
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }
-
-    
 }
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
