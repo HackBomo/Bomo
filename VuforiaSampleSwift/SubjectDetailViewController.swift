@@ -24,6 +24,11 @@ class SubjectDetailViewController: UIViewController {
         loadSubject()
     }
 	
+	@IBAction func starSessionPressed(sender: AnyObject){
+		self.performSegue(withIdentifier: "segueVuforiaVC", sender: self)
+	}
+
+	
 	func createSession() -> String?{
 		do{
 			let realm = try Realm()
@@ -72,10 +77,10 @@ class SubjectDetailViewController: UIViewController {
 		if segue.identifier == "segueVuforiaVC"{
 			let vc = segue.destination as! VuforiaViewController
 			vc.profileID = self.profileID
-			vc.sessionID = sender as! String
+			vc.sessionID = createSession()
 		}
 	}
-    
+
 }
 
 extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSource {

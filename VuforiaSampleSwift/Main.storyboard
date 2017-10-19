@@ -223,7 +223,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="segueVuforiaVC" id="6Fl-wi-bJk"/>
+                                    <action selector="starSessionPressedWithSender:" destination="gWf-SX-Vcc" eventType="touchUpInside" id="N7c-dg-YXE"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -233,6 +233,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="Sz1-a5-IeM" id="zh4-Zf-cit"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="segueVuforiaVC" id="M31-Ur-qKi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w0Y-6H-dG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
