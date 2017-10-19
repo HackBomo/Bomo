@@ -35,6 +35,17 @@ class AllSubjectsViewController: UIViewController {
 	}
     
     // MARK: IBActions
+	func deleteUser(with id: String){
+		do{
+			let realm = try Realm()
+			let user = realm.object(ofType: Profile.self, forPrimaryKey: id)
+			try realm.write {
+				realm.delete(user)
+			}
+		}catch{
+			NSLog("Error deleting user")
+		}
+	}
 	
     @IBAction func pressCreateSubject(_ sender: Any) {
         
@@ -131,6 +142,18 @@ extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate 
 		cell.sessionsLabel.text = "Sessions: \(profile.sessions.count)"
 		cell.subjectLabel.text = "Subject: \(profile.subjectNumber)"
 		return cell
+	}
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete{
+			let cell = tableView.cellForRow(at: indexPath) as! TestSubjectCell
+			guard let id = cell.testSubjectID else{
+				NSLog("Unable to delte user, cannot get session ID from cell")
+			}
+			deleteUser(with: id)
+		}
+	}
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
 	}
 	
 }

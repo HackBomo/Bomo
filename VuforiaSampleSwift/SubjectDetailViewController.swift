@@ -100,6 +100,17 @@ class SubjectDetailViewController: UIViewController {
 		}
 	}
 
+	func deleteSession(with id: String){
+		do{
+			let realm = try Realm()
+			let session = realm.object(ofType: Session.self, forPrimaryKey: id)
+			realm.write {
+				realm.delete(session)
+			}
+		}catch{
+			NSLog("Error deleting session")
+		}
+	}
 	func exportAllSessions(for profileID: String){
 		guard MFMailComposeViewController.canSendMail() else{
 			NSLog("Cannot export data, unable to send data")
@@ -212,7 +223,18 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
+	func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+		if editingStyle == .delete{
+			let cell = tableView.cellForRow(at: indexPath) as! SessionCell
+			guard let id = cell.sessionID else{
+				NSLog("Unable to delte session, cannot get session ID from cell")
+			}
+			deleteSession(with: id)
+		}
+	}
+	func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+		return true
+	}
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell") as! SessionCell
