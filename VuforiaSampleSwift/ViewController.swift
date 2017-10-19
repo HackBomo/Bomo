@@ -493,7 +493,7 @@ extension ViewController: MFMailComposeViewControllerDelegate{
 			let emailController = MFMailComposeViewController()
 			emailController.mailComposeDelegate = self
 			emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
-			emailController.setSubject("Subject \(session.owner!.subjectNumber) All Session Data")
+			emailController.setSubject("Subject \(profile.subjectNumber) All Session Data")
 			emailController.setMessageBody("Data Attached", isHTML: false)
 			
 			for session in profile.sessions{
