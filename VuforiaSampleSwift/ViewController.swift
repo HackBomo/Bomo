@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import RealmSwift
+import MessageUI
 
 protocol MainVCDelegate{
 	func didCalculateAngle(angle: Float)
@@ -75,6 +76,7 @@ class ViewController: UIViewController {
 	@IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
 		performSegue(withIdentifier: "unwind", sender: self)
 	}
+
 }
 extension ViewController: popupDelegate{
 	func popupDidClose() {
@@ -472,6 +474,103 @@ extension ViewController {
 	}
 	func didRecieveDidBecomeActiveNotification(_ notification: Notification) {
 		resume()
+	}
+}
+
+extension ViewController: MFMailComposeViewControllerDelegate{
+	func exportAllSessions(for profileID: String){
+		guard MFMailComposeViewController.canSendMail() else{
+			NSLog("Cannot export data, unable to send data")
+			return
+		}
+		do{
+			let realm = try Realm()
+			guard let profile = realm.object(ofType: Profile.self, forPrimaryKey: profileID) else{
+				NSLog("Error exporting profile sessions, can't find profile")
+				return
+			}
+			
+			let emailController = MFMailComposeViewController()
+			emailController.mailComposeDelegate = self
+			emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
+			emailController.setSubject("Subject \(session.owner!.subjectNumber) All Session Data")
+			emailController.setMessageBody("Data Attached", isHTML: false)
+			
+			for session in profile.sessions{
+				guard session.startTime != nil else{
+					NSLog("Error exporting session, start time nil")
+					continue
+				}
+				let df = DateFormatter()
+				df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+				var dataString = NSMutableString()
+				dataString.append("Date, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
+				for dp in session.dataPoints{
+					dataString.append("\(df.string(from: dp.startTime!)), \(dp.x1), \(dp.y1), \(dp.z1), ")
+					dataString.append("\(dp.x2), \(dp.y2), \(dp.z2), \(dp.x3), \(dp.y3), \(dp.z3)\n")
+				}
+				guard let data = dataString.data(using: 4, allowLossyConversion: false) else{ //4 represents UTF 8
+					NSLog("Error creating data from session")
+					continue
+				}
+				df.dateStyle = .short
+				df.timeStyle = .short
+				let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime!)).csv"
+				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
+
+			}
+			present(emailController, animated: true, completion: nil)
+		}catch{
+			NSLog("Error exporting data, can't open realm: \(error)")
+		}
+	}
+	
+	func exportSessionData(sessionId: String){
+		do{
+			let realm = try Realm()
+			guard let session = realm.object(ofType: Session.self, forPrimaryKey: sessionID) else{
+				NSLog("Error exporting session, can't find session")
+				return
+			}
+			guard session.startTime != nil else{
+				NSLog("Error exporting session, start time nil")
+				return
+			}
+			
+			let df = DateFormatter()
+			df.dateFormat = "y-MM-dd H:m:ss.SSSS"
+			
+			var dataString = NSMutableString()
+			dataString.append("Date, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
+			for dp in session.dataPoints{
+				dataString.append("\(df.string(from: dp.startTime!)), \(dp.x1), \(dp.y1), \(dp.z1), ")
+				dataString.append("\(dp.x2), \(dp.y2), \(dp.z2), \(dp.x3), \(dp.y3), \(dp.z3)\n")
+			}
+			
+			guard let data = dataString.data(using: 4, allowLossyConversion: false) else{ //4 represents UTF 8
+				NSLog("Error creating data from session")
+				return
+			}
+			
+			df.dateStyle = .short
+			df.timeStyle = .short
+			let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime!)).csv"
+			
+			if MFMailComposeViewController.canSendMail() {
+				let emailController = MFMailComposeViewController()
+				emailController.mailComposeDelegate = self
+				emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
+				emailController.setSubject("\(df.string(from: session.startTime!)) Subject \(session.owner!.subjectNumber) data")
+				emailController.setMessageBody("Data Attached", isHTML: false)
+				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
+				present(emailController, animated: true, completion: nil)
+			}
+		}catch{
+			NSLog("Error exporting data, can't open realm: \(error)")
+		}
+	}
+	func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+		controller.dismiss(animated: true, completion: nil)
 	}
 }
 
