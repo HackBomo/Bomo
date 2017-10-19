@@ -99,20 +99,24 @@ class SubjectDetailViewController: UIViewController {
 			NSLog("Cannot export data, unable to send data")
 			return
 		}
+        
+        let emailController = MFMailComposeViewController()
+        emailController.mailComposeDelegate = self
+        emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
+        emailController.setMessageBody("Data Attached", isHTML: false)
+
 		
 		do{
 			let realm = try Realm()
+            
 			guard let profile = realm.object(ofType: Profile.self, forPrimaryKey: profileID) else{
 				NSLog("Error exporting profile sessions, can't find profile")
 				return
 			}
-			
-			let emailController = MFMailComposeViewController()
-			emailController.mailComposeDelegate = self
-			emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
-			emailController.setSubject("Subject \(profile.subjectNumber) All Session Data")
-			emailController.setMessageBody("Data Attached", isHTML: false)
+            
+            emailController.setSubject("Subject \(profile.subjectNumber) All Session Data")
 
+			
 			for session in profile.sessions{
 				guard session.startTime != nil else{
 					NSLog("Error exporting session, start time nil")
@@ -136,7 +140,9 @@ class SubjectDetailViewController: UIViewController {
 				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
 				
 			}
+            
 			present(emailController, animated: true, completion: nil)
+            
 		}catch{
 			NSLog("Error exporting data, can't open realm: \(error)")
 		}
@@ -232,8 +238,11 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
 	func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-		NSLog("Dismissing mail view controller")
-		controller.dismiss(animated: true, completion: nil)
+        
+		print("Dismissing mail view controller")
+        controller.dismiss(animated: true, completion: nil)
+
+//        self.dismiss(animated: true, completion: nil)
 	}
 }
 
