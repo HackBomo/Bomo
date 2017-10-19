@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0752131D3B11170367AAEC93 /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F60FACC791D1EB5B9B39220 /* Pods_VuforiaSampleSwift.framework */; };
+		36DDC9961F98384C002CE98B /* AllSubjectsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDC9951F98384C002CE98B /* AllSubjectsViewController.swift */; };
+		36DDC9981F983856002CE98B /* SubjectDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDC9971F983856002CE98B /* SubjectDetailViewController.swift */; };
+		36DDC99B1F98395E002CE98B /* TestSubjectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDC99A1F98395E002CE98B /* TestSubjectCell.swift */; };
+		36DDC99D1F983968002CE98B /* SessionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDC99C1F983968002CE98B /* SessionCell.swift */; };
 		416346210B2E4460383F7B00 /* Pods_VuforiaSampleSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08901F95E2EAA43CD3208B3C /* Pods_VuforiaSampleSwift.framework */; };
 		6317A0411F64678100B5AEAF /* ARManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6317A0401F64678100B5AEAF /* ARManager.swift */; };
 		63915D3E1F647AAD00A97D84 /* hackbomo-2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */; };
@@ -51,6 +55,10 @@
 /* Begin PBXFileReference section */
 		01DF36BA6494B3E20FECC306 /* Pods-VuforiaSampleSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VuforiaSampleSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VuforiaSampleSwift/Pods-VuforiaSampleSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		08901F95E2EAA43CD3208B3C /* Pods_VuforiaSampleSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VuforiaSampleSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		36DDC9951F98384C002CE98B /* AllSubjectsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSubjectsViewController.swift; sourceTree = "<group>"; };
+		36DDC9971F983856002CE98B /* SubjectDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectDetailViewController.swift; sourceTree = "<group>"; };
+		36DDC99A1F98395E002CE98B /* TestSubjectCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSubjectCell.swift; sourceTree = "<group>"; };
+		36DDC99C1F983968002CE98B /* SessionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCell.swift; sourceTree = "<group>"; };
 		6317A0401F64678100B5AEAF /* ARManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARManager.swift; sourceTree = "<group>"; };
 		63915D3C1F647AAD00A97D84 /* hackbomo-2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "hackbomo-2.xml"; path = "VuforiaSampleSwift/hackbomo-2.xml"; sourceTree = SOURCE_ROOT; };
 		63915D3D1F647AAD00A97D84 /* hackbomo-2.dat */ = {isa = PBXFileReference; lastKnownFileType = file; name = "hackbomo-2.dat"; path = "VuforiaSampleSwift/hackbomo-2.dat"; sourceTree = SOURCE_ROOT; };
@@ -131,6 +139,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		36DDC9991F98394F002CE98B /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				36DDC99A1F98395E002CE98B /* TestSubjectCell.swift */,
+				36DDC99C1F983968002CE98B /* SessionCell.swift */,
+			);
+			path = CustomCells;
+			sourceTree = "<group>";
+		};
 		3E16131FE9FF619025B35EAA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +162,8 @@
 			children = (
 				63915D531F64F5CD00A97D84 /* HudViewController.swift */,
 				92AA110A1D27A5EB00E56CBE /* VuforiaViewController.swift */,
+				36DDC9951F98384C002CE98B /* AllSubjectsViewController.swift */,
+				36DDC9971F983856002CE98B /* SubjectDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -221,6 +240,7 @@
 				92AA11081D27A5EB00E56CBE /* AppDelegate.swift */,
 				6317A0401F64678100B5AEAF /* ARManager.swift */,
 				63915D481F64D6B600A97D84 /* ViewControllers */,
+				36DDC9991F98394F002CE98B /* CustomCells */,
 				92AA110F1D27A5EB00E56CBE /* Assets.xcassets */,
 				63915D461F64D32600A97D84 /* Main.storyboard */,
 				92AA11111D27A5EB00E56CBE /* LaunchScreen.storyboard */,
@@ -404,15 +424,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36DDC99D1F983968002CE98B /* SessionCell.swift in Sources */,
 				927B76EA1D2806EF00C4F5CC /* VuforiaEAGLView.mm in Sources */,
 				6317A0411F64678100B5AEAF /* ARManager.swift in Sources */,
+				36DDC9961F98384C002CE98B /* AllSubjectsViewController.swift in Sources */,
 				927B76FD1D2816DB00C4F5CC /* VuforiaShaderUtils.m in Sources */,
 				92AA110B1D27A5EB00E56CBE /* VuforiaViewController.swift in Sources */,
+				36DDC99B1F98395E002CE98B /* TestSubjectCell.swift in Sources */,
 				92AA11091D27A5EB00E56CBE /* AppDelegate.swift in Sources */,
 				63915D501F64E36200A97D84 /* RealmManager.swift in Sources */,
 				63A086111F97EFA400A788F2 /* Profile.swift in Sources */,
 				927B76EB1D2806EF00C4F5CC /* VuforiaManager.mm in Sources */,
 				927B76EC1D2806EF00C4F5CC /* VuforiaObjects.mm in Sources */,
+				36DDC9981F983856002CE98B /* SubjectDetailViewController.swift in Sources */,
 				63915D561F65063F00A97D84 /* Session.swift in Sources */,
 				63915D541F64F5CD00A97D84 /* HudViewController.swift in Sources */,
 				63A0860F1F9665C400A788F2 /* DataPoint.swift in Sources */,

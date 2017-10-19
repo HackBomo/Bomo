@@ -87,6 +87,7 @@ class HudViewController: UIViewController{
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+        
     }
     
     @IBAction func savePressed(_ sender: Any) {
