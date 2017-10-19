@@ -348,7 +348,7 @@
                         <outlet property="cancelButton" destination="bCC-ww-IYW" id="L08-v6-zUL"/>
                         <outlet property="realtimeLineChart" destination="Sb4-sf-3Fq" id="Inj-0g-mMD"/>
                         <outlet property="saveButton" destination="tpt-fL-NFe" id="oKX-hX-BLz"/>
-                        <segue destination="sNd-S3-rHw" kind="unwind" identifier="doubleUnwind" unwindAction="unwindToSquatWithSegue:" id="pnb-Sw-hbz"/>
+                        <segue destination="sNd-S3-rHw" kind="unwind" unwindAction="unwindToSubjectDetailVCWithSegue:" id="nql-Qq-U5R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fBX-em-tN5" userLabel="First Responder" sceneMemberID="firstResponder"/>

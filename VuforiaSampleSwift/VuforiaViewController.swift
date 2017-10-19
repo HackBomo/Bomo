@@ -208,7 +208,8 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 		for node in angleNodes.values{
 			node.removeFromParentNode()
 		}
-        
+		
+		var angle = 0
 		for i in 0..<seen.count{
 			if i >= seen.count - 2{
 				break
@@ -218,8 +219,7 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 			let b = nodes[allNames[i+1]]!
 			let c = nodes[allNames[i+2]]!
             
-			let angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
-        
+			angle = getAngle(ankle: a.position, knee: b.position, hip: c.position)
 			drawAngle(between: a, b: b, c: c, angle: angle)
             
 			self.delegate?.didCalculateAngle(angle: angle)
@@ -262,10 +262,13 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y3 = Double(n3.position.y)
 					dataPoint.z3 = Double(n3.position.z)
 				}
+<<<<<<< HEAD
                 
                 
                 dataPoint.angle = 0
 				
+=======
+>>>>>>> origin/master
 				try realm.write{
 					session.dataPoints.append(dataPoint)
 				}

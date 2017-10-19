@@ -84,6 +84,7 @@ class HudViewController: UIViewController{
         let alert = UIAlertController(title: "Cancel session", message: "Are you sure you want to cancel?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: { (alert) in
             self.delegate?.didCancelSession()
+			self.performSegue(withIdentifier: "unwindToSubjectDetailVC", sender: self)
         }))
         alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
@@ -92,11 +93,12 @@ class HudViewController: UIViewController{
     
     @IBAction func savePressed(_ sender: Any) {
         self.delegate?.didSaveSession()
+		performSegue(withIdentifier: "unwindToSubjectDetailVC", sender: self)
 
     }
 
 	@IBAction func backPressed(){
-		performSegue(withIdentifier: "doubleUnwind", sender: self)
+		performSegue(withIdentifier: "unwindToSubjectDetailVC", sender: self)
 	}
 	
 }
