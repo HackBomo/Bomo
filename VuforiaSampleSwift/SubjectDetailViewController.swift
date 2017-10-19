@@ -120,9 +120,9 @@ class SubjectDetailViewController: UIViewController {
 				let df = DateFormatter()
 				df.dateFormat = "y-MM-dd H:m:ss.SSSS"
 				var dataString = NSMutableString()
-				dataString.append("Date, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
+				dataString.append("Date, angle, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
 				for dp in session.dataPoints{
-					dataString.append("\(df.string(from: dp.startTime!)), \(dp.x1), \(dp.y1), \(dp.z1), ")
+					dataString.append("\(df.string(from: dp.startTime!)), \(dp.angle), \(dp.x1), \(dp.y1), \(dp.z1), ")
 					dataString.append("\(dp.x2), \(dp.y2), \(dp.z2), \(dp.x3), \(dp.y3), \(dp.z3)\n")
 				}
 				guard let data = dataString.data(using: 4, allowLossyConversion: false) else{ //4 represents UTF 8
@@ -156,9 +156,9 @@ class SubjectDetailViewController: UIViewController {
 			df.dateFormat = "y-MM-dd H:m:ss.SSSS"
 			
 			var dataString = NSMutableString()
-			dataString.append("Date, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
+			dataString.append("Date, angle, x1, y1, z1, x2, y2, z2, x3, y3, z3\n")
 			for dp in session.dataPoints{
-				dataString.append("\(df.string(from: dp.startTime!)), \(dp.x1), \(dp.y1), \(dp.z1), ")
+				dataString.append("\(df.string(from: dp.startTime!)), \(dp.angle), \(dp.x1), \(dp.y1), \(dp.z1), ")
 				dataString.append("\(dp.x2), \(dp.y2), \(dp.z2), \(dp.x3), \(dp.y3), \(dp.z3)\n")
 			}
 			
@@ -184,9 +184,7 @@ class SubjectDetailViewController: UIViewController {
 			NSLog("Error exporting data, can't open realm: \(error)")
 		}
 	}
-
 	 @IBAction func unwindToSubjectDetailVC(segue: UIStoryboardSegue) {
-		
 	}
 
 }

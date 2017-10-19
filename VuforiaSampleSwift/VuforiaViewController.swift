@@ -86,7 +86,18 @@ extension VuforiaViewController: HudViewDelegate{
     }
     
     func didCancelSession() {
-        print("Cancelling from VC")
+		guard sessionID != nil else{
+			NSLog("Error deleting session, session ID is nil")
+			return
+		}
+		do{
+			let realm = try Realm()
+			try realm.write {
+				realm.object(ofType: Session.self, forPrimaryKey: sessionID)
+			}
+		}catch{
+			NSLog("Error deleting the session: \(error)")
+		}
     }
     
 	func didDismiss() {
