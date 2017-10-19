@@ -260,7 +260,14 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 				}
 				
 				let dataPoint = DataPoint()
+                
+                let d = Date()
+                let df = DateFormatter()
+                df.dateFormat = "y-MM-dd H:m:ss.SSSS"                
+                let startTimeString = df.string(from: d)
+                
 				dataPoint.startTime = Date()
+                dataPoint.startTimeString = startTimeString
 				
                 dataPoint.angle = Double(angle)
 				
@@ -279,6 +286,9 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y3 = Double(n3.position.y)
 					dataPoint.z3 = Double(n3.position.z)
 				}
+                
+                print("DATA: \(dataPoint)")
+                
                 try realm.write{
 					session.dataPoints.append(dataPoint)
 				}

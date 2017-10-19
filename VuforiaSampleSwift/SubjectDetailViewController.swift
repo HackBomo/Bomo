@@ -209,6 +209,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
         return 1
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "sessionCell") as! SessionCell

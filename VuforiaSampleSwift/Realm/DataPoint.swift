@@ -12,6 +12,7 @@ import RealmSwift
 class DataPoint: Object{
 	
 	dynamic var startTime: Date?
+    dynamic var startTimeString: String?
 	
     dynamic var angle: Double = 0
     
