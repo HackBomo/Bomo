@@ -244,8 +244,8 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 				let dataPoint = DataPoint()
 				dataPoint.startTime = Date()
 				
-                
-                
+                dataPoint.angle = Double(angle)
+				
 				if let n1 = nodes[allNames[0]]{
 					dataPoint.x1 = Double(n1.position.x)
 					dataPoint.y1 = Double(n1.position.y)

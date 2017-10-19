@@ -84,7 +84,6 @@ class AllSubjectsViewController: UIViewController {
 			try realm.write {
 				realm.add(profile)
 			}
-			subjects = realm.objects(Profile.self)
 		}catch{
 			NSLog("Error creating subject in AllSubjectsVC")
 		}
