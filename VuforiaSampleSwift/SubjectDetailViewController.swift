@@ -182,6 +182,8 @@ class SubjectDetailViewController: UIViewController {
 		}
 	}
 	 @IBAction func unwindToSubjectDetailVC(segue: UIStoryboardSegue) {
+		self.loadSubject()
+		self.tableView.reloadData()
 	}
 
 }
