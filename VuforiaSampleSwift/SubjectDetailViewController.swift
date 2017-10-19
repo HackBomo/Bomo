@@ -231,6 +231,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 			let cell = tableView.cellForRow(at: indexPath) as! SessionCell
 			guard let id = cell.sessionID else{
 				NSLog("Unable to delte session, cannot get session ID from cell")
+				return
 			}
 			deleteSession(with: id)
 		}
