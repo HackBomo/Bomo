@@ -51,6 +51,7 @@ class SubjectDetailViewController: UIViewController {
 			}
 			let session = Session()
 			try realm.write {
+				session.owner = profile
 				profile.sessions.append(session)
 			}
 			return session.id
