@@ -267,11 +267,10 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: Error?) {
-        
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		print("Dismissing mail view controller")
-        controller.dismiss(animated: true, completion: nil)
-
+		controller.dismiss(animated: true, completion: nil)
+		
 		NSLog("\n\n\n\n\n\nDismissing mail view controller\n\n\n\n\n\n")
 		controller.dismiss(animated: true, completion: nil)
 	}
