@@ -151,6 +151,7 @@ extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate 
 			let cell = tableView.cellForRow(at: indexPath) as! TestSubjectCell
 			guard let id = cell.testSubjectID else{
 				NSLog("Unable to delte user, cannot get session ID from cell")
+				return
 			}
 			deleteUser(with: id)
 		}

@@ -107,7 +107,7 @@ class SubjectDetailViewController: UIViewController {
 				NSLog("eror deleting session, not found")
 				return
 			}
-			realm.write {
+			try realm.write {
 				realm.delete(session)
 			}
 		}catch{
