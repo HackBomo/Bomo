@@ -99,6 +99,7 @@ class SubjectDetailViewController: UIViewController {
 			NSLog("Cannot export data, unable to send data")
 			return
 		}
+		
 		do{
 			let realm = try Realm()
 			guard let profile = realm.object(ofType: Profile.self, forPrimaryKey: profileID) else{
@@ -111,7 +112,7 @@ class SubjectDetailViewController: UIViewController {
 			emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
 			emailController.setSubject("Subject \(profile.subjectNumber) All Session Data")
 			emailController.setMessageBody("Data Attached", isHTML: false)
-			
+
 			for session in profile.sessions{
 				guard session.startTime != nil else{
 					NSLog("Error exporting session, start time nil")
@@ -231,6 +232,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
 	func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
+		NSLog("Dismissing mail view controller")
 		controller.dismiss(animated: true, completion: nil)
 	}
 }
