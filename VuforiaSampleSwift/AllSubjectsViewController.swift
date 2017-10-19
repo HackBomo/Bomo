@@ -13,7 +13,7 @@ import RealmSwift
 class AllSubjectsViewController: UIViewController {
 	
 	var subjects: Results<Profile>?
-	
+	@IBOutlet weak var tableView: UITableView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,6 +65,29 @@ class AllSubjectsViewController: UIViewController {
 		}
 		return false
 	}
+}
+
+extension AllSubjectsViewController: UITableViewDataSource{
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		guard subjects != nil else{
+			NSLog("Cannot populate subject cells, subjects is nil")
+			return 0
+		}
+		return subjects!.count
+	}
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		guard subjects != nil, subjects!.count > indexPath.row else{
+			NSLog("Cannot make cell for profile")
+			return UITableViewCell()
+		}
+		let profile = subjects![indexPath.row]
+		let cell = tableView.dequeueReusableCell(withIdentifier: "testSubjectCell") as! TestSubjectCell
+		cell.testSubjectID = profile.id
+		cell.sessionsLabel.text = "Sessions: \(profile.sessions.count)"
+		cell.subjectLabel.text = "Subject Number: \(profile.subjectNumber)"
+		return cell
+	}
+	
 }
 
 

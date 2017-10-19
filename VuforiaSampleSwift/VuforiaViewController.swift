@@ -507,7 +507,7 @@ extension VuforiaViewController: MFMailComposeViewControllerDelegate{
 				}
 				df.dateStyle = .short
 				df.timeStyle = .short
-				let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime!)).csv"
+				let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime)).csv"
 				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
 
 			}
@@ -546,13 +546,13 @@ extension VuforiaViewController: MFMailComposeViewControllerDelegate{
 			
 			df.dateStyle = .short
 			df.timeStyle = .short
-			let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime!)).csv"
+			let fileName = "\(session.owner!.subjectNumber)_\(df.string(from: session.startTime)).csv"
 			
 			if MFMailComposeViewController.canSendMail() {
 				let emailController = MFMailComposeViewController()
 				emailController.mailComposeDelegate = self
 				emailController.setToRecipients([]) //I usually leave this blank unless it's a "message the developer" type thing
-				emailController.setSubject("\(df.string(from: session.startTime!)) Subject \(session.owner!.subjectNumber) data")
+				emailController.setSubject("\(df.string(from: session.startTime)) Subject \(session.owner!.subjectNumber) data")
 				emailController.setMessageBody("Data Attached", isHTML: false)
 				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
 				present(emailController, animated: true, completion: nil)

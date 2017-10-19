@@ -72,7 +72,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSC-FU-UeA">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BSC-FU-UeA" customClass="TestSubjectCell" customModule="VuforiaSampleSwift" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="327" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <subviews>
@@ -90,6 +90,10 @@
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <connections>
+                                                        <outlet property="sessionsLabel" destination="hLM-KA-UKl" id="P0Z-ip-dLu"/>
+                                                        <outlet property="subjectLabel" destination="e6L-at-CHy" id="JcZ-zB-nIc"/>
+                                                    </connections>
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -108,6 +112,9 @@
                     <navigationItem key="navigationItem" title="All Subjects" id="XpH-RE-YbV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="wcx-Q9-xuy"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="0Xm-Vi-yWP" id="Yo8-y0-cHx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zU8-aj-jHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
