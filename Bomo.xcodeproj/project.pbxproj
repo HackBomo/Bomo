@@ -318,7 +318,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = "Yoshihiro Kato";
+				ORGANIZATIONNAME = CRANG;
 				TargetAttributes = {
 					92AA11041D27A5EB00E56CBE = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -328,7 +328,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 92AA11001D27A5EB00E56CBE /* Build configuration list for PBXProject "VuforiaSampleSwift" */;
+			buildConfigurationList = 92AA11001D27A5EB00E56CBE /* Build configuration list for PBXProject "Bomo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -609,7 +609,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		92AA11001D27A5EB00E56CBE /* Build configuration list for PBXProject "VuforiaSampleSwift" */ = {
+		92AA11001D27A5EB00E56CBE /* Build configuration list for PBXProject "Bomo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				92AA11151D27A5EB00E56CBE /* Debug */,

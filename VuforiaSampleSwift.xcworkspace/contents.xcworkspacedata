@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:VuforiaSampleSwift.xcodeproj">
+      location = "group:/Users/tylerangert/Desktop/PENNAPPS-BOMO/Bomo/Bomo.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

@@ -21,6 +21,13 @@ class SubjectDetailViewController: UIViewController {
 	var profileID: String?
 	var subject: Profile?
 	
+    @IBOutlet weak var startNewSessionButton: UIButton! {
+        didSet {
+            startNewSessionButton.layer.cornerRadius = 10
+            startNewSessionButton.clipsToBounds = true
+        }
+    }
+    
     // MARK: IBOutlets
     @IBOutlet weak var tableView: UITableView!
     
@@ -267,9 +274,11 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
-	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-		print("Dismissing mail view controller")
-		controller.dismiss(animated: true, completion: nil)
+
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+//        print("Dismissing mail view controller")
+//        controller.dismiss(animated: true, completion: nil)
 		
 		NSLog("\n\n\n\n\n\nDismissing mail view controller\n\n\n\n\n\n")
 		controller.dismiss(animated: true, completion: nil)

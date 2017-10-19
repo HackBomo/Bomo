@@ -19,9 +19,6 @@ class SessionCell: UITableViewCell {
     // MARK: IBOutlets
     @IBOutlet weak var sessionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var maxLabel: UILabel!
-    @IBOutlet weak var minLabel: UILabel!
-    @IBOutlet weak var avgLabel: UILabel!
     @IBOutlet weak var exportButton: UIButton!
     
     override func awakeFromNib() {
