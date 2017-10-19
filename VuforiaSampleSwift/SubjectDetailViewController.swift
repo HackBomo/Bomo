@@ -114,10 +114,6 @@ class SubjectDetailViewController: UIViewController {
 			emailController.setMessageBody("Data Attached", isHTML: false)
 
 			for session in profile.sessions{
-				guard session.startTime != nil else{
-					NSLog("Error exporting session, start time nil")
-					continue
-				}
 				let df = DateFormatter()
 				df.dateFormat = "y-MM-dd H:m:ss.SSSS"
 				var dataString = NSMutableString()
@@ -136,7 +132,7 @@ class SubjectDetailViewController: UIViewController {
 				emailController.addAttachmentData(data, mimeType: "text/csv", fileName: fileName)
 				
 			}
-			present(emailController, animated: true, completion: nil)
+			self.present(emailController, animated: true, completion: nil)
 		}catch{
 			NSLog("Error exporting data, can't open realm: \(error)")
 		}
@@ -232,7 +228,7 @@ extension SubjectDetailViewController: UITableViewDelegate, UITableViewDataSourc
 
 extension SubjectDetailViewController: MFMailComposeViewControllerDelegate{
 	func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-		NSLog("Dismissing mail view controller")
+		NSLog("\n\n\n\n\n\nDismissing mail view controller\n\n\n\n\n\n")
 		controller.dismiss(animated: true, completion: nil)
 	}
 }
