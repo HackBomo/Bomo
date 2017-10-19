@@ -7,3 +7,18 @@
 //
 
 import Foundation
+import UIKit
+
+class TestSubjectCell: UITableViewCell {
+    
+    // MARK: Realm references
+    var testSubjectID: String?
+
+    // MARK: IBOutlets
+    @IBOutlet weak var subjectLabel: UILabel!
+    @IBOutlet weak var sessionsLabel: UILabel!
+    
+    override func awakeFromNib() {
+        
+    }
+}
