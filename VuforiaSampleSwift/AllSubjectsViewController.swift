@@ -14,9 +14,14 @@ class AllSubjectsViewController: UIViewController {
 	
 	var subjects: Results<Profile>?
 	@IBOutlet weak var tableView: UITableView!
-	
+    @IBOutlet weak var addSubjectButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
 		loadSubjects()
     }
 	
@@ -28,14 +33,49 @@ class AllSubjectsViewController: UIViewController {
 			NSLog("Error loading subjets in AllSubjectsViewController")
 		}
 	}
+    
+    // MARK: IBActions
 	
-	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @IBAction func pressCreateSubject(_ sender: Any) {
+        
+        //display alert view with text field
+        //completion handler pass in the text to create subject
+        
+        let alert = UIAlertController(title: "Create test subject", message: nil, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default) { (_) in
+            if let field = alert.textFields?[0] {
+                
+                // Create the subject with the test field
+                self.createSubject(subjectNumber: field.text!)
+                self.tableView.reloadData()
+                
+            } else {
+                print("not filled in")
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Enter subject ID here"
+        }
+        
+        alert.addAction(confirmAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "segueSubjectDetailVC"{
-			let vc = segue.destination as! SubjectDetailViewController
-			vc.profileID = sender as! String
+			let vc = segue.destination as! SubjectDetailViewController 
+            vc.profileID = (sender as! TestSubjectCell).testSubjectID!
 		}
 	}
 	
+    // MARK: Realm functions
+    
 	func createSubject(subjectNumber: String){
 		do{
 			let realm = try Realm()
@@ -67,7 +107,8 @@ class AllSubjectsViewController: UIViewController {
 	}
 }
 
-extension AllSubjectsViewController: UITableViewDataSource{
+extension AllSubjectsViewController: UITableViewDataSource, UITableViewDelegate {
+    
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		guard subjects != nil else{
 			NSLog("Cannot populate subject cells, subjects is nil")
@@ -75,6 +116,7 @@ extension AllSubjectsViewController: UITableViewDataSource{
 		}
 		return subjects!.count
 	}
+    
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		guard subjects != nil, subjects!.count > indexPath.row else{
 			NSLog("Cannot make cell for profile")

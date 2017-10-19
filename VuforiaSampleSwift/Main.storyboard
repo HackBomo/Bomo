@@ -110,10 +110,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="All Subjects" id="XpH-RE-YbV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wcx-Q9-xuy"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wcx-Q9-xuy">
+                            <connections>
+                                <action selector="pressCreateSubject:" destination="P4p-Kk-ke9" id="V6f-ON-5yj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
+                        <outlet property="addSubjectButton" destination="wcx-Q9-xuy" id="6bq-uq-ecz"/>
                         <outlet property="tableView" destination="0Xm-Vi-yWP" id="Yo8-y0-cHx"/>
                     </connections>
                 </viewController>

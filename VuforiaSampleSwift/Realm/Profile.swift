@@ -20,5 +20,4 @@ class Profile: Object{
 		return "id"
 	}
 	
-	
 }
