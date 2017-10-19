@@ -13,6 +13,8 @@ class DataPoint: Object{
 	
 	dynamic var startTime: Date?
 	
+    dynamic var angle: Double = 0
+    
 	dynamic var x1: Double = 0
 	dynamic var y1: Double = 0
 	dynamic var z1: Double = 0

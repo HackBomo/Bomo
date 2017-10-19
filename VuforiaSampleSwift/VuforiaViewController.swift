@@ -245,6 +245,8 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 				let dataPoint = DataPoint()
 				dataPoint.startTime = Date()
 				
+                
+                
 				if let n1 = nodes[allNames[0]]{
 					dataPoint.x1 = Double(n1.position.x)
 					dataPoint.y1 = Double(n1.position.y)
@@ -260,6 +262,9 @@ extension VuforiaViewController: VuforiaManagerDelegate {
 					dataPoint.y3 = Double(n3.position.y)
 					dataPoint.z3 = Double(n3.position.z)
 				}
+                
+                
+                dataPoint.angle = 0
 				
 				try realm.write{
 					session.dataPoints.append(dataPoint)
